@@ -8,16 +8,6 @@ export default function ProjectMetaData (){
         const inputs = {
             metaData:[
                 {
-                  label:'PackageName',
-                  placeholder:'Enter Text',
-                  value:''
-                },
-                {
-                  label:'Version',
-                  placeholder:'Enter Text',
-                  value:''
-                },
-                {
                   label:'Description',
                   placeholder:'Enter Text',
                   value:''
