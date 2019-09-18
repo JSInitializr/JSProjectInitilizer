@@ -5,16 +5,11 @@ import Body from '../body/body';
 
 
 class Container extends Component {
-
-    componentDidMount() {
-        
-    }
-
-    render(){
-        return(<>
-        <Header></Header>
-        <Body></Body>
-        <Footer></Footer>
+    render() {
+        return (<>
+            <Header></Header>
+            <Body></Body>
+            <Footer></Footer>
         </>);
     }
 }

@@ -29,9 +29,9 @@ export default function BottomAppBar() {
                 <Grid container spacing={2}>
                     <Grid item xs={12}>
                     </Grid>
-                    <Grid item xs={3} style={{textAlign: 'right'}}>
+                    <Grid item xs={3} style={{ textAlign: 'right' }}>
                         <Typography variant="body2" gutterBottom>
-                            © 2019 JS Project Initializer.<br/>
+                            © 2019 JS Project Initializer.<br />
                             Bootstrap Quick development.
                     </Typography>
                     </Grid>
