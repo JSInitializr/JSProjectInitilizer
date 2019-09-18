@@ -6,17 +6,21 @@ class Body extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      Language: ["Javascript", "Typescript"],
-      Framework: ["Angular","React","React Native","Node js server"]
+        tabs:{
+            Language: ["Javascript", "Typescript"],
+            Framework: ["Angular","React","React Native","Node js server"],
+            DataBase: ["MongoDB","MySql","PostgreSQL"]
+        }
+        
       };
   }
-  getMenuDetails = () => {
+  getTabsDetails = () => {
       const arr= [];
-    for(const item in this.state){
+    for(const item in this.state.tabs){
          arr.push(
             <>
             <Grid item xs={12} sm={3} style={{paddingRight: '45px'}} > <h4 style={{textAlign: 'right'}}>{item}</h4></Grid>
-            <Grid item xs={12} sm={9}><CenteredTabs  tabs={this.state[item]}/></Grid>
+            <Grid item xs={12} sm={9}><CenteredTabs  tabs={this.state.tabs[item]}/></Grid>
             </>
         )
     }
@@ -28,7 +32,7 @@ class Body extends Component {
       <>
         <Grid container spacing={3}>
           <Grid item xs={12}></Grid>
-          {this.getMenuDetails()}       
+          {this.getTabsDetails()}       
         </Grid>
       </>
     );
