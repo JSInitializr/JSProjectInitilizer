@@ -1,7 +1,9 @@
 import React from 'react';
 import BasicTextField from '../controls/BasicTextField';
 import BasicExpansionPanel from '../controls/BasicExpansionPanel';
-
+import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+import TextField from '@material-ui/core/TextField';
+import InputAdornment from '@material-ui/core/InputAdornment';
 
 export default function ProjectMetaData() {
 
@@ -34,7 +36,7 @@ export default function ProjectMetaData() {
                 value: ''
             }
         ],
-        requiredInputs:[
+        requiredInputs: [
             {
                 label: 'PackageName',
                 placeholder: '',
@@ -61,9 +63,28 @@ export default function ProjectMetaData() {
         </>);
     });
 
+    const detailMoreOption =
+        <>
+            <TextField
+                id="standard-read-only-input"
+                defaultValue="Options"
+                margin="normal"
+                fullWidth={true}
+                style={{ padding: '0px 25px 0px 10px', width: '95%', background: 'none' }}
+                InputProps={{
+                    readOnly: true,
+                    startAdornment: (
+                        <InputAdornment position="start">
+                            <ExpandMoreIcon />
+                        </InputAdornment>
+                    )
+                }}
+            />
+        </>;
+
     return (<>
         {requiredInputs}
-        <BasicExpansionPanel detailPanel={optionalInputs}/>
+        <BasicExpansionPanel summaryPanel={detailMoreOption} detailPanel={optionalInputs} />
     </>
     );
 
