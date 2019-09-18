@@ -27,6 +27,11 @@ export default function LanguageSelection(props) {
 
   function handleChange(event, newValue) {
     setValue(newValue);
+
+    if(props.handleChange){
+      props.handleChange(newValue);
+    }
+    debugger;
   }
 
 
