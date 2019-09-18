@@ -24,25 +24,10 @@ export default function BasicExpansionPanel(props) {
     const classes = useStyles();
     return (
         <div >
-            <ExpansionPanel className={classes.root}>
+            <ExpansionPanel className={classes.root} expanded={props.expanded}>
                 <ExpansionPanelSummary
                     style={{ padding: '0px 0px 0px' }}>    
-                    <TextField
-                        id="standard-read-only-input"
-                        defaultValue="Options"
-                        className={classes.textField}
-                        margin="normal"
-                        fullWidth={true}
-                        style={{padding:'0px 25px 0px 10px', width:'95%', background:'none'}}
-                        InputProps={{
-                            readOnly: true,
-                            startAdornment: (
-                                <InputAdornment position="start">
-                                  <ExpandMoreIcon />
-                                </InputAdornment>
-                              )
-                        }}
-                    />
+                    {props.summaryPanel}
                 </ExpansionPanelSummary>
                 <ExpansionPanelDetails style={{ display: 'inline', padding: '0px 0px 0px' }}>
                     {props.detailPanel}
