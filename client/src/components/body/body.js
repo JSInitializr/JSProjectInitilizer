@@ -3,6 +3,7 @@ import CenteredTabs from "./LanguageSelection";
 import BasicTextField from "../controls/BasicTextField"
 import Grid from "@material-ui/core/Grid";
 import ProjectMetaData from "./ProjectMetaData";
+import Dependencies from './Dependencies';
 class Body extends Component {
     constructor(props) {
         super(props);
