@@ -6,6 +6,8 @@ import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import IconButton from '@material-ui/core/IconButton';
 import logo from '../../assets/js.png';
+import Switch from './switch';
+import Help from './helpMenu';
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -36,9 +38,9 @@ export default function ButtonAppBar() {
           <Typography variant="h6" className={classes.title}>
             JS Generator
           </Typography>
-          <Button color="inherit">Color</Button>
+          <Switch/>
           <Button color="inherit">Github</Button>
-          <Button color="inherit">Login</Button>
+          <Help/>
         </Toolbar>
       </AppBar>
     </div>
