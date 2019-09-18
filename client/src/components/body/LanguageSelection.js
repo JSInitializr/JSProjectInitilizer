@@ -1,6 +1,5 @@
 import React from 'react';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
-import AppBar from '@material-ui/core/AppBar';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 
@@ -22,7 +21,7 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-export default function LanguageSelection() {
+export default function LanguageSelection(props) {
   const classes = useStyles();
   const [value, setValue] = React.useState(0);
 
@@ -30,11 +29,19 @@ export default function LanguageSelection() {
     setValue(newValue);
   }
 
+
+   const tabs = () => {
+    const t = props.tabs.map((tab)=>{
+      return <Tab label={tab.label} {...a11yProps(0)} />
+    })
+    return t;
+  }
+
   return (
     <div className={classes.root}>
 
       <span>
-        <h4> Language </h4>
+        <h4> {props.tabHeader} </h4>
       
         <Tabs
           value={value}
@@ -43,10 +50,7 @@ export default function LanguageSelection() {
           textColor="primary"
           aria-label="action tabs example"
         >
-          <Tab label="React" {...a11yProps(0)} className={classes.tab}/>
-          <Tab label="Typescript" {...a11yProps(1)} />
-          <Tab label="Angular" {...a11yProps(2)} />
-          <Tab label="Node js server" {...a11yProps(3)} />
+         {tabs()}
         </Tabs>
         </span>
     </div>
