@@ -20,7 +20,7 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-export default function CTextField(props) {
+export default function BasicTextField(props) {
   const classes = useStyles();
   const handleChange = name => event => {
 
