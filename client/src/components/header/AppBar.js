@@ -5,7 +5,7 @@ import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import IconButton from '@material-ui/core/IconButton';
-import MenuIcon from '@material-ui/icons/Menu';
+import logo from '../../assets/js.png';
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -17,6 +17,10 @@ const useStyles = makeStyles(theme => ({
   title: {
     flexGrow: 1,
   },
+  menuLogo:{
+    width:'50px',
+    height: '50px'
+  }
 }));
 
 export default function ButtonAppBar() {
@@ -27,12 +31,12 @@ export default function ButtonAppBar() {
       <AppBar position="static">
         <Toolbar>
           <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu">
-            <MenuIcon />
+          <img className= {classes.menuLogo} src={logo} alt="Logo" />
           </IconButton>
           <Typography variant="h6" className={classes.title}>
             JS Generator
           </Typography>
-          <Button color="inherit">Color Scheme</Button>
+          <Button color="inherit">Color</Button>
           <Button color="inherit">Github</Button>
           <Button color="inherit">Login</Button>
         </Toolbar>
