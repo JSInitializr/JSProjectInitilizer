@@ -32,6 +32,8 @@ export default function ButtonAppBar() {
           <Typography variant="h6" className={classes.title}>
             JS Generator
           </Typography>
+          <Button color="inherit">Color Scheme</Button>
+          <Button color="inherit">Github</Button>
           <Button color="inherit">Login</Button>
         </Toolbar>
       </AppBar>
