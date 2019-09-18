@@ -1,3 +1,3 @@
 # JSProjectInitilizer
-TO DO: Description
-# JSProjectInitilizer
+BootStrap Your Application
+
