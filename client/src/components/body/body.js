@@ -1,56 +1,38 @@
-import React, { Component } from 'react';
-import CenteredTabs from './LanguageSelection';
-import ProjectMetaData from './ProjectMetaData';
-
+import React, { Component } from "react";
+import CenteredTabs from "./LanguageSelection";
+import ProjectMetaData from "./ProjectMetaData";
+import Grid from "@material-ui/core/Grid";
 class Body extends Component {
-
-    constructor(props) {
-        super(props);
-        this.state = {
-            language: {
-                tabs: [{
-                    label: 'javascript',
-                    id: 'js',
-                },
-                {
-                    label: 'typescript',
-                    id: 'ts',
-                }],
-                tabHeader: 'Script Language'
-            },
-            framework: {
-                tabs: [{
-                    label: 'Angular',
-                    id: 'ajs',
-                },
-                {
-                    label: 'React',
-                    id: 'rt',
-                },
-                {
-                    label: 'Node js server',
-                    id: 'njs',
-                }
-            ],
-                tabHeader: 'Framework'
-            },
-
-        }
-    }
-
-    componentDidMount() {
-
-    }
-
-    render() {
-        return (
+  constructor(props) {
+    super(props);
+    this.state = {
+      Language: ["Javascript", "Typescript"],
+      Framework: ["Angular","React","React Native","Node js server"]
+      };
+  }
+  getMenuDetails = () => {
+      const arr= [];
+    for(const item in this.state){
+         arr.push(
             <>
-                <CenteredTabs tabs={this.state.language.tabs} tabHeader={this.state.language.tabHeader} />
-                <CenteredTabs tabs={this.state.framework.tabs} tabHeader={this.state.framework.tabHeader} />
-                <ProjectMetaData />
-            </>);
+            <Grid item xs={12} sm={3} style={{paddingRight: '45px'}} > <h4 style={{textAlign: 'right'}}>{item}</h4></Grid>
+            <Grid item xs={12} sm={9}><CenteredTabs  tabs={this.state[item]}/></Grid>
+            </>
+        )
     }
+    return arr;
+    // 
+  }
+  render() {
+    return (
+      <>
+        <Grid container spacing={3}>
+          <Grid item xs={12}></Grid>
+          {this.getMenuDetails()}       
+        </Grid>
+      </>
+    );
+  };
 }
 
 export default Body;
-

@@ -12,11 +12,10 @@ function a11yProps(index) {
 
 const useStyles = makeStyles(theme => ({
   root: {
-    width: 650,
-    minHeight: 200
+    width: 650
   },
-  tab:{
-    maxWidth:100,
+  tab: {
+    maxWidth: 100,
     position: "relative"
   }
 }));
@@ -30,9 +29,9 @@ export default function LanguageSelection(props) {
   }
 
 
-   const tabs = () => {
-    const t = props.tabs.map((tab)=>{
-      return <Tab label={tab.label} {...a11yProps(0)} />
+  const tabs = () => {
+    const t = props.tabs.map((tab) => {
+      return <Tab label={tab} {...a11yProps(0)} />
     })
     return t;
   }
@@ -40,19 +39,18 @@ export default function LanguageSelection(props) {
   return (
     <div className={classes.root}>
 
-      <span>
-        <h4> {props.tabHeader} </h4>
-      
-        <Tabs
-          value={value}
-          onChange={handleChange}
-          indicatorColor="primary"
-          textColor="primary"
-          aria-label="action tabs example"
-        >
-         {tabs()}
-        </Tabs>
-        </span>
+
+
+      <Tabs
+        value={value}
+        onChange={handleChange}
+        indicatorColor="primary"
+        textColor="primary"
+        aria-label="action tabs example"
+      >
+        {tabs()}
+      </Tabs>
+
     </div>
   );
 }
