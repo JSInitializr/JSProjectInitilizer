@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 import CenteredTabs from "./LanguageSelection";
-import ProjectMetaData from "./ProjectMetaData";
+import BasicTextField from "../controls/BasicTextField"
 import Grid from "@material-ui/core/Grid";
+import ProjectMetaData from "./ProjectMetaData";
 class Body extends Component {
   constructor(props) {
     super(props);
@@ -10,8 +11,7 @@ class Body extends Component {
             Language: ["Javascript", "Typescript"],
             Framework: ["Angular","React","React Native","Node js server"],
             DataBase: ["MongoDB","MySql","PostgreSQL"]
-        }
-        
+        }        
       };
   }
   getTabsDetails = () => {
@@ -25,14 +25,17 @@ class Body extends Component {
         )
     }
     return arr;
-    // 
   }
+
+
   render() {
     return (
       <>
         <Grid container spacing={8}>
           <Grid item xs={12}></Grid>
-          {this.getTabsDetails()}       
+          {this.getTabsDetails()} 
+          <Grid item xs={12} sm={3}> <h4 style={{textAlign: 'right'}}>{'Project Meta Data'}</h4></Grid>
+          <Grid item xs={1} sm={1}><ProjectMetaData/></Grid>      
         </Grid>
       </>
     );

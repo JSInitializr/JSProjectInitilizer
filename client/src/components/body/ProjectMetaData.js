@@ -1,24 +1,60 @@
-import React, { Component } from 'react';
-import CTextField from '../controls/TextField';
+import React from 'react';
+import BasicTextField from '../controls/BasicTextField';
 
 
-class ProjectMetaData extends Component {
+export default function ProjectMetaData (){
 
-    constructor(props) {
-        super(props);
-    }
+    
+        const inputs = {
+            metaData:[
+                {
+                  label:'PackageName',
+                  placeholder:'Enter Text',
+                  value:''
+                },
+                {
+                  label:'Version',
+                  placeholder:'Enter Text',
+                  value:''
+                },
+                {
+                  label:'Description',
+                  placeholder:'Enter Text',
+                  value:''
+                },
+                {
+                  label:'Git repository link',
+                  placeholder:'Enter Text',
+                  value:''
+                },
+                {
+                  label:'Keywords',
+                  placeholder:'Enter Text',
+                  value:''
+                },
+                {
+                  label:'Author',
+                  placeholder:'Enter Text',
+                  value:''
+                },
+                {
+                  label:'License',
+                  placeholder:'Enter Text',
+                  value:''
+                }
+            ]
+        }
 
-    componentDidMount() {
-
-    }
-
-    render() {
-        return (
-            <>
-                <CTextField label={'Package name'} />
-            </>);
-    }
+    
+        const options = inputs.metaData.map((data)=>{
+            return (<>
+              <BasicTextField label={data.label} placeholder={data.placeholder} value={data.value}/>
+              </>);
+        });
+    
+        return options;
+    
 }
 
-export default ProjectMetaData;
+
 
