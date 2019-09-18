@@ -36,7 +36,7 @@ export default function ButtonAppBar() {
           <img className= {classes.menuLogo} src={logo} alt="Logo" />
           </IconButton>
           <Typography variant="h6" className={classes.title}>
-            JS Generator
+            JS Project Generator
           </Typography>
           <Switch/>
           <Button color="inherit">Github</Button>
