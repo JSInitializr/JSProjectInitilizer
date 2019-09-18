@@ -15,7 +15,6 @@ const useStyles = makeStyles(theme => ({
     width: 650
   },
   tab: {
-    maxWidth: 100,
     position: "relative"
   }
 }));
