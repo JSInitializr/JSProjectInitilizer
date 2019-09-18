@@ -19,7 +19,7 @@ class Body extends Component {
     for(const item in this.state.tabs){
          arr.push(
             <>
-            <Grid item xs={12} sm={3} style={{paddingRight: '45px'}} > <h4 style={{textAlign: 'right'}}>{item}</h4></Grid>
+            <Grid item xs={12} sm={3}> <h4 style={{textAlign: 'right'}}>{item}</h4></Grid>
             <Grid item xs={12} sm={9}><CenteredTabs  tabs={this.state.tabs[item]}/></Grid>
             </>
         )
@@ -30,7 +30,7 @@ class Body extends Component {
   render() {
     return (
       <>
-        <Grid container spacing={3}>
+        <Grid container spacing={8}>
           <Grid item xs={12}></Grid>
           {this.getTabsDetails()}       
         </Grid>
