@@ -3,12 +3,27 @@ import CenteredTabs from './LanguageSelection';
 
 class Body extends Component {
 
-    componentDidMount() {
-        
+    constructor(props) {
+        super(props);
+        this.state = {
+            tabs: [{
+                label: 'javascript',
+                id: 'js',
+            },
+            {
+                label:'typescript',
+                id: 'ts',
+            }],
+            tabHeader: 'Script Language'
+        }
     }
 
-    render(){
-        return(<CenteredTabs/>);
+    componentDidMount() {
+
+    }
+
+    render() {
+        return (<CenteredTabs tabs={this.state.tabs} tabHeader={this.state.tabHeader} />);
     }
 }
 
