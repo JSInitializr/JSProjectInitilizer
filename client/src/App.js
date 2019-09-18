@@ -1,9 +1,6 @@
 import React, { Component } from 'react';
 import Container from './components/container/container';
 
-
-
-
 class App extends Component {
   state = {
     response: '',
