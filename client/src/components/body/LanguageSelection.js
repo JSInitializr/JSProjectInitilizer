@@ -15,6 +15,8 @@ const useStyles = makeStyles(theme => ({
     width: 650
   },
   tab: {
+    maxWidth: 50,
+    minWidth: 20,
     position: "relative"
   }
 }));
@@ -37,9 +39,6 @@ export default function LanguageSelection(props) {
 
   return (
     <div className={classes.root}>
-
-
-
       <Tabs
         value={value}
         onChange={handleChange}
