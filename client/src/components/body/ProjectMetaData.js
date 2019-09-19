@@ -19,31 +19,31 @@ export default function ProjectMetaData() {
         optionalInputs: [
             {
                 label: 'Description',
-                placeholder: 'Enter Text',
+                placeholder: 'About project',
                 value: '',
                 id:'desc'
             },
             {
                 label: 'Git repository link',
-                placeholder: 'Enter Text',
+                placeholder: 'repo link',
                 value: '',
                 id:'gitRepo'
             },
             {
                 label: 'Keywords',
-                placeholder: 'Enter Text',
+                placeholder: 'eg. js, node',
                 value: '',
                 id:'keywords'
             },
             {
                 label: 'Author',
-                placeholder: 'Enter Text',
+                placeholder: 'developer name',
                 value: '',
                 id:'author'
             },
             {
                 label: 'License',
-                placeholder: 'Enter Text',
+                placeholder: 'eg. MIT, Apache',
                 value: '',
                 id:'license'
             }
@@ -51,13 +51,13 @@ export default function ProjectMetaData() {
         requiredInputs: [
             {
                 label: 'PackageName',
-                placeholder: '',
+                placeholder: 'project identifier',
                 value: '',
                 id:'pkg'
             },
             {
                 label: 'Version',
-                placeholder: '',
+                placeholder: '1.0.0',
                 value: '',
                 id:'version'
             },
