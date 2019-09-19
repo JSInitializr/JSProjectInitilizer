@@ -22,7 +22,7 @@ const useStyles = makeStyles(theme => ({
 
 export default function BasicTextField(props) {
   const classes = useStyles();
-  
+  debugger;
   return (
       <TextField
         id="standard-uncontrolled"
@@ -31,7 +31,7 @@ export default function BasicTextField(props) {
         value= {props.value}
         onChange={props.handleChange}
         margin="normal"
-        placeholder="Placeholder"
+        placeholder={props.placeholder}
         InputLabelProps={{
             shrink: true,
           }}
