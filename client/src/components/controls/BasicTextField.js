@@ -22,17 +22,14 @@ const useStyles = makeStyles(theme => ({
 
 export default function BasicTextField(props) {
   const classes = useStyles();
-  const handleChange = name => event => {
-
-  };
-
+  
   return (
       <TextField
-        id="standard-name"
+        id="standard-uncontrolled"
         label={props.label}
         className={classes.textField}
         value= {props.value}
-        onChange={handleChange('name')}
+        onChange={props.handleChange}
         margin="normal"
         placeholder="Placeholder"
         InputLabelProps={{

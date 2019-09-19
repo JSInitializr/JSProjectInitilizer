@@ -10,7 +10,6 @@ class Body extends Component {
   }
 
   handleTabChange = (event,newValue) => {
-    debugger;
     if (newValue === 3) {
       this.setState({ ...this.state, shouldExpanded: true });
     } else {
