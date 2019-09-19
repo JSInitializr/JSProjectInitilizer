@@ -7,45 +7,59 @@ import InputAdornment from '@material-ui/core/InputAdornment';
 
 export default function ProjectMetaData() {
 
+    const [values, setValues] = React.useState({});
+
+
+    const handleChange = name => event => {
+        setValues({ ...values, [name]: event.target.value });
+    };
+
 
     const inputs = {
         optionalInputs: [
             {
                 label: 'Description',
                 placeholder: 'Enter Text',
-                value: ''
+                value: '',
+                id:'desc'
             },
             {
                 label: 'Git repository link',
                 placeholder: 'Enter Text',
-                value: ''
+                value: '',
+                id:'gitRepo'
             },
             {
                 label: 'Keywords',
                 placeholder: 'Enter Text',
-                value: ''
+                value: '',
+                id:'keywords'
             },
             {
                 label: 'Author',
                 placeholder: 'Enter Text',
-                value: ''
+                value: '',
+                id:'author'
             },
             {
                 label: 'License',
                 placeholder: 'Enter Text',
-                value: ''
+                value: '',
+                id:'license'
             }
         ],
         requiredInputs: [
             {
                 label: 'PackageName',
                 placeholder: '',
-                value: ''
+                value: '',
+                id:'pkg'
             },
             {
                 label: 'Version',
                 placeholder: '',
-                value: ''
+                value: '',
+                id:'version'
             },
         ]
     }
@@ -53,13 +67,13 @@ export default function ProjectMetaData() {
 
     const requiredInputs = inputs.requiredInputs.map((data) => {
         return (<>
-            <BasicTextField label={data.label} placeholder={data.placeholder} value={data.value} />
+            <BasicTextField key={data.id} handleChange={handleChange(data.id)} label={data.label} placeholder={data.placeholder} value={values[data.id]} />
         </>);
     });
 
     const optionalInputs = inputs.optionalInputs.map((data) => {
         return (<>
-            <BasicTextField label={data.label} placeholder={data.placeholder} value={data.value} />
+            <BasicTextField key={data.id} handleChange={handleChange(data.id)} label={data.label} placeholder={data.placeholder} value={values[data.id]} />
         </>);
     });
 
