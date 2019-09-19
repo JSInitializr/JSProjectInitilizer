@@ -66,6 +66,7 @@ export default function ProjectMetaData() {
     const detailMoreOption =
         <>
             <TextField
+                tabIndex='-1'
                 id="standard-read-only-input"
                 defaultValue="Options"
                 margin="normal"
