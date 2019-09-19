@@ -21,7 +21,7 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-export default function LanguageSelection(props) {
+export default function BasicTab(props) {
   const classes = useStyles();
   const [value, setValue] = React.useState(0);
 

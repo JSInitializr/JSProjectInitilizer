@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import CenteredTabs from "./LanguageSelection";
+import BasicTab from "../controls/BasicTab";
 import Grid from "@material-ui/core/Grid";
 import ProjectMetaData from "./ProjectMetaData";
 import BasicExpansionPanel from '../controls/BasicExpansionPanel';
@@ -24,7 +24,7 @@ class Body extends Component {
           <Grid container spacing={8}>
             <Grid item xs={12}></Grid>
             <Grid item xs={12} sm={3}> <h4 style={{ textAlign: 'right' }}>{'Database'}</h4></Grid>
-            <Grid item xs={12} sm={9}><CenteredTabs tabs={this.state.databaseTabs} /></Grid>
+            <Grid item xs={12} sm={9}><BasicTab tabs={this.state.databaseTabs} /></Grid>
           </Grid>
         </>;
     return tabs;
@@ -39,8 +39,6 @@ class Body extends Component {
     }
   }
 
-  
-
 
   getTabsDetails = () => {
     const arr = [];
@@ -49,7 +47,7 @@ class Body extends Component {
         const t = <>
           <Grid container spacing={8}>
             <Grid item xs={12} sm={3}> <h4 style={{ textAlign: 'right' }}>{item}</h4></Grid>
-            <Grid item xs={12} sm={9}><CenteredTabs handleChange={(newValue)=>this.handleTabChange(newValue)} tabs={this.state.tabs[item]} /></Grid>
+            <Grid item xs={12} sm={9}><BasicTab handleChange={(newValue)=>this.handleTabChange(newValue)} tabs={this.state.tabs[item]} /></Grid>
           </Grid>
         </>;
         arr.push(<Grid item xs={12} sm={12}>
@@ -59,7 +57,7 @@ class Body extends Component {
         arr.push(
           <>
             <Grid item xs={12} sm={3}> <h4 style={{ textAlign: 'right' }}>{item}</h4></Grid>
-            <Grid item xs={12} sm={9}><CenteredTabs tabs={this.state.tabs[item]} /></Grid>
+            <Grid item xs={12} sm={9}><BasicTab tabs={this.state.tabs[item]} /></Grid>
           </>
         )
       }
