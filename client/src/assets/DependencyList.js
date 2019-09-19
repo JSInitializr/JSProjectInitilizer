@@ -22,6 +22,21 @@ const dependencyList = {
         { label: 'lodash', desc: ' It is used to simplify your work of managing and editing objects and arrays by providing lots of utility methods',tag:['react','react-native','nodejs'] },
     ]
 }
-export default dependencyList;
+
+export default function DependencyList(tag) {
+
+    let newPackages = {};
+
+    for (const category in dependencyList){
+        const pkgs = dependencyList[category];
+        const filteredPkgs = pkgs.filter((pkg)=>{
+            return pkg.tag && pkg.tag.indexOf(tag) > -1;
+        });
+        newPackages[category] = filteredPkgs;
+    }
+
+    return newPackages;
+}
+
 
 
