@@ -9,6 +9,8 @@ class Body extends Component {
     super(props);
     this.handleTabChange = this.handleTabChange.bind(this);
     this.state = { shouldExpanded: false };
+    
+    debugger;
   }
 
   handleTabChange = (event,newValue) => {
