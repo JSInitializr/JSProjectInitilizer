@@ -2,11 +2,14 @@ import React, { Component } from "react";
 import Grid from "@material-ui/core/Grid";
 import ProjectMetaData from "./ProjectMetaData";
 import PrimarySelectionTabs from "./PrimarySelectionTabs";
+import DependencyList from '../../assets/DependencyList';
 class Body extends Component {
   constructor(props) {
     super(props);
     this.handleTabChange = this.handleTabChange.bind(this);
     this.state = { shouldExpanded: false };
+    
+    debugger;
   }
 
   handleTabChange = (event,newValue) => {

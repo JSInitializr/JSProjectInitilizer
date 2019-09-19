@@ -22,7 +22,6 @@ const useStyles = makeStyles(theme => ({
 
 export default function BasicTextField(props) {
   const classes = useStyles();
-  debugger;
   return (
       <TextField
         id="standard-uncontrolled"
