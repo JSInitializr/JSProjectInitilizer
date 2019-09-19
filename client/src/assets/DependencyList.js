@@ -25,20 +25,19 @@ const dependencyList = {
     ]
 }
 
-export default function DependencyList(props) {
+export default function DependencyList(tag) {
 
-    // const tag = props.tag;
+    let newPackages = {};
 
-    // let nd = {};
+    for (const category in dependencyList){
+        const pkgs = dependencyList[category];
+        const filteredPkgs = pkgs.filter((pkg)=>{
+            return pkg.tag && pkg.tag.indexOf(tag) > -1;
+        });
+        newPackages[category] = filteredPkgs;
+    }
 
-    // for (cate in dependencyList){
-        
-    // }
-
-    // dependencyList.filter((package)=>{
-    //     return 
-    // })
-    return dependencyList;
+    return newPackages;
 }
 
 
