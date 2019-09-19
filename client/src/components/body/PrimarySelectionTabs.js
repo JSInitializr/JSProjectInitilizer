@@ -10,7 +10,7 @@ export default function PrimarySelectionTabs(props) {
           Language: ["Javascript", "Typescript"],
           Technology: ["Angular", "React", "React Native", "Node js server"],
         },
-        databaseTabs:["MongoDB", "MySql", "PostgreSQL"],
+        databaseTabs:["MongoDB", "MySql", "PostgreSQL", "None"],
       };
 
 
