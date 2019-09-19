@@ -1,5 +1,3 @@
-
-
 const dependencyList = {
     developerTools: [
         { label: 'Redux', desc: 'Redux is a predictable state container for JavaScript apps',tag:['react','react-native','nodejs'] },
@@ -24,22 +22,6 @@ const dependencyList = {
         { label: 'lodash', desc: ' It is used to simplify your work of managing and editing objects and arrays by providing lots of utility methods',tag:['react','react-native','nodejs'] },
     ]
 }
-
-export default function DependencyList(props) {
-
-    // const tag = props.tag;
-
-    // let nd = {};
-
-    // for (cate in dependencyList){
-        
-    // }
-
-    // dependencyList.filter((package)=>{
-    //     return 
-    // })
-    return dependencyList;
-}
-
+export default dependencyList;
 
 

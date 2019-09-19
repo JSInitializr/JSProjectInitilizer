@@ -18,8 +18,8 @@ export default function PrimarySelectionTabs(props) {
         const tabs = <>
             <Grid container spacing={8}>
                 <Grid item xs={12}></Grid>
-                <Grid item xs={12} sm={3}> <h4 style={{ textAlign: 'right' }}>{'Database'}</h4></Grid>
-                <Grid item xs={12} sm={9}><BasicTab tabs={tabDataSource.databaseTabs} /></Grid>
+                <Grid item xs={3} sm={0}> <h4 style={{ textAlign: 'right' }}>{'Database'}</h4></Grid>
+                <Grid item xs={9} sm={0}><BasicTab tabs={tabDataSource.databaseTabs} /></Grid>
             </Grid>
         </>;
         return tabs;
@@ -31,18 +31,18 @@ export default function PrimarySelectionTabs(props) {
             if (item === 'Technology') {
                 const t = <>
                     <Grid container spacing={8}>
-                        <Grid item xs={12} sm={3}> <h4 style={{ textAlign: 'right' }}>{item}</h4></Grid>
-                        <Grid item xs={12} sm={9}><BasicTab handleChange={props.handleTabChange} tabs={tabDataSource.tabs[item]} /></Grid>
+                        <Grid item xs={3} sm={0}> <h4 style={{ textAlign: 'right' }}>{item}</h4></Grid>
+                        <Grid item xs={9} sm={0}><BasicTab handleChange={props.handleTabChange} tabs={tabDataSource.tabs[item]} /></Grid>
                     </Grid>
                 </>;
-                arr.push(<Grid item xs={12} sm={12}>
+                arr.push(<Grid item xs={12} sm={0}>
                     <BasicExpansionPanel expanded={props.shouldExpanded} summaryPanel={t} detailPanel={dataBaseTabs()} />
                 </Grid>)
             } else {
                 arr.push(
                     <>
-                        <Grid item xs={12} sm={3}> <h4 style={{ textAlign: 'right' }}>{item}</h4></Grid>
-                        <Grid item xs={12} sm={9}><BasicTab tabs={tabDataSource.tabs[item]} /></Grid>
+                        <Grid item xs={3} sm={0}> <h4 style={{ textAlign: 'right' }}>{item}</h4></Grid>
+                        <Grid item xs={9} sm={0}><BasicTab tabs={tabDataSource.tabs[item]} /></Grid>
                     </>
                 )
             }
