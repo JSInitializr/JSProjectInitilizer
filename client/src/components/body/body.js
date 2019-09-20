@@ -4,6 +4,7 @@ import ProjectMetaData from "./ProjectMetaData";
 import PrimarySelectionTabs from "./PrimarySelectionTabs";
 import Card from './Card';
 import DependencyList from "../../assets/DependencyList";
+import Dependencies from "./Dependencies";
 
 class Body extends Component {
   constructor(props) {
@@ -12,8 +13,6 @@ class Body extends Component {
     this.state = { shouldExpanded: false };
     DependencyList("hello");
   }
-
-  
 
   render() {
     return (
