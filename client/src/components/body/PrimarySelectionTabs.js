@@ -8,7 +8,7 @@ export default function PrimarySelectionTabs(props) {
     const tabDataSource = {
         tabs: {
             Language: ["Javascript", "Typescript"],
-            Technology: ["Angular", "React", "React Native", "Node js server"],
+            Technology: ["Angular", "React", "React Native", "Node js server","VS Code Extension"],
         },
         hTabs: {
             Database: ["MongoDB", "MySql", "PostgreSQL", "None"],
@@ -17,10 +17,20 @@ export default function PrimarySelectionTabs(props) {
     };
 
     const handleTabChange = (event, newValue) => {
-        if (event.currentTarget.id !== 'Database') {
-          debugger;
-          // this.setState({ ...this.state, shouldExpanded: (newValue === 3) });
+
+        let selectedValue  = null;
+        for( const [key,value] of Object.entries(tabDataSource)){
+            const type = value[event.currentTarget.id];
+            if(type){
+                selectedValue = type[newValue];
+            }
         }
+        props.handleTabEvent(event.currentTarget.id,selectedValue);
+
+        // if (event.currentTarget.id !== 'Database') {
+        //   debugger;
+        //   // this.setState({ ...this.state, shouldExpanded: (newValue === 3) });
+        // }
       }
 
     const setupGridRow = (item, tabs) => {
@@ -32,9 +42,7 @@ export default function PrimarySelectionTabs(props) {
 
 
     const dataBaseTabs = () => {
-
         const arr = [];
-
         for(const item in tabDataSource.hTabs){
             arr.push(
                 <>
@@ -42,7 +50,6 @@ export default function PrimarySelectionTabs(props) {
                 </>
             )
         }
-
         const tabs = <>
             <Grid container spacing={8}>
                 <Grid item xs={12}></Grid>
