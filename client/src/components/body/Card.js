@@ -17,10 +17,10 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-export default function RecipeReviewCard() {
-    const [button, setButton] = React.useState(true);
+export default function RecipeReviewCard(props) {
+  debugger;
+  const [button, setButton] = React.useState(true);
   const classes = useStyles();
-
   function addDependencies() {
     setButton(!button);
   }
@@ -36,14 +36,13 @@ export default function RecipeReviewCard() {
            <RemoveCircleIcon />
            </Fab>)
         }
-        title="Shrimp and Chorizo Paella"
-        subheader="September 14, 2016"
+        title={props.label}
+        //subheader="September 14, 2016"
       />
     
       <CardContent>
         <Typography variant="body2" color="textSecondary" component="p">
-          This impressive paella is a perfect party dish and a fun meal to cook together with your
-          guests. Add 1 cup of frozen peas along with the mussels, if you like.
+          {props.desc}
         </Typography>
       </CardContent>
     </Card>

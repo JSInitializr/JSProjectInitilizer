@@ -1,3 +1,7 @@
+import React from 'react';
+import Card from '../components/body/Card';
+import Grid from "@material-ui/core/Grid";
+
 const dependencyList = {
     developerTools: [
         { label: 'Redux', desc: 'Redux is a predictable state container for JavaScript apps',tag:['react','react-native','nodejs'] },
@@ -24,9 +28,8 @@ const dependencyList = {
 }
 
 export default function DependencyList(tag) {
-
+    debugger;
     let newPackages = {};
-
     for (const category in dependencyList){
         const pkgs = dependencyList[category];
         const filteredPkgs = pkgs.filter((pkg)=>{
@@ -34,8 +37,7 @@ export default function DependencyList(tag) {
         });
         newPackages[category] = filteredPkgs;
     }
-
-    return newPackages;
+    return newPackages['developerTools']
 }
 
 
