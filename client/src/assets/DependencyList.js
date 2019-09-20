@@ -1,5 +1,3 @@
-
-
 const dependencyList = {
     developerTools: [
         { label: 'Redux', desc: 'Redux is a predictable state container for JavaScript apps',tag:['react','react-native','nodejs'] },

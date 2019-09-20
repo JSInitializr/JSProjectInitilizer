@@ -1,28 +1,12 @@
 import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
+import Card from './Card';
+import DependencyList from '../../assets/DependencyList';
+import Grid from "@material-ui/core/Grid";
 
-import CenteredTabs from "./LanguageSelection";
-
-const useStyles = makeStyles(theme => ({
-    button: {
-        alignItems: 'center',
-        justifyContent: 'center'
-    },
-    appBar: {
-        top: 'auto',
-        bottom: 0,
-    }
-}));
-
-const tabs =[
-
-]
 export default function Dependencies() {
-    const classes = useStyles();
-
-    return (
-        <>
-           <CenteredTabs tabs={tabs} />
-        </>
-    );
+    return (<><Grid container spacing={8}>
+        <Grid item xs={12}></Grid>
+        {DependencyList.developerTools.map(t=><Grid item xs={4} sm={0}><Card /></Grid>)}
+    </Grid>
+    </>);
 }
