@@ -7,19 +7,46 @@ export default function PrimarySelectionTabs(props) {
 
     const tabDataSource = {
         tabs: {
-          Language: ["Javascript", "Typescript"],
-          Technology: ["Angular", "React", "React Native", "Node js server"],
+            Language: ["Javascript", "Typescript"],
+            Technology: ["Angular", "React", "React Native", "Node js server"],
         },
-        databaseTabs:["MongoDB", "MySql", "PostgreSQL", "None"],
-      };
+        hTabs: {
+            Database: ["MongoDB", "MySql", "PostgreSQL", "None"],
+        }
+
+    };
+
+    const handleTabChange = (event, newValue) => {
+        if (event.currentTarget.id !== 'Database') {
+          debugger;
+          // this.setState({ ...this.state, shouldExpanded: (newValue === 3) });
+        }
+      }
+
+    const setupGridRow = (item, tabs) => {
+        return <>
+            <Grid item xs={12} sm={3}> <h4 style={{ textAlign: 'right' }}>{item}</h4></Grid>
+            <Grid item xs={12} sm={9}><BasicTab tabTitle={item} handleChange={(event, newValue) => handleTabChange(event, newValue)} tabs={tabs[item]} /></Grid>
+        </>
+    }
 
 
     const dataBaseTabs = () => {
+
+        const arr = [];
+
+        for(const item in tabDataSource.hTabs){
+            arr.push(
+                <>
+                    {setupGridRow(item,tabDataSource.hTabs)}
+                </>
+            )
+        }
+
         const tabs = <>
             <Grid container spacing={8}>
                 <Grid item xs={12}></Grid>
-                <Grid item xs={12} sm={3}> <h4 style={{ textAlign: 'right' }}>{'Database'}</h4></Grid>
-                <Grid item xs={12} sm={9}><BasicTab tabs={tabDataSource.databaseTabs} /></Grid>
+                {arr}
             </Grid>
         </>;
         return tabs;
@@ -31,8 +58,7 @@ export default function PrimarySelectionTabs(props) {
             if (item === 'Technology') {
                 const t = <>
                     <Grid container spacing={8}>
-                        <Grid item xs={12} sm={3}> <h4 style={{ textAlign: 'right' }}>{item}</h4></Grid>
-                        <Grid item xs={12} sm={9}><BasicTab handleChange={props.handleTabChange} tabs={tabDataSource.tabs[item]} /></Grid>
+                        {setupGridRow(item,tabDataSource.tabs)}
                     </Grid>
                 </>;
                 arr.push(<Grid item xs={12} sm={12}>
@@ -41,8 +67,7 @@ export default function PrimarySelectionTabs(props) {
             } else {
                 arr.push(
                     <>
-                        <Grid item xs={12} sm={3}> <h4 style={{ textAlign: 'right' }}>{item}</h4></Grid>
-                        <Grid item xs={12} sm={9}><BasicTab tabs={tabDataSource.tabs[item]} /></Grid>
+                        {setupGridRow(item,tabDataSource.tabs)}
                     </>
                 )
             }

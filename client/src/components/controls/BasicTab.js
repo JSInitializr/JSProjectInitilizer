@@ -3,9 +3,9 @@ import { makeStyles, useTheme } from '@material-ui/core/styles';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 
-function a11yProps(index) {
+function a11yProps(id,index) {
   return {
-    id: `action-tab-${index}`,
+    id: `${id}`,
     'aria-controls': `action-tabpanel-${index}`,
   };
 }
@@ -35,7 +35,7 @@ export default function BasicTab(props) {
 
   const tabs = () => {
     const t = props.tabs.map((tab) => {
-      return <Tab label={tab} {...a11yProps(0)} />
+      return <Tab label={tab} {...a11yProps(props.tabTitle,0)} />
     })
     return t;
   }
