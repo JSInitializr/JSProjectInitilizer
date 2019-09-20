@@ -61,7 +61,7 @@ export default function PrimarySelectionTabs(props) {
                         {setupGridRow(item,tabDataSource.tabs)}
                     </Grid>
                 </>;
-                arr.push(<Grid item xs={12} sm={12}>
+                arr.push(<Grid item xs={12} sm={0}>
                     <BasicExpansionPanel expanded={props.shouldExpanded} summaryPanel={t} detailPanel={dataBaseTabs()} />
                 </Grid>)
             } else {
