@@ -12,7 +12,7 @@ function a11yProps(id,index) {
 
 const useStyles = makeStyles(theme => ({
   root: {
-    width: 650
+    width: 800
   },
   tab: {
     maxWidth: 50,

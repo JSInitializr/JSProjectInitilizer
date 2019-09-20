@@ -14,12 +14,18 @@ class Body extends Component {
     DependencyList("hello");
   }
 
+  handleTabEvent = (key,value) => {
+    if(key === 'Technology'){
+      this.setState({...this.state,shouldExpanded:(value==='Node js server')});
+    }
+  }
+
   render() {
     return (
       <>
         <Grid container spacing={8}>
           <Grid item xs={12}></Grid>
-          <PrimarySelectionTabs handleTabChange={(event, newValue) => this.handleTabChange(event, newValue)} shouldExpanded={this.state.shouldExpanded} />
+          <PrimarySelectionTabs handleTabEvent={(key, value) => this.handleTabEvent(key, value)} shouldExpanded={this.state.shouldExpanded} />
           <Grid item xs={12} sm={3}> <h4 style={{ textAlign: 'right' }}>{'Project Meta Data'}</h4></Grid>
           <Grid item xs={12} sm={9}><Grid item xs={9} sm={6}><ProjectMetaData /></Grid></Grid>
           <Grid item xs={12} sm={3}> <h4 style={{ textAlign: 'right' }}>{'Dependencies'}</h4></Grid>
