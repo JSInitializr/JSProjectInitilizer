@@ -1,7 +1,3 @@
-import React from 'react';
-import Card from '../components/body/Card';
-import Grid from "@material-ui/core/Grid";
-
 const dependencyList = {
     DeveloperTools: [
         { label: 'Redux', desc: 'Redux is a predictable state container for JavaScript apps',tag:['react','react-native','nodejs'] },
