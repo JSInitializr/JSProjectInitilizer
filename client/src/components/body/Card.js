@@ -18,7 +18,6 @@ const useStyles = makeStyles(theme => ({
 }));
 
 export default function RecipeReviewCard(props) {
-  debugger;
   const [button, setButton] = React.useState(true);
   const classes = useStyles();
   function addDependencies() {
