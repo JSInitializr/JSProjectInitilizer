@@ -22,12 +22,9 @@ const useStyles = makeStyles(theme => ({
 
 export default function Dependencies() {
 const classes = useStyles();
-const dependenciesList = DependencyList('react');
-console.log(dependenciesList);
-    for ( const topic in dependenciesList){
-        debugger;
-        return(
-            <>
+const arr =[];
+    for ( const topic in DependencyList('react')){
+        arr.push(<>
         <ExpansionPanel>
         <ExpansionPanelSummary
           expandIcon={<ExpandMoreIcon />}
@@ -42,7 +39,9 @@ console.log(dependenciesList);
           </Grid>   
         </ExpansionPanelDetails>
       </ExpansionPanel>
-      </>
-        )
+      </>)
+
     }
+   return arr;
 }
+        
