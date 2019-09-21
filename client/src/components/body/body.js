@@ -19,6 +19,10 @@ class Body extends Component {
     }
   }
 
+  componentDidMount(){
+    
+  }
+
   render() {
     return (
       <>
@@ -36,10 +40,8 @@ class Body extends Component {
   };
 }
 
-// const mapStateToProps = (state) => ({
-//   reponse:state.response,
-//   })
+const mapStateToProps = (state) => ({
+  response:state.response.tabs,
+})
 
-// export default connect(mapStateToProps,null)(Body);
-
-export default Body;
+export default connect(mapStateToProps,null)(Body);
