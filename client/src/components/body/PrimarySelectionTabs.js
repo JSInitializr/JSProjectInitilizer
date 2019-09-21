@@ -1,92 +1,71 @@
-import React from 'react';
+import React, { Component } from 'react';
 import Grid from "@material-ui/core/Grid";
 import BasicTab from '../controls/BasicTab';
 import BasicExpansionPanel from '../controls/BasicExpansionPanel';
+import { connect } from 'react-redux';
 
-export default function PrimarySelectionTabs(props) {
+class PrimarySelectionTabs extends Component {
 
-    const tabDataSource = {
-        tabs: {
-            Language: ["Javascript", "Typescript"],
-            Technology: ["Angular", "React", "React Native", "Node js server","VS Code Extension"],
-        },
-        hTabs: {
-            Database: ["MongoDB", "MySql", "PostgreSQL", "None"],
-        }
+    constructor(props) {
+        super(props);
+        this.state = { shouldExpanded: false };
+    }
 
-    };
+    handleTabChange = (event, newValue) => {
 
-    const handleTabChange = (event, newValue) => {
-
-        let selectedValue  = null;
-        for( const [key,value] of Object.entries(tabDataSource)){
-            const type = value[event.currentTarget.id];
-            if(type){
-                selectedValue = type[newValue];
-            }
-        }
-        props.handleTabEvent(event.currentTarget.id,selectedValue);
-
-        // if (event.currentTarget.id !== 'Database') {
-        //   debugger;
-        //   // this.setState({ ...this.state, shouldExpanded: (newValue === 3) });
+        // let selectedValue = null;
+        // for (const [key, value] of Object.entries(tabDataSource)) {
+        //     const type = value[event.currentTarget.id];
+        //     if (type) {
+        //         selectedValue = type[newValue];
+        //     }
         // }
-      }
+        // props.handleTabEvent(event.currentTarget.id, selectedValue);
+    }
 
-    const setupGridRow = (item, tabs) => {
+    setupGridRow = (item) => {
         return <>
-            <Grid item xs={12} sm={3}> <h4 style={{ textAlign: 'right' }}>{item}</h4></Grid>
-            <Grid item xs={12} sm={9}><BasicTab tabTitle={item} handleChange={(event, newValue) => handleTabChange(event, newValue)} tabs={tabs[item]} /></Grid>
+            <Grid item xs={12} sm={3}> <h4 style={{ textAlign: 'right' }}>{item.label}</h4></Grid>
+            <Grid item xs={12} sm={9}><BasicTab tabTitle={item} handleChange={(event, newValue) => this.handleTabChange(event, newValue)} tabs={item.options} /></Grid>
         </>
     }
 
-
-    const dataBaseTabs = () => {
-        const arr = [];
-        for(const item in tabDataSource.hTabs){
-            arr.push(
-                <>
-                    {setupGridRow(item,tabDataSource.hTabs)}
-                </>
-            )
-        }
-        const tabs = <>
+    getParentChildTab = (item) => {
+        const t = <>
             <Grid container spacing={8}>
-                <Grid item xs={12}></Grid>
-                {arr}
+                {this.setupGridRow(item)}
             </Grid>
         </>;
-        return tabs;
+
+        return (<Grid item xs={12} sm={0}>
+            <BasicExpansionPanel expanded={this.props.shouldExpanded} summaryPanel={t} detailPanel={this.getTab(item.childTab)} />
+        </Grid>)
     }
 
-    const getTabsDetails = () => {
-        const arr = [];
-        for (const item in tabDataSource.tabs) {
-            if (item === 'Technology') {
-                const t = <>
-                    <Grid container spacing={8}>
-                        {setupGridRow(item,tabDataSource.tabs)}
-                    </Grid>
-                </>;
-                arr.push(<Grid item xs={12} sm={0}>
-                    <BasicExpansionPanel expanded={props.shouldExpanded} summaryPanel={t} detailPanel={dataBaseTabs()} />
-                </Grid>)
-            } else {
-                arr.push(
-                    <>
-                        {setupGridRow(item,tabDataSource.tabs)}
-                    </>
-                )
-            }
-
-        }
-        return arr;
+    getTab = (tabItem) => {
+        const tab = <>
+            <Grid container spacing={8}>
+                {!tabItem.childTab ? this.setupGridRow(tabItem) :this.getParentChildTab(tabItem)}
+            </Grid>
+        </>;
+        return tab;
     }
 
+    getTabs() {
+        return this.props.tabs.map(tabItem => {
+            return this.getTab(tabItem);
+        });
+    }
 
-    return (
-        <>
-            {getTabsDetails()}
-        </>
-    );
+    render() {
+        return (<>
+            {this.getTabs()}
+        </>);
+    }
 }
+
+const mapStateToProps = (state) => ({
+    tabs: state.response.tabs,
+});
+
+export default connect(mapStateToProps, null)(PrimarySelectionTabs);
