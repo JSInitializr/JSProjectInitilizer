@@ -28,7 +28,6 @@ const dependencyList = {
 }
 
 export default function DependencyList(tag) {
-    debugger;
     let newPackages = {};
     for (const category in dependencyList){
         const pkgs = dependencyList[category];
@@ -37,7 +36,7 @@ export default function DependencyList(tag) {
         });
         newPackages[category] = filteredPkgs;
     }
-    return newPackages['developerTools']
+    return newPackages;
 }
 
 
