@@ -3,6 +3,9 @@ import Grid from "@material-ui/core/Grid";
 import ProjectMetaData from "./ProjectMetaData";
 import PrimarySelectionTabs from "./PrimarySelectionTabs";
 import Dependencies from "./Dependencies";
+import { connect } from 'react-redux';
+
+
 
 class Body extends Component {
   constructor(props) {
@@ -32,5 +35,11 @@ class Body extends Component {
     );
   };
 }
+
+// const mapStateToProps = (state) => ({
+//   reponse:state.response,
+//   })
+
+// export default connect(mapStateToProps,null)(Body);
 
 export default Body;
