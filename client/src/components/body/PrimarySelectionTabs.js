@@ -8,7 +8,6 @@ class PrimarySelectionTabs extends Component {
 
     constructor(props) {
         super(props);
-        this.state = { shouldExpanded: false };
     }
 
     handleTabChange = (event, newValue) => {
