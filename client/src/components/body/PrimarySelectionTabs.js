@@ -6,10 +6,6 @@ import { connect } from 'react-redux';
 
 class PrimarySelectionTabs extends Component {
 
-    constructor(props) {
-        super(props);
-    }
-
     handleTabChange = (event, newValue) => {
 
         // let selectedValue = null;

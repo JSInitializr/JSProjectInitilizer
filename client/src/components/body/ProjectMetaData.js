@@ -8,10 +8,6 @@ import { connect } from 'react-redux';
 
 class ProjectMetaData extends Component {
 
-    constructor(props) {
-        super(props);
-    }
-
     // const [values, setValues] = React.useState({});
 
     handleChange = name => event => {
