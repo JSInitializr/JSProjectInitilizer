@@ -52,7 +52,7 @@ class Dependencies extends Component {
           </ExpansionPanelSummary>
           <ExpansionPanelDetails>
             <Grid container spacing={2}>
-              {this.dependencyList('react')[topic].map(t => <Grid item xs={4} sm={0}><Card label={t.label} desc={t.desc} /></Grid>)}
+              {this.dependencyList('react')[topic].map(t => <Grid key= {t.label} item xs={4} sm={0}><Card label={t.label} desc={t.desc} /></Grid>)}
             </Grid>
           </ExpansionPanelDetails>
         </ExpansionPanel>
