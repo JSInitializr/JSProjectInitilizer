@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import Grid from "@material-ui/core/Grid";
 import BasicTab from '../controls/BasicTab';
 import BasicExpansionPanel from '../controls/BasicExpansionPanel';
-import { connect } from 'react-redux';
 
 class PrimarySelectionTabs extends Component {
 
@@ -47,6 +46,9 @@ class PrimarySelectionTabs extends Component {
     }
 
     getTabs() {
+        if(!this.props.tabs){
+            return <div><h1>No tabs</h1></div>
+        }
         return this.props.tabs.map(tabItem => {
             return this.getTab(tabItem);
         });
@@ -59,8 +61,6 @@ class PrimarySelectionTabs extends Component {
     }
 }
 
-const mapStateToProps = (state) => ({
-    tabs: state.response.tabs,
-});
 
-export default connect(mapStateToProps, null)(PrimarySelectionTabs);
+
+export default PrimarySelectionTabs;
