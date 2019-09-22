@@ -1,3 +1,6 @@
-export const submitData = () => ({
-    type: 'SUBMIT_DATA',
+
+export const fetchUIRenderData = () => ({
+    type: 'FETCH_UI_CONTROLS',
 });
+
+
