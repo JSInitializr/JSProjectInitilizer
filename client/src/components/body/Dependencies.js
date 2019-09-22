@@ -11,10 +11,6 @@ import { connect } from 'react-redux';
 
 class Dependencies extends Component {
 
-  constructor(props) {
-    super(props);
-  }
-
   useStyles = () => {
     return makeStyles(theme => ({
       root: {
