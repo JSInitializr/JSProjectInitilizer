@@ -62,9 +62,7 @@ class Dependencies extends Component {
       {arr}
     </>)
   }
-
 }
-
 
 const mapStateToProps = (state) => ({
   dependencyList: state.response.dependencyList,
