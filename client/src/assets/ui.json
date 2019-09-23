@@ -21,7 +21,7 @@
 		}],
 		"metaData": [{
 			"label": "Package Name",
-			"placeholder": "project identifier",
+			"placeholder": "project unique identifier",
 			"value": "",
 			"required": true
 		}, {

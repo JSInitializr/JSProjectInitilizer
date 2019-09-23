@@ -4,7 +4,6 @@ import BasicExpansionPanel from '../controls/BasicExpansionPanel';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import TextField from '@material-ui/core/TextField';
 import InputAdornment from '@material-ui/core/InputAdornment';
-import { connect } from 'react-redux';
 
 class ProjectMetaData extends Component {
 
@@ -47,6 +46,11 @@ class ProjectMetaData extends Component {
     }
 
     render() {
+
+        if(!this.props.metaData){
+            return <div><h1>No metaData</h1></div>
+        }
+
         return (
             <>
                 {this.inputControls(this.props.metaData)}
@@ -58,9 +62,5 @@ class ProjectMetaData extends Component {
 
 
 
-const mapStateToProps = (state) => ({
-    metaData: state.response.metaData,
-});
-
-export default connect(mapStateToProps, null)(ProjectMetaData);
+export default ProjectMetaData;
 
