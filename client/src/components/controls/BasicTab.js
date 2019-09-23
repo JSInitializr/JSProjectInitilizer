@@ -35,7 +35,7 @@ export default function BasicTab(props) {
 
   const tabs = () => {
     const t = props.tabs.map((tab) => {
-      return <Tab label={tab} {...a11yProps(props.tabTitle,0)} />
+      return <Tab label={tab} {...a11yProps(tab,0)} />
     })
     return t;
   }
