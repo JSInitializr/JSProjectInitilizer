@@ -55,7 +55,7 @@ class Dependencies extends Component {
     const arr = [];
     for (const topic in this.dependencyList('react')) {
       arr.push(<>
-        <BasicExpansionPanel summaryPanel={this.detailMoreOptionControl(topic)} detailPanel={this.getDetailPanel(topic)} />
+        <BasicExpansionPanel expanded={true} summaryPanel={this.detailMoreOptionControl(topic)} detailPanel={this.getDetailPanel(topic)} />
       </>)
     }
     return (<>
