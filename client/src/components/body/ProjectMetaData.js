@@ -7,17 +7,22 @@ import InputAdornment from '@material-ui/core/InputAdornment';
 
 class ProjectMetaData extends Component {
 
-    // const [values, setValues] = React.useState({});
-
-    handleChange = name => event => {
-        // setValues({ ...values, [name]: event.target.value });
+    handleChange = (event) => {
+        
+        const updatedControls = this.props.metaData.map(control => {
+            if(control.label === event.currentTarget.id){
+                return {...control, value:event.currentTarget.value}
+            }
+            return control;
+        })
+        this.props.updateMetaData(updatedControls);
     };
 
-    inputControls = (metaData, required=true) => {
-        const filteredMetaData = metaData.filter(data=>(data.required === required));
+    inputControls = (metaData, required = true) => {
+        const filteredMetaData = metaData.filter(data => (data.required === required));
         return filteredMetaData.map((data) => {
             return (<>
-                <BasicTextField key={data.label} handleChange={this.handleChange(data.id)} label={data.label} placeholder={data.placeholder} value={data.value} />
+                <BasicTextField id={data.label} key={data.label} handleChange={this.handleChange} label={data.label} placeholder={data.placeholder} value={data.value} />
             </>);
         });
     }
@@ -47,14 +52,14 @@ class ProjectMetaData extends Component {
 
     render() {
 
-        if(!this.props.metaData){
+        if (!this.props.metaData) {
             return <div><h1>No metaData</h1></div>
         }
 
         return (
             <>
                 {this.inputControls(this.props.metaData)}
-                <BasicExpansionPanel summaryPanel={this.detailMoreOptionControl()} detailPanel={this.inputControls(this.props.metaData,false)} />
+                <BasicExpansionPanel summaryPanel={this.detailMoreOptionControl()} detailPanel={this.inputControls(this.props.metaData, false)} />
             </>);
     }
 

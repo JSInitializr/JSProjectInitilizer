@@ -1,2 +1,3 @@
 
 export const UPDATE_TABS = 'UPDATE_TABS';
+export const UPDATE_METADATA = 'UPDATE_METADATA';
