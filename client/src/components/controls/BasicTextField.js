@@ -24,7 +24,7 @@ export default function BasicTextField(props) {
   const classes = useStyles();
   return (
       <TextField
-        id="standard-uncontrolled"
+        id={props.id}
         label={props.label}
         className={classes.textField}
         value= {props.value}
