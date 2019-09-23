@@ -12,6 +12,7 @@
 			"required": true,
 			"selectedValue": null,
 			"childTab": {
+				"expanded":false,
 				"whichTab": "Node js server",
 				"label": "Database",
 				"options": ["MongoDB", "MySql", "PostgreSQL", "None"],
