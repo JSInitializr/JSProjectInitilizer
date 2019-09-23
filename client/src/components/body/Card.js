@@ -26,7 +26,7 @@ export default function DependencyCard(props) {
     <Card className={classes.card}>
       <CardHeader
         action={
-            button ?
+            !props.isSelected ?
             (<Fab size="small" id={props.label} color="primary" aria-label="add" className={classes.fab} onClick={onAddRemoveClickEvent}>
             <AddIcon />
           </Fab>) :
