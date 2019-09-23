@@ -1,12 +1,10 @@
-import {initialState} from './store';
 
-
-const reducer = (state = initialState, action) => {
+const reducer = (state = {}, action) => {
     switch (action.type) {
         case 'SUBMIT_DATA':
             return { ...state, loading: true };
         case 'RECEIVED_UI_CONTROLS':
-            return { ...state, resonse: action.json[0], loading: false }
+            return { ...state, response: action.response, loading: false }
         default:
             return state;
     }
