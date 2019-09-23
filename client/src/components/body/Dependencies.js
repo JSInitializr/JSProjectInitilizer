@@ -7,7 +7,6 @@ import ExpansionPanelDetails from '@material-ui/core/ExpansionPanelDetails';
 import { makeStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
-import { connect } from 'react-redux';
 
 class Dependencies extends Component {
 
@@ -37,6 +36,9 @@ class Dependencies extends Component {
 
 
   render() {
+     if(!this.props.dependencyList){
+       return(<div><h1>No list here</h1></div>)
+     }
 
     const classes = this.useStyles();
     const arr = [];
@@ -64,8 +66,6 @@ class Dependencies extends Component {
   }
 }
 
-const mapStateToProps = (state) => ({
-  dependencyList: state.response.dependencyList,
-});
 
-export default connect(mapStateToProps, null)(Dependencies);
+
+export default Dependencies;
