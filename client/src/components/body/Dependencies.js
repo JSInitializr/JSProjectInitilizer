@@ -4,8 +4,14 @@ import Grid from "@material-ui/core/Grid";
 import { makeStyles } from '@material-ui/core/styles';
 import BasicExpansionPanel from '../controls/BasicExpansionPanel';
 import DetailMore from '../controls/DetailMore';
-
+import Tabs from '@material-ui/core/Tabs';
+import Tab from '@material-ui/core/Tab';
+import BasicTab from '../controls/BasicTab';
 class Dependencies extends Component {
+
+  state={
+    tabs: ["Search","Select"]
+  }
 
   useStyles = () => {
     return makeStyles(theme => ({
@@ -45,7 +51,11 @@ class Dependencies extends Component {
 
   }
 
-
+  getTabs = () => {
+   this.state.tabs.map(tabItem => {
+    return (  <BasicTab tabTitle={tabItem} handleChange={(event, newValue) => this.handleTabChange(event, newValue)} tabs={this.state.tabs} />);
+    });
+}
   render() {
 
     if (!this.props.dependencyList) {
@@ -58,7 +68,9 @@ class Dependencies extends Component {
         <BasicExpansionPanel expanded={true} summaryPanel={this.detailMoreOptionControl(topic)} detailPanel={this.getDetailPanel(topic)} />
       </>)
     }
+    
     return (<>
+      {this.getTabs()}
       {arr}
     </>);
   }
