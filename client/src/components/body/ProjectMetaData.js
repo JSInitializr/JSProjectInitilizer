@@ -1,9 +1,7 @@
 import React, { Component } from 'react';
 import BasicTextField from '../controls/BasicTextField';
 import BasicExpansionPanel from '../controls/BasicExpansionPanel';
-import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
-import TextField from '@material-ui/core/TextField';
-import InputAdornment from '@material-ui/core/InputAdornment';
+import DetailMore from '../controls/DetailMore';
 
 class ProjectMetaData extends Component {
 
@@ -27,29 +25,9 @@ class ProjectMetaData extends Component {
         });
     }
 
-    detailMoreOptionControl = () => {
-        const detailMoreOption =
-            <>
-                <TextField
-                    tabIndex='-1'
-                    id="standard-read-only-input"
-                    defaultValue="Options"
-                    margin="normal"
-                    fullWidth={true}
-                    style={{ padding: '0px 25px 0px 10px', width: '95%', background: 'none' }}
-                    InputProps={{
-                        readOnly: true,
-                        startAdornment: (
-                            <InputAdornment position="start">
-                                <ExpandMoreIcon />
-                            </InputAdornment>
-                        )
-                    }}
-                />
-            </>;
-        return detailMoreOption;
+    detailMoreOptionControl = (topic) => {
+        return <DetailMore label={topic} />
     }
-
     render() {
 
         if (!this.props.metaData) {
@@ -59,7 +37,7 @@ class ProjectMetaData extends Component {
         return (
             <>
                 {this.inputControls(this.props.metaData)}
-                <BasicExpansionPanel summaryPanel={this.detailMoreOptionControl()} detailPanel={this.inputControls(this.props.metaData, false)} />
+                <BasicExpansionPanel summaryPanel={this.detailMoreOptionControl('Options')} detailPanel={this.inputControls(this.props.metaData, false)} />
             </>);
     }
 

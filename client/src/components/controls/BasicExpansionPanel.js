@@ -38,7 +38,7 @@ export default function BasicExpansionPanel(props) {
 
     return (
         <div >
-            <ExpansionPanel className={classes.root} expanded={props.expanded} onChange={handleChange('panel1').bind(this)}>
+            <ExpansionPanel defaultExpanded={props.defaultExpanded}className={classes.root} expanded={props.expanded} onChange={handleChange('panel1').bind(this)}>
                 <ExpansionPanelSummary
                     style={{ padding: '0px 0px 0px' }}>
                     {props.summaryPanel}
