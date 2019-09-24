@@ -14,26 +14,27 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-export default function RecipeReviewCard(props) {
+export default function DependencyCard(props) {
   const [button, setButton] = React.useState(true);
   const classes = useStyles();
-  function addDependencies() {
-    setButton(!button);
+ 
+  const onAddRemoveClickEvent = (event)=> {
+    props.handleSelection && props.handleSelection(event.currentTarget.id,props.category);
   }
+
   return (
     <Card className={classes.card}>
       <CardHeader
         action={
-            button ?
-            (<Fab size="small"  color="primary" aria-label="add" className={classes.fab} onClick={addDependencies}>
+            !props.isSelected ?
+            (<Fab size="small" id={props.label} color="primary" aria-label="add" className={classes.fab} onClick={onAddRemoveClickEvent}>
             <AddIcon />
           </Fab>) :
-          ( <Fab size="small" aria-label="remove" className={classes.fab} onClick={addDependencies}>
+          ( <Fab size="small" id={props.label} aria-label="remove" className={classes.fab} onClick={onAddRemoveClickEvent}>
            <RemoveCircleIcon />
            </Fab>)
         }
         title={props.label}
-        //subheader="September 14, 2016"
       />
     
       <CardContent>
