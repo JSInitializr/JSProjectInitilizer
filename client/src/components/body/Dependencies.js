@@ -10,7 +10,8 @@ import BasicTab from '../controls/BasicTab';
 class Dependencies extends Component {
 
   state={
-    tabs: ["Search","Select"]
+    tabs: ["Search","Select"],
+    showDependencies: false
   }
 
   useStyles = () => {
@@ -65,7 +66,11 @@ class Dependencies extends Component {
     </>);
   }
   handleTabChange =(event, newValue)=>{
-    console.log("Handle change");
+    if(newValue){
+      this.setState({showDependencies:true});
+    }else{
+      this.setState({showDependencies:false});
+    }
   }
   render() {
 
@@ -82,7 +87,7 @@ class Dependencies extends Component {
     
     return (<>
        <BasicTab tabTitle={"a"} handleChange={(event, newValue) => this.handleTabChange(event, newValue)} tabs={this.state.tabs} />
-      {arr}
+      {this.state.showDependencies ? arr : null}
     </>);
   }
 }
