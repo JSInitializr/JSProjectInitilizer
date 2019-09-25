@@ -10,9 +10,9 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-export default function InputWithIcon() {
+export default function InputWithIcon(props) {
   const classes = useStyles();
-
+    debugger;
   return (
    <div className={classes.margin}>
         <Grid container spacing={1} alignItems="flex-end">
