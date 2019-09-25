@@ -6,6 +6,8 @@ import Dependencies from "./Dependencies";
 import { connect } from 'react-redux';
 import { fetchUIRenderData } from '../../redux/actions';
 import * as constants from '../../assets/constants';
+import Header from '../header/header';
+import Logo from '../header/Logo'
 
 class Body extends Component {
 
@@ -22,15 +24,17 @@ class Body extends Component {
 
     return (
       <>
-        <Grid container spacing={8}>
-          <Grid item xs={12}></Grid>
+        <div style={{marginTop:'0px'}}>
+        <Grid container>
+          <Grid className='leftColumn'  item xs={3}><Logo/></Grid>
+          <Grid className='rightColumn' item xs={9}><Header/></Grid>
           <PrimarySelectionTabs tabs={this.props.response.tabs} updateTabs={this.props.updateTabs} />
-          <Grid item xs={12} sm={3}> <h4 style={{ textAlign: 'right' }}>{'Project Meta Data'}</h4></Grid>
-          <Grid item xs={12} sm={9}><Grid item xs={9} sm={6}><ProjectMetaData metaData={this.props.response.metaData} updateMetaData={this.props.updateMetaData}/></Grid></Grid>
-          <Grid item xs={12} sm={3}> <h4 style={{ textAlign: 'right' }}>{'Dependencies'}</h4></Grid>
-          <Grid item xs={12} sm={9}><Dependencies dependencyList={this.props.response.dependencyList} updateDependencyList={this.props.updateDependencyList}/></Grid>
-          <Grid item xs={12}></Grid>
+          <Grid className='leftColumn' item xs={3} > <h4 className='gridTitle'>{'Project Meta Data'}</h4></Grid>
+          <Grid className='rightColumn' item xs={9} ><Grid item xs={9}><ProjectMetaData metaData={this.props.response.metaData} updateMetaData={this.props.updateMetaData}/></Grid></Grid>
+          <Grid className='leftColumn' item xs={3} > <h4 className='gridTitle'>{'Dependencies'}</h4></Grid>
+          <Grid className='rightColumn' item xs={9} ><Dependencies dependencyList={this.props.response.dependencyList} updateDependencyList={this.props.updateDependencyList}/></Grid>
         </Grid>
+        </div>
       </>
     );
   };

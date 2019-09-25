@@ -3,6 +3,7 @@ import Grid from "@material-ui/core/Grid";
 import BasicTab from '../controls/BasicTab';
 import BasicExpansionPanel from '../controls/BasicExpansionPanel';
 import * as constants from '../../assets/constants';
+import './css/Body.css';
 
 class PrimarySelectionTabs extends Component {
 
@@ -38,26 +39,26 @@ class PrimarySelectionTabs extends Component {
 
     setupGridRow = (item) => {
         return <>
-            <Grid item xs={12} sm={3}> <h4 style={{ textAlign: 'right' }}>{item.label}</h4></Grid>
-            <Grid item xs={12} sm={9}><BasicTab tabTitle={item} handleChange={(event, newValue) => this.handleTabChange(event, newValue)} tabs={item.options} /></Grid>
+            <Grid className='leftColumn' item xs={3} > <h4 className='gridTitle' >{item.label}</h4></Grid>
+            <Grid className='rightColumn' item xs={9} ><BasicTab tabTitle={item} handleChange={(event, newValue) => this.handleTabChange(event, newValue)} tabs={item.options} /></Grid>
         </>
     }
 
     getParentChildTab = (item) => {
         const t = <>
-            <Grid container spacing={8}>
+            <Grid container spacing={0}>
                 {this.setupGridRow(item)}
             </Grid>
         </>;
 
-        return (<Grid item xs={12} sm={0}>
+        return (<Grid item xs={12} >
             <BasicExpansionPanel expanded={item.childTab.expanded} summaryPanel={t} detailPanel={this.getTab(item.childTab)} />
         </Grid>)
     }
 
     getTab = (tabItem) => {
         const tab = <>
-            <Grid container spacing={8}>
+            <Grid container spacing={0}>
                 {!tabItem.childTab ? this.setupGridRow(tabItem) : this.getParentChildTab(tabItem)}
             </Grid>
         </>;

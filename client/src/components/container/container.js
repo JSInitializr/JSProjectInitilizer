@@ -7,7 +7,6 @@ import Body from '../body/body';
 class Container extends Component {
     render() {
         return (<>
-            <Header></Header>
             <Body></Body>
             <Footer></Footer>
         </>);
