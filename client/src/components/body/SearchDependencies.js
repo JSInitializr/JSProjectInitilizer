@@ -5,15 +5,20 @@ import SearchIcon from '@material-ui/icons/Search';
 import Button from '@material-ui/core/Button';
 import DependencyCard from './Card';
 const axios = require('axios');
-let size = 10, apiLink = '';
+let size = 10, apiLink = `https://api.npms.io/v2/search?q=""&size=${size}`;
 
 
 class SearchDependency extends Component {
 
-  state = {
-    searchText: '',
-    dependencies: []
+  constructor(props){
+    super(props);
+    this.state = {
+      searchText: '',
+      dependencies: []
+    }
+    this.searchDependency=this.searchDependency.bind(this);
   }
+ 
 
   dependencyText = (event) => {
     this.setState({ searchText: event.target.value }, () => {
@@ -48,7 +53,7 @@ class SearchDependency extends Component {
       .finally(function () {
         // always executed
         console.log("end")
-      });
+      })
   }
   render() {
     return (
