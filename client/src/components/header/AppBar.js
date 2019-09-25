@@ -12,6 +12,8 @@ import Help from './helpMenu';
 const useStyles = makeStyles(theme => ({
   root: {
     flexGrow: 1,
+    float:'right',
+    backgroundColor:'transparent'
   },
   menuButton: {
     marginRight: theme.spacing(2),
@@ -30,19 +32,11 @@ export default function ButtonAppBar() {
 
   return (
     <div className={classes.root}>
-      <AppBar position="static">
         <Toolbar>
-          <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu">
-          <img className= {classes.menuLogo} src={logo} alt="Logo" />
-          </IconButton>
-          <Typography variant="h6" className={classes.title}>
-            JS Project Generator
-          </Typography>
           <Switch/>
           <Button color="inherit">Github</Button>
           <Help/>
         </Toolbar>
-      </AppBar>
     </div>
   );
 }
