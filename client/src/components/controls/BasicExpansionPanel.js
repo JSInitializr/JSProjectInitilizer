@@ -35,12 +35,14 @@ export default function BasicExpansionPanel(props) {
             }
         }, 10);
     };
+   
+
 
     return (
         <div >
             <ExpansionPanel defaultExpanded={props.defaultExpanded}className={classes.root} expanded={props.expanded} onChange={handleChange('panel1').bind(this)}>
                 <ExpansionPanelSummary
-                    style={{ padding: '0px 0px 0px' }}>
+                    style={{minHeight:'57px', height:'57px',padding: '0px 0px 0px' }}>
                     {props.summaryPanel}
                 </ExpansionPanelSummary>
                 <ExpansionPanelDetails ref={sliderRef} style={{ display: 'inline', padding: '0px 0px 0px' }}>
