@@ -22,8 +22,9 @@ dependencyText =(event) =>{
 searchDependency = () =>{
   axios.get(apiLink)
   .then(function (response) {
+    this.setState({dependencies: response})
     // handle success
-    console.log(response);
+    //console.log(response);
   })
   .catch(function (error) {
     // handle error
