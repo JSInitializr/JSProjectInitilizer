@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import Grid from "@material-ui/core/Grid";
 import BasicTab from '../controls/BasicTab';
 import BasicExpansionPanel from '../controls/BasicExpansionPanel';
-import * as constants from '../../assets/constants';
 import './css/Body.css';
 
 class PrimarySelectionTabs extends Component {
@@ -26,7 +25,7 @@ class PrimarySelectionTabs extends Component {
 
         const tabs = this.props.tabs;
         const updatedTabs = tabs.map(tabItem=>{
-            if(tabItem == expandableTab){
+            if(tabItem === expandableTab){
                 return {...tabItem, childTab:{...tabItem.childTab, expanded:true}, selectedValue:event.currentTarget.id}
             }else if(tabItem === childTab){
                 return {...tabItem,childTab:{...tabItem.childTab,selectedValue:event.currentTarget.id}}
