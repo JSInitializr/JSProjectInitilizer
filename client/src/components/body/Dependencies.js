@@ -64,12 +64,9 @@ class Dependencies extends Component {
       </Grid>
     </>);
   }
-
-  getTabs = () => {
-   this.state.tabs.map(tabItem => {
-    return (  <BasicTab tabTitle={tabItem} handleChange={(event, newValue) => this.handleTabChange(event, newValue)} tabs={this.state.tabs} />);
-    });
-}
+  handleTabChange =(event, newValue)=>{
+    console.log("Handle change");
+  }
   render() {
 
     if (!this.props.dependencyList) {
@@ -84,7 +81,7 @@ class Dependencies extends Component {
     }
     
     return (<>
-      {this.getTabs()}
+       <BasicTab tabTitle={"a"} handleChange={(event, newValue) => this.handleTabChange(event, newValue)} tabs={this.state.tabs} />
       {arr}
     </>);
   }
