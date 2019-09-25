@@ -15,7 +15,6 @@ const useStyles = makeStyles(theme => ({
 }));
 
 export default function DependencyCard(props) {
-  const [button, setButton] = React.useState(true);
   const classes = useStyles();
  
   const onAddRemoveClickEvent = (event)=> {
