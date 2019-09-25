@@ -16,8 +16,9 @@ class SearchDependency extends Component{
  }
 
 dependencyText =(event) =>{
-  this.setState({searchText:event.target.value});
-  apiLink =`https://api.npms.io/v2/search?q=${this.state.searchText}&size=${size}`
+  this.setState({searchText:event.target.value},()=>{
+    apiLink =`https://api.npms.io/v2/search?q=${this.state.searchText}&size=${size}`
+  });
   //console.log(event.target.value);
 }
 handleSelection = (cardId,category) => {
