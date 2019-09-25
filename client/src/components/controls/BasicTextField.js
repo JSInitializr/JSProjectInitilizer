@@ -8,6 +8,7 @@ const useStyles = makeStyles(theme => ({
     flexWrap: 'wrap',
   },
   textField: {
+    color:'white',
     marginLeft: theme.spacing(1),
     marginRight: theme.spacing(1),
     width: 200,
@@ -33,6 +34,8 @@ export default function BasicTextField(props) {
         placeholder={props.placeholder}
         InputLabelProps={{
             shrink: true,
+            color:'white',
+            
           }}
       />
   );
