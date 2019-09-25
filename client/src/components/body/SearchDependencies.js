@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState }from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 import Grid from '@material-ui/core/Grid';
@@ -13,11 +13,13 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
+let size = 10,apiLink='';
+
 const searchDependency = () =>{
-  axios.get('https://api.npms.io/v2/search?q=redux&size=2')
+  axios.get(apiLink)
   .then(function (response) {
     // handle success
-    console.log("api response" +response);
+    console.log(response);
   })
   .catch(function (error) {
     // handle error
@@ -29,13 +31,19 @@ const searchDependency = () =>{
   });
 }
 
-const dependencyText =(event) =>{
-  console.log(event.target.value);
-}
+
 
 export default function InputWithIcon(props) {
+  const [searchText, setText] = useState('');
   const classes = useStyles();
-    debugger;
+
+
+  const dependencyText =(event) =>{
+    setText(event.target.value);
+    apiLink =`https://api.npms.io/v2/search?q=${searchText}&size=${size}`
+    //console.log(event.target.value);
+  }
+
   return (
    <div className={classes.margin}>
         <Grid container spacing={1} alignItems="flex-end">
@@ -43,7 +51,7 @@ export default function InputWithIcon(props) {
           <TextField id="input-with-icon-grid" label="Search dependencies" onChange={dependencyText}/>
           </Grid>
           <Grid item>
-          <Button variant="contained" color="secondary" className={classes.button} onClick={searchDependency()}>
+          <Button variant="contained" color="secondary" className={classes.button} onClick={searchDependency}>
         <SearchIcon className={classes.rightIcon} />
       </Button>
           </Grid>
