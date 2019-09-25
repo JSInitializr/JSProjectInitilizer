@@ -33,7 +33,6 @@ class ProjectMetaData extends Component {
         if (!this.props.metaData) {
             return <div><h1>No metaData</h1></div>
         }
-
         return (
             <>
                 {this.inputControls(this.props.metaData)}

@@ -2,6 +2,8 @@ import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
+import './css/tab.css';
+
 
 function a11yProps(id,index) {
   return {
@@ -10,19 +12,10 @@ function a11yProps(id,index) {
   };
 }
 
-const useStyles = makeStyles(theme => ({
-  root: {
-    width: 800
-  },
-  tab: {
-    maxWidth: 50,
-    minWidth: 20,
-    position: "relative"
-  }
-}));
+
 
 export default function BasicTab(props) {
-  const classes = useStyles();
+  
   const [value, setValue] = React.useState(0);
 
   function handleChange(event, newValue) {
@@ -35,17 +28,17 @@ export default function BasicTab(props) {
 
   const tabs = () => {
     const t = props.tabs.map((tab) => {
-      return <Tab label={tab} {...a11yProps(tab,0)} />
+      return <Tab style={{textTransform:'capitalize',color:'white'}} label={tab} {...a11yProps(tab,0)} />
     })
     return t;
   }
 
   return (
-    <div className={classes.root}>
+    <div >
       <Tabs
         value={value}
         onChange={handleChange}
-        indicatorColor="primary"
+        indicatorColor="secondary"
         textColor="primary"
         aria-label="action tabs example"
       >
