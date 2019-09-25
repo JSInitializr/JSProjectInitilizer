@@ -7,6 +7,8 @@ import DetailMore from '../controls/DetailMore';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import BasicTab from '../controls/BasicTab';
+import SearchDependencies from '../body/SearchDependencies';
+
 class Dependencies extends Component {
 
   state={
@@ -87,7 +89,7 @@ class Dependencies extends Component {
     
     return (<>
        <BasicTab tabTitle={"a"} handleChange={(event, newValue) => this.handleTabChange(event, newValue)} tabs={this.state.tabs} />
-      {this.state.showDependencies ? arr : null}
+      {this.state.showDependencies ? arr : <SearchDependencies/>}
     </>);
   }
 }
