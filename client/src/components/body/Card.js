@@ -10,7 +10,15 @@ import RemoveCircleIcon from '@material-ui/icons/RemoveCircle';
 
 const useStyles = makeStyles(theme => ({
   card: {
-    maxWidth: 300,
+    maxWidth: 320,
+    minWidth:100,
+    minHeight:200,
+    maxHeight:200,
+    backgroundColor:'#262A2D',
+    borderRadius:'0',
+  },
+  CardHeader: {
+    color: '#fff'
   }
 }));
 
@@ -23,11 +31,11 @@ export default function DependencyCard(props) {
 
   return (
     <Card className={classes.card}>
-      <CardHeader
+      <CardHeader viewBox={"10 0 50 20"} className={classes.CardHeader}
         action={
             !props.isSelected ?
-            (<Fab size="small" id={props.label} color="primary" aria-label="add" className={classes.fab} onClick={onAddRemoveClickEvent}>
-            <AddIcon />
+            (<Fab size="small" id={props.label} color="disabled" aria-label="add" className={classes.fab} onClick={onAddRemoveClickEvent}>
+            <AddIcon htmlColor={"white"}/>
           </Fab>) :
           ( <Fab size="small" id={props.label} aria-label="remove" className={classes.fab} onClick={onAddRemoveClickEvent}>
            <RemoveCircleIcon />
@@ -37,7 +45,7 @@ export default function DependencyCard(props) {
       />
     
       <CardContent>
-        <Typography variant="body2" color="textSecondary" component="p">
+        <Typography style={{color:'white'}}color="white" component="p">
           {props.desc}
         </Typography>
       </CardContent>

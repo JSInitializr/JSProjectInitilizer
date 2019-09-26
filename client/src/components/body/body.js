@@ -25,7 +25,7 @@ class Body extends Component {
     return (
       <>
         <div style={{marginTop:'0px'}}>
-        <Grid container>
+        <Grid container spacing={8}>
           <Grid className='leftColumn'  item xs={3}><Logo/></Grid>
           <Grid className='rightColumn' item xs={9}><Header/></Grid>
           <PrimarySelectionTabs tabs={this.props.response.tabs} updateTabs={this.props.updateTabs} />
