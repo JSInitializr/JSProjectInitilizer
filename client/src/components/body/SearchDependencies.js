@@ -26,18 +26,20 @@ class SearchDependency extends Component {
     });
     //console.log(event.target.value);
   }
+  
   handleSelection = (cardId, category) => {
-    // const dependencyList = this.props.dependencyList;
-    // const updatedArr = dependencyList[category].map(item=>{
-    //   if(item.label === cardId){
-    //     return {...item,value:!item.value};
-    //   }
-    //   return item;
-    // });
-    // const updatedList = {...dependencyList}
-    // updatedList[category] = updatedArr;
-    // this.props.updateDependencyList(updatedList);
+    const dependencyList = this.props.dependencyList;
+    const updatedArr = dependencyList[category].map(item => {
+      if (item.label === cardId) {
+        return { ...item, value: !item.value };
+      }
+      return item;
+    });
+    const updatedList = { ...dependencyList }
+    updatedList[category] = updatedArr;
+    this.props.updateDependencyList(updatedList);
   }
+
   searchDependency = () => {
     axios.get(apiLink)
       .then((response) => {

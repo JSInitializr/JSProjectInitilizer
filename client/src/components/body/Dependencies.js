@@ -87,11 +87,9 @@ class Dependencies extends Component {
 
     return (<>
       <BasicTab tabTitle={"a"} handleChange={(event, newValue) => this.handleTabChange(event, newValue)} tabs={this.state.tabs} />
-      {this.state.showDependencies ? arr : <SearchDependencies dependencies={this.props.dependencyList} />}
+      {this.state.showDependencies ? arr : <SearchDependencies dependencies={this.props.dependencyList} updateDependencyList={this.props.updateDependencyList}/>}
     </>);
   }
 }
-
-
 
 export default Dependencies;
