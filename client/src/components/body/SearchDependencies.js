@@ -10,15 +10,15 @@ let size = 10, apiLink = `https://api.npms.io/v2/search?q=""&size=${size}`;
 
 class SearchDependency extends Component {
 
-  constructor(props){
+  constructor(props) {
     super(props);
     this.state = {
       searchText: '',
-      dependencies: []
+      searchResults: []
     }
-    this.searchDependency=this.searchDependency.bind(this);
+    this.searchDependency = this.searchDependency.bind(this);
   }
- 
+
 
   dependencyText = (event) => {
     this.setState({ searchText: event.target.value }, () => {
@@ -41,7 +41,9 @@ class SearchDependency extends Component {
   searchDependency = () => {
     axios.get(apiLink)
       .then((response) => {
-        this.setState({ dependencies: response.data.results }, () => {
+        const filteredArr = this.filteredEarlierSelectionDependency(response.data.results);
+        debugger;
+        this.setState({ searchResults: filteredArr }, () => {
           console.log(this.state.dependencies);
         })
         // handle success
@@ -55,6 +57,19 @@ class SearchDependency extends Component {
         console.log("end")
       })
   }
+
+  filteredEarlierSelectionDependency = (responseDependencyList) => {
+    const c = responseDependencyList.filter(dependency => {
+      for (const key of Object.keys(this.props.dependencies)) {
+        return !this.props.dependencies[key].find(storeDependency => {
+          return (storeDependency.label.toUpperCase() === dependency.package.name.toUpperCase() && storeDependency.value);
+        });
+      }
+    });
+
+    return c;
+  }
+
   render() {
     return (
       < >
@@ -69,7 +84,7 @@ class SearchDependency extends Component {
           </Grid>
         </Grid>
         <Grid container spacing={2}>
-          {this.state.dependencies.map(t => <Grid key={t.searchScore} item xs={4} sm={0}>
+          {this.state.dependencies && this.state.dependencies.map(t => <Grid key={t.searchScore} item xs={4} sm={0}>
             <DependencyCard isSelected={t.value} handleSelection={this.handleSelection} label={t.package.name} desc={t.package.description} />
           </Grid>)}
         </Grid>
