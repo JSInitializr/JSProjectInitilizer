@@ -58,7 +58,7 @@ class Dependencies extends Component {
 
   getDetailPanel = (topic) => {
     return (<>
-      <Grid container spacing={2}>
+      <Grid container spacing={1}>
         {this.dependencyList('react')[topic].map(t => <Grid key={t.label} item xs={4} sm={0}>
           <DependencyCard isSelected={t.value} handleSelection={this.handleSelection} label={t.label} desc={t.desc} category={topic}/>
         </Grid>)}
