@@ -9,8 +9,8 @@ import SearchDependencies from '../body/SearchDependencies';
 
 class Dependencies extends Component {
 
-  state={
-    tabs: ["Search","Select"],
+  state = {
+    tabs: ["Search", "Select"],
     showDependencies: false
   }
 
@@ -38,15 +38,15 @@ class Dependencies extends Component {
     return newPackages;
   }
 
-  handleSelection = (cardId,category) => {
+  handleSelection = (cardId, category) => {
     const dependencyList = this.props.dependencyList;
-    const updatedArr = dependencyList[category].map(item=>{
-      if(item.label === cardId){
-        return {...item,value:!item.value};
+    const updatedArr = dependencyList[category].map(item => {
+      if (item.label === cardId) {
+        return { ...item, value: !item.value };
       }
       return item;
     });
-    const updatedList = {...dependencyList}
+    const updatedList = { ...dependencyList }
     updatedList[category] = updatedArr;
     this.props.updateDependencyList(updatedList);
   }
@@ -58,40 +58,44 @@ class Dependencies extends Component {
 
   getDetailPanel = (topic) => {
     return (<>
-      <Grid container spacing={2}>
+      <Grid container spacing={1}>
         {this.dependencyList('react')[topic].map(t => <Grid key={t.label} item xs={4} sm={0}>
-          <DependencyCard isSelected={t.value} handleSelection={this.handleSelection} label={t.label} desc={t.desc} category={topic}/>
+          <DependencyCard isSelected={t.value} handleSelection={this.handleSelection} label={t.label} desc={t.desc} category={topic} />
         </Grid>)}
       </Grid>
     </>);
   }
-  handleTabChange =(event, newValue)=>{
-    if(newValue){
-      this.setState({showDependencies:true});
-    }else{
-      this.setState({showDependencies:false});
+  handleTabChange = (event, newValue) => {
+    if (newValue) {
+      this.setState({ showDependencies: true });
+    } else {
+      this.setState({ showDependencies: false });
     }
   }
+
+  setupDependencyList = () => {
+    const arr = [];
+    for (const topic in this.dependencyList('react')) {
+      if(topic !== 'search_selection_item'){
+        arr.push(<>
+          <BasicExpansionPanel defaultExpanded={true} summaryPanel={this.detailMoreOptionControl(topic)} detailPanel={this.getDetailPanel(topic)} />
+        </>)
+      }
+    }
+    return arr;
+  }
+
   render() {
 
     if (!this.props.dependencyList) {
       return (<div><h1>No list here</h1></div>)
     }
 
-    const arr = [];
-    for (const topic in this.dependencyList('react')) {
-      arr.push(<>
-        <BasicExpansionPanel defaultExpanded={true} summaryPanel={this.detailMoreOptionControl(topic)} detailPanel={this.getDetailPanel(topic)} />
-      </>)
-    }
-    
     return (<>
-       <BasicTab tabTitle={"a"} handleChange={(event, newValue) => this.handleTabChange(event, newValue)} tabs={this.state.tabs} />
-      {this.state.showDependencies ? arr : <SearchDependencies dependencies={this.props.dependencyList}/>}
+      <BasicTab tabTitle={"a"} handleChange={(event, newValue) => this.handleTabChange(event, newValue)} tabs={this.state.tabs} />
+      {this.state.showDependencies ? this.setupDependencyList() : <SearchDependencies dependencies={this.props.dependencyList} updateDependencyList={this.props.updateDependencyList} />}
     </>);
   }
 }
-
-
 
 export default Dependencies;
