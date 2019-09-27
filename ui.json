@@ -137,7 +137,8 @@
 				"desc": " It is used to simplify your work of managing and editing objects and arrays by providing lots of utility methods",
 				"tag": ["react", "react-native", "nodejs"],
 				"value": false
-			}]
+			}],
+			"search_selection_item":[]
 		}
 	}
 }
