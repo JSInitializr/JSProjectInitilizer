@@ -3,9 +3,6 @@ import Grid from "@material-ui/core/Grid";
 import ProjectMetaData from "./ProjectMetaData";
 import PrimarySelectionTabs from "./PrimarySelectionTabs";
 import Dependencies from "./Dependencies";
-import { connect } from 'react-redux';
-import { fetchUIRenderData } from '../../redux/actions';
-import * as constants from '../../assets/constants';
 import Header from '../header/header';
 import Logo from '../header/Logo'
 
@@ -15,6 +12,7 @@ class Body extends Component {
      this.props.fetchUIControls();
      this.props.updateTabs();
   }
+
 
   render() {
 
@@ -42,15 +40,5 @@ class Body extends Component {
   };
 }
 
-const mapStateToProps = (state) => ({
-  response: state.response,
-})
 
-const mapDispatchToProps = dispatch => ({
-  fetchUIControls: () => dispatch(fetchUIRenderData()),
-  updateTabs:(tabItems)=>dispatch({type:constants.UPDATE_TABS,data:tabItems}),
-  updateMetaData:(inputControls)=>dispatch({type:constants.UPDATE_METADATA,data:inputControls}),
-  updateDependencyList:(dependency)=>dispatch({type:constants.UPDATE_DEPENDENCY_LIST,data:dependency}),
-});
-
-export default connect(mapStateToProps,mapDispatchToProps)(Body);
+export default Body;
