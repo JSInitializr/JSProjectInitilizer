@@ -19,8 +19,12 @@ const useStyles = makeStyles(theme => ({
     }
 }));
 
-export default function BottomAppBar() {
+export default function BottomAppBar(props) {
     const classes = useStyles();
+
+    const handleClickAction = (event) => {
+        props.submitAction(event);
+    }
 
     return (
         <>
@@ -37,9 +41,9 @@ export default function BottomAppBar() {
                     </Grid>
                     <Grid item xs={9}>
                         <Toolbar >
-                            <Button variant="contained" color="default" >
+                            <Button onClick={handleClickAction} variant="contained" color="default" ac>
                                 Generate the project
-                        <CloudDownloadIcon />
+                                <CloudDownloadIcon />
                             </Button>
                         </Toolbar>
                     </Grid>
