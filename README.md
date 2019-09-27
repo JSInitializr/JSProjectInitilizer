@@ -48,7 +48,7 @@ my-app
 ├── README.md
 ├── node_modules
 ├── package.json
-├── .gitignore
+├─- .gitignore
 ├── public
 │   ├── favicon.ico
 │   ├── index.html
