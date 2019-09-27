@@ -50,7 +50,7 @@ class SearchDependency extends Component {
         const filteredArr = this.filteredEarlierSelectionDependency(response.data.results);
         debugger;
         this.setState({ searchResults: filteredArr }, () => {
-          console.log(this.state.dependencies);
+          console.log(this.state.searchResults);
         })
         // handle success
       })
@@ -90,7 +90,7 @@ class SearchDependency extends Component {
           </Grid>
         </Grid>
         <Grid container spacing={2}>
-          {this.state.dependencies && this.state.dependencies.map(t => <Grid key={t.searchScore} item xs={4} sm={0}>
+          {this.state.searchResults && this.state.searchResults.map(t => <Grid key={t.searchScore} item xs={4} sm={0}>
             <DependencyCard isSelected={t.value} handleSelection={this.handleSelection} label={t.package.name} desc={t.package.description} />
           </Grid>)}
         </Grid>
