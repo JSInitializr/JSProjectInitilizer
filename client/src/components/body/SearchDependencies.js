@@ -32,7 +32,7 @@ class SearchDependency extends Component {
   }
   
   handleSelection = (cardId, category) => {
-    const dependencyList = this.props.dependencyList;
+    const dependencyList = this.props.dependencies;
     const updatedArr = dependencyList[category].map(item => {
       if (item.label === cardId) {
         return { ...item, value: !item.value };
