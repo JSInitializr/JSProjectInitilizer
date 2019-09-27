@@ -4,12 +4,8 @@ import BottomAppBar from './FooterBar';
 
 class Footer extends Component {
 
-    componentDidMount() {
-        
-    }
-
     render(){
-        return(<BottomAppBar/>);
+        return(<BottomAppBar {...this.props}/>);
     }
 }
 
