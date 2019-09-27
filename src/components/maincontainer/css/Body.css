@@ -1,0 +1,28 @@
+.header{
+    background-color:grey 
+}
+
+.leftColumn{
+    background-color: rgb(38, 42, 45)
+}
+
+.rightColumn{
+    background-color: rgb(27, 31, 34)
+}
+
+.inputTextStyle{
+    color: white
+}
+
+.gridLable{
+    color:black;
+    text-align:right;
+    padding-right: 35px;
+}
+
+.gridTitle{
+    font-weight: bold;
+    color:black;
+    text-align:right;
+    padding-right: 35px;
+}
