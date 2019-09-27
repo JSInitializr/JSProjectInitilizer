@@ -22,14 +22,12 @@ class SearchDependency extends Component {
 
   dependencyText = (event) => {
     this.setState({ searchText: event.target.value }, () => {
-      apiLink = `https://api.npms.io/v2/search?q=${this.state.searchText}&size=${size}`
+      if(this.state.searchText.length > 2){
+      apiLink = `https://api.npms.io/v2/search?q=${this.state.searchText}&size=${size}`;
+      this.searchDependency();
+      }
     });
-   if(this.state.searchText.length > 2){
-    apiLink = `https://api.npms.io/v2/search?q=${this.state.searchText}&size=${size}`
-    this.searchDependency();
    }
-    //console.log(event.target.value);
-  }
   
   handleSelection = (cardId, category) => {
     const dependencyList = this.props.dependencies;
