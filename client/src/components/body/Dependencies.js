@@ -72,22 +72,28 @@ class Dependencies extends Component {
       this.setState({ showDependencies: false });
     }
   }
+
+  setupDependencyList = () => {
+    const arr = [];
+    for (const topic in this.dependencyList('react')) {
+      if(topic !== 'search_selection_item'){
+        arr.push(<>
+          <BasicExpansionPanel defaultExpanded={true} summaryPanel={this.detailMoreOptionControl(topic)} detailPanel={this.getDetailPanel(topic)} />
+        </>)
+      }
+    }
+    return arr;
+  }
+
   render() {
 
     if (!this.props.dependencyList) {
       return (<div><h1>No list here</h1></div>)
     }
 
-    const arr = [];
-    for (const topic in this.dependencyList('react')) {
-      arr.push(<>
-        <BasicExpansionPanel defaultExpanded={true} summaryPanel={this.detailMoreOptionControl(topic)} detailPanel={this.getDetailPanel(topic)} />
-      </>)
-    }
-
     return (<>
       <BasicTab tabTitle={"a"} handleChange={(event, newValue) => this.handleTabChange(event, newValue)} tabs={this.state.tabs} />
-      {this.state.showDependencies ? arr : <SearchDependencies dependencies={this.props.dependencyList} updateDependencyList={this.props.updateDependencyList}/>}
+      {this.state.showDependencies ? this.setupDependencyList() : <SearchDependencies dependencies={this.props.dependencyList} updateDependencyList={this.props.updateDependencyList} />}
     </>);
   }
 }

@@ -30,18 +30,32 @@ class SearchDependency extends Component {
    }
   
   handleSelection = (cardId) => {
-
+    const isCardIdExistInState = false;
+    
     const dependencyList = this.props.dependencies;
     const updatedList = { ...dependencyList }
     for(const category in dependencyList){
       const updatedArr = dependencyList[category].map(item => {
         if (item.label.toUpperCase() === cardId.toUpperCase()) {
+          isCardIdExistInState = true;
           return { ...item, value: !item.value };
         }
         return item;
       });
       updatedList[category] = updatedArr;
     }
+
+    const searchFilteredItem = updatedList['search_selection_item'].filter(item => {
+        return item.value;
+    });
+    updatedList['search_selection_item'] = searchFilteredItem;
+
+    if(!isCardIdExistInState){
+      const searchListArr = updatedList['search_selection_item'];
+      searchListArr.push({label:cardId,tag:[],value:true});
+      updatedList['search_selection_item'] = searchListArr;
+    }
+    
     this.props.updateDependencyList(updatedList);
   }
 
