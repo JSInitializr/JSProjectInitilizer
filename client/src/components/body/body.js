@@ -33,6 +33,8 @@ class Body extends Component {
           <Grid className='rightColumn' item xs={9} ><Grid item xs={9}><ProjectMetaData metaData={this.props.response.metaData} updateMetaData={this.props.updateMetaData}/></Grid></Grid>
           <Grid className='leftColumn' item xs={3} > <h4 className='gridTitle'>{'Dependencies'}</h4></Grid>
           <Grid className='rightColumn' item xs={9} ><Dependencies dependencyList={this.props.response.dependencyList} updateDependencyList={this.props.updateDependencyList}/></Grid>
+          <Grid item xs={12} ></Grid>
+
         </Grid>
         </div>
       </>
