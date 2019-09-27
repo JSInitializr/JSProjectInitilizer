@@ -14,8 +14,6 @@ function* submitInputs(){
     yield put({ type: constants.RECEIVED_SUBMIT_FORM_RESPONSE, response: json.response,});
 }
 
-
-
 function* actionWatcherForFetchUIControls() {
     yield takeLatest('FETCH_UI_CONTROLS', fetchUIControlsData)
 }
