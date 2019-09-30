@@ -13,6 +13,8 @@ const reducer = (state = {}, action) => {
             return { ...state, response: { ...state.response, metaData: action.data } };
         case constants.UPDATE_DEPENDENCY_LIST:
             return { ...state, response: { ...state.response, dependencyList: action.data } };
+        case constants.RECEIVED_SUBMIT_FORM_RESPONSE:
+            return { ...state, response: action.response, loading: false }
         default:
             return state;
     }
