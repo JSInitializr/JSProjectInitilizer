@@ -24,10 +24,9 @@ Just create a project, and you’re good to go.
 To create a new app, you may choose one of the following methods:
 
 ### Select the Technology 
-
-Download the zip.
-
-### npm Install
+### select dependencies
+### Download the zip.
+### npm or yarn Install
 
 ```sh
 npm install
