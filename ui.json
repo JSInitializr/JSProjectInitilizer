@@ -4,25 +4,25 @@
 			"label": "Language",
 			"options": ["Javascript", "Typescript"],
 			"required": true,
-			"selectedValue": null,
+			"selectedValue": "Javascript",
 			"childTab": null
 		}, {
 			"label": "Technology",
 			"options": ["Angular", "React", "React Native", "Node js server", "VS Code Extension"],
 			"required": true,
-			"selectedValue": null,
+			"selectedValue": "Angular",
 			"childTab": {
 				"expanded":false,
 				"whichTab": "Node js server",
 				"label": "Database",
-				"options": ["MongoDB", "MySql", "PostgreSQL", "None"],
+				"options": ["None","MongoDB", "MySql", "PostgreSQL"],
 				"required": true,
-				"selectedValue": null
+				"selectedValue": "None"
 			}
 		}],
 		"metaData": [{
 			"label": "Package Name",
-			"placeholder": "project unique identifier",
+			"placeholder": "project identifier",
 			"value": "",
 			"required": true
 		}, {
@@ -60,50 +60,50 @@
 			"DeveloperTools": [{
 					"label": "Redux",
 					"desc": "Redux is a predictable state container for JavaScript apps",
-					"tag": ["react", "react-native", "nodejs"],
+					"tag": ["angular","react", "react-native", "nodejs", "vs-code-extension"],
 					"value": false
 				},
 				{
 					"label": "React Redux",
 					"desc": "React Redux is the official React binding for Redux. It lets your React components read data from a Redux store, and dispatch actions to the store to update data.",
-					"tag": ["react", "react-native", "nodejs"],
+					"tag": ["angular","react", "react-native", "nodejs", "vs-code-extension"],
 					"value": false
 				},
 				{
 					"label": "express",
 					"desc": "Fast, unopinionated, minimalist web framework for node.",
-					"tag": ["react", "react-native", "nodejs"],
+					"tag": ["angular","react", "react-native", "nodejs", "vs-code-extension"],
 					"value": false
 				},
 				{
 					"label": "body-parser",
 					"desc": "Parse incoming request bodies in a middleware before your handlers, available under the req.body property",
-					"tag": ["react", "react-native", "nodejs"],
+					"tag": ["react", "react-native", "nodejs", "vs-code-extension"],
 					"value": false
 				},
 				{
 					"label": "lodash",
 					"desc": "It is used to simplify your work of managing and editing objects and arrays by providing lots of utility methods",
-					"tag": ["react", "react-native", "nodejs"],
+					"tag": ["react", "react-native", "nodejs", "vs-code-extension"],
 					"value": false
 				}
 			],
 			"Web": [{
 					"label": "express",
 					"desc": "Fast, unopinionated, minimalist web framework for node.",
-					"tag": ["react", "react-native", "nodejs"],
+					"tag": ["react", "react-native", "nodejs", "vs-code-extension"],
 					"value": false
 				},
 				{
 					"label": "body-parser",
 					"desc": "Parse incoming request bodies in a middleware before your handlers, available under the req.body property",
-					"tag": ["react", "react-native", "nodejs"],
+					"tag": ["angular","react", "react-native", "nodejs", "vs-code-extension"],
 					"value": false
 				},
 				{
 					"label": "lodash",
 					"desc": " It is used to simplify your work of managing and editing objects and arrays by providing lots of utility methods",
-					"tag": ["react", "react-native", "nodejs"],
+					"tag": ["angular","react", "react-native", "nodejs", "vs-code-extension"],
 					"value": false
 				}
 			],
@@ -129,13 +129,13 @@
 			"FileOperation": [{
 				"label": "lodash",
 				"desc": " It is used to simplify your work of managing and editing objects and arrays by providing lots of utility methods",
-				"tag": ["react", "react-native", "nodejs"],
+				"tag": ["angular","react", "react-native", "nodejs", "vs-code-extension"],
 				"value": false
 			}],
 			"Testing": [{
 				"label": "lodash",
 				"desc": " It is used to simplify your work of managing and editing objects and arrays by providing lots of utility methods",
-				"tag": ["react", "react-native", "nodejs"],
+				"tag": ["angular","react", "react-native", "nodejs", "vs-code-extension"],
 				"value": false
 			}],
 			"search_selection_item":[]

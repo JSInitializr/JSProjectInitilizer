@@ -65,6 +65,7 @@ class Dependencies extends Component {
       </Grid>
     </>);
   }
+
   handleTabChange = (event, newValue) => {
     if (newValue) {
       this.setState({ showDependencies: true });
@@ -73,10 +74,28 @@ class Dependencies extends Component {
     }
   }
 
+  getSelectedTechnology = () => {
+    debugger;
+    switch (this.props.tabs[1].selectedValue) {
+      case 'Angular':
+        return 'angular';
+      case 'React':
+        return 'react'
+      case 'Node js server':
+        return 'nodejs'
+      case 'React Native':
+        return 'react-native'
+      case 'VS Code Extension':
+        return 'vs-code-extension'
+      default:
+        return null;
+    }
+  }
+
   setupDependencyList = () => {
     const arr = [];
-    for (const topic in this.dependencyList('react')) {
-      if(topic !== 'search_selection_item'){
+    for (const topic in this.dependencyList(this.getSelectedTechnology())) {
+      if (topic !== 'search_selection_item') {
         arr.push(<>
           <BasicExpansionPanel defaultExpanded={true} summaryPanel={this.detailMoreOptionControl(topic)} detailPanel={this.getDetailPanel(topic)} />
         </>)

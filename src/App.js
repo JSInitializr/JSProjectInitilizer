@@ -11,7 +11,6 @@ import { isUserWhitespacable } from '@babel/types';
 const theme = createMuiTheme({
   palette: {
     background:'white',
-    
   },
 });
 

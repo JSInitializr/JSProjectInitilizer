@@ -42,7 +42,7 @@ class Body extends Component {
           </div>
         </Grid>
         <Grid item  xs={9} md={9} style={{textAlignLast: 'start',paddingLeft:'8px'}}>
-          <Dependencies dependencyList={this.props.response.dependencyList} updateDependencyList={this.props.updateDependencyList}/>
+          <Dependencies tabs={this.props.response.tabs} dependencyList={this.props.response.dependencyList} updateDependencyList={this.props.updateDependencyList}/>
         </Grid>
         </Grid>
       </>
