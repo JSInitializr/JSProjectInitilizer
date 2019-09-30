@@ -21,17 +21,19 @@ class SearchDependency extends Component {
 
 
   dependencyText = (event) => {
+    debugger;
     this.setState({ searchText: event.target.value }, () => {
       if(this.state.searchText.length > 2){
       apiLink = `https://api.npms.io/v2/search?q=${this.state.searchText}&size=${size}`;
       this.searchDependency();
+      }else{
+        this.setState({ searchResults:[]});
       }
     });
    }
   
   handleSelection = (cardId) => {
-    const isCardIdExistInState = false;
-    
+    let isCardIdExistInState = false;
     const dependencyList = this.props.dependencies;
     const updatedList = { ...dependencyList }
     for(const category in dependencyList){
@@ -57,16 +59,16 @@ class SearchDependency extends Component {
     }
     
     this.props.updateDependencyList(updatedList);
+    this.setState({ ...this.state, searchText:'', searchResults:[],});
   }
 
   searchDependency = () => {
     axios.get(apiLink)
       .then((response) => {
         const filteredArr = this.filteredEarlierSelectionDependency(response.data.results);
-        debugger;
-        this.setState({ searchResults: filteredArr }, () => {
+        this.setState({...this.state,searchResults:filteredArr}, () => {
           console.log(this.state.searchResults);
-        })
+        });
         // handle success
       })
       .catch(function (error) {
@@ -96,7 +98,7 @@ class SearchDependency extends Component {
       < >
         <Grid container spacing={1} alignItems="flex-end">
           <Grid item>
-            <TextField id="input-with-icon-grid" label="Search dependencies" onChange={this.dependencyText} />
+            <TextField id="input-with-icon-grid" label="Search dependencies" onChange={this.dependencyText.bind(this)} value={this.state.searchText}/>
           </Grid>
           <Grid item>
             <Button variant="contained" color="secondary" onClick={this.searchDependency}>

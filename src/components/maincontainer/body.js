@@ -50,15 +50,5 @@ class Body extends Component {
   };
 }
 
-const mapStateToProps = (state) => ({
-  response: state.response,
-})
 
-const mapDispatchToProps = dispatch => ({
-  fetchUIControls: () => dispatch(fetchUIRenderData()),
-  updateTabs:(tabItems)=>dispatch({type:constants.UPDATE_TABS,data:tabItems}),
-  updateMetaData:(inputControls)=>dispatch({type:constants.UPDATE_METADATA,data:inputControls}),
-  updateDependencyList:(dependency)=>dispatch({type:constants.UPDATE_DEPENDENCY_LIST,data:dependency}),
-});
-
-export default connect(mapStateToProps,mapDispatchToProps)(Body);
+export default Body;

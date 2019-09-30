@@ -5,7 +5,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import BasicExpansionPanel from '../controls/BasicExpansionPanel';
 import DetailMore from '../controls/DetailMore';
 import BasicTab from '../controls/BasicTab';
-import SearchDependencies from '../body/SearchDependencies';
+import SearchDependencies from './SearchDependencies';
 
 class Dependencies extends Component {
 
