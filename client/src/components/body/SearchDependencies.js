@@ -21,22 +21,21 @@ class SearchDependency extends Component {
 
 
   dependencyText = (event) => {
-    debugger;
     this.setState({ searchText: event.target.value }, () => {
-      if(this.state.searchText.length > 2){
-      apiLink = `https://api.npms.io/v2/search?q=${this.state.searchText}&size=${size}`;
-      this.searchDependency();
-      }else{
-        this.setState({ searchResults:[]});
+      if (this.state.searchText.length > 2) {
+        apiLink = `https://api.npms.io/v2/search?q=${this.state.searchText}&size=${size}`;
+        this.searchDependency();
+      } else {
+        this.setState({ searchResults: [] });
       }
     });
-   }
-  
+  }
+
   handleSelection = (cardId) => {
     let isCardIdExistInState = false;
     const dependencyList = this.props.dependencies;
     const updatedList = { ...dependencyList }
-    for(const category in dependencyList){
+    for (const category in dependencyList) {
       const updatedArr = dependencyList[category].map(item => {
         if (item.label.toUpperCase() === cardId.toUpperCase()) {
           isCardIdExistInState = true;
@@ -48,18 +47,18 @@ class SearchDependency extends Component {
     }
 
     const searchFilteredItem = updatedList['search_selection_item'].filter(item => {
-        return item.value;
+      return item.value;
     });
     updatedList['search_selection_item'] = searchFilteredItem;
 
-    if(!isCardIdExistInState){
+    if (!isCardIdExistInState) {
       const searchListArr = updatedList['search_selection_item'];
-      searchListArr.push({label:cardId,tag:[],value:true});
+      searchListArr.push({ label: cardId, tag: [], value: true });
       updatedList['search_selection_item'] = searchListArr;
     }
-    
+
     this.props.updateDependencyList(updatedList);
-    this.setState({ ...this.state, searchText:'', searchResults:[],});
+    this.setState({ ...this.state, searchText: '', searchResults: [], });
   }
 
   searchDependency = () => {
@@ -98,7 +97,7 @@ class SearchDependency extends Component {
       < >
         <Grid container spacing={1} alignItems="flex-end">
           <Grid item>
-            <TextField id="input-with-icon-grid" label="Search dependencies" onChange={this.dependencyText.bind(this)} value={this.state.searchText}/>
+            <TextField id="input-with-icon-grid" label="Search dependencies" onChange={this.dependencyText.bind(this)} value={this.state.searchText} />
           </Grid>
           <Grid item>
             <Button variant="contained" color="secondary" onClick={this.searchDependency}>

@@ -22,7 +22,7 @@ const useStyles = makeStyles(theme => ({
     }
 }));
 
-export default function BottomNavigation() {
+export default function BottomNavigation(props) {
     const classes = useStyles();
 
     return (
@@ -41,7 +41,7 @@ export default function BottomNavigation() {
                     </Grid>
                     <Grid item  xs={9} md={9}  style={{background:'white'}}>
                     <Box display="flex" justifyContent="center" style={{borderTop: '1px solid #ccc'}}>
-                            <Button variant="contained" color="default" style={{margin: '2%'}}>
+                            <Button onClick={props.submitAction} variant="contained" color="default" style={{margin: '2%'}}>
                                 Generate the project
                         <CloudDownloadIcon />
                             </Button>
