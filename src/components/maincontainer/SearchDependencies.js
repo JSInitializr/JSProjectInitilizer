@@ -21,7 +21,6 @@ class SearchDependency extends Component {
 
 
   dependencyText = (event) => {
-    debugger;
     this.setState({ searchText: event.target.value }, () => {
       if(this.state.searchText.length > 2){
       apiLink = `https://api.npms.io/v2/search?q=${this.state.searchText}&size=${size}`;
@@ -53,8 +52,11 @@ class SearchDependency extends Component {
     updatedList['search_selection_item'] = searchFilteredItem;
 
     if(!isCardIdExistInState){
+      const selectedDependencyItem = this.state.searchResults.find(item => {
+        return item.package.name === cardId;
+      })
       const searchListArr = updatedList['search_selection_item'];
-      searchListArr.push({label:cardId,tag:[],value:true});
+      searchListArr.push({label:cardId,tag:[],value:true,version:selectedDependencyItem.version});
       updatedList['search_selection_item'] = searchListArr;
     }
     
