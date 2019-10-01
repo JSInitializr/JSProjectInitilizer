@@ -79,12 +79,12 @@ export default function SwitchLabels() {
       <FormControlLabel
         control={
           <IOSSwitch
-            checked={state.checkedA}
+            checked={state.light}
             onChange={handleChange('light')}
             value="light"
           />
         }
-        label= {state.checkedA ?'Dark UI':'Light UI'}
+        label= {state.light ?'Dark UI':'Light UI'}
       />
     </FormGroup>
   );
