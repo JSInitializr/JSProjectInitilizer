@@ -19,6 +19,12 @@ const useStyles = makeStyles(theme => ({
   menuButton: {
     marginRight: theme.spacing(0.5),
   },
+  ahref:{
+    textAlign: 'center',
+    textDecoration: 'none',
+    color: 'white',
+  },
+
   title: {
     display: 'none',
     [theme.breakpoints.up('sm')]: {
@@ -63,7 +69,9 @@ export default function TopNavigation() {
                 <Grid item  xs={9} md={9} >
                 <Box display="flex" justifyContent="flex-end" style={{marginTop: '1%'}} >
                 <Switch/>
-                    <Button color="inherit" className={classes.menuButton}>Github</Button>
+                    <Button color="primary" aria-controls="customized-menu"
+        aria-haspopup="true"
+        variant="contained" className={classes.menuButton}><a className={classes.ahref} href="https://github.com/JSInitializr/JSProjectInitilizer" target="blank" >Github</a></Button>
                     <Help/>
                 </Box>
                 </Grid>    
