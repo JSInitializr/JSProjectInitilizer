@@ -58,13 +58,12 @@ class SearchDependency extends Component {
         return item.package.name === cardId;
       })
       const searchListArr = updatedList['search_selection_item'];
-      searchListArr.push({ label: cardId, tag: [], value: true, version: selectedDependencyItem.version });
+      searchListArr.push({label:cardId,tag:[],value:true,version:selectedDependencyItem.version, desc:selectedDependencyItem.package.description});
       updatedList['search_selection_item'] = searchListArr;
     }
 
     this.props.updateDependencyList(updatedList);
-    this.setState({ ...this.state, searchText: '', searchResults: [],selectedDependencies: dependencyList.search_selection_item });
-    console.log(this.state.selectedDependencies);
+    this.setState({ ...this.state, searchText: '', searchResults: [],selectedDependencies: updatedList.search_selection_item });
   }
 
   searchDependency = () => {
