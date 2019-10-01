@@ -34,7 +34,6 @@ class App extends Component {
   }
 
   submitActionHandler = (event) => {
-    debugger;
     const isInputValidated = this.validateInputs(this.props.response);
     isInputValidated && this.props.submitInputs(this.props.response);
   }
