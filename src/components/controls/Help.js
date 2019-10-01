@@ -80,6 +80,7 @@ export default function HelpMenu() {
             <CloudDownloadIcon />
           </ListItemIcon>
           <ListItemText primary="Github" />
+          {/* <a className={classes.ahref} href="https://github.com/JSInitializr/JSProjectInitilizer" target="blank" >Github</a> */}
         </StyledMenuItem>
       </StyledMenu>
     </div>
