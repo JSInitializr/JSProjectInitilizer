@@ -9,7 +9,7 @@ import Typography from '@material-ui/core/Typography';
 import Grid from "@material-ui/core/Grid";
 import Box from '@material-ui/core/Box';
 import CloudDownloadIcon from '@material-ui/icons/CloudDownload';
-import Help from './helpMenu';
+import HelpMenu from '../controls/Help';
 
 const useStyles = makeStyles(theme => ({
   grow: {
@@ -54,28 +54,23 @@ const useStyles = makeStyles(theme => ({
 export default function TopNavigation() {
   const classes = useStyles();
 
-
-
   return (
     <div className={classes.grow}>
       <AppBar position="static" className={classes.appBarStyle}>
         <Box p={1}>
-          <Grid container md={12} lg={12}>
-            <Grid item xs={3} md={3} style={{ alignSelf: 'flex-end' }} >
-              <div>
-                <Logo />
-              </div>
+            <Grid container  md={12} lg={12}>
+                <Grid item xs={3} md={3} style={{alignSelf: 'flex-end'}} >
+                <div>
+                  <Logo/>
+                </div>
+                </Grid>
+                <Grid item  xs={9} md={9} >
+                <Box display="flex" justifyContent="flex-end" style={{marginTop: '1%'}} >
+                <Switch/>
+                <HelpMenu/>  
+                </Box>
+                </Grid>    
             </Grid>
-            <Grid item xs={9} md={9} >
-              <Box display="flex" justifyContent="flex-end" style={{ marginTop: '1%' }} >
-                <Switch />
-                <Button color="primary" aria-controls="customized-menu"
-                  aria-haspopup="true"
-                  variant="contained" className={classes.menuButton}><a className={classes.ahref} href="https://github.com/JSInitializr/JSProjectInitilizer" target="blank" >Github</a></Button>
-                <Help />
-              </Box>
-            </Grid>
-          </Grid>
         </Box>
       </AppBar>
     </div>
