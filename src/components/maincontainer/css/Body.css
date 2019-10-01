@@ -20,6 +20,10 @@
     padding-right: 35px;
 }
 
+.dark .gridLable{
+    color: white;
+}
+
 .gridTitle{
     font-weight: bold;
     color:black;
