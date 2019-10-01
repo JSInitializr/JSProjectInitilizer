@@ -57,7 +57,8 @@ class App extends Component {
         }).map(dependency => {
           return  {
             label:dependency.label,
-            value:true
+            value:true,
+            version:dependency.version
           }
         }));
     }
