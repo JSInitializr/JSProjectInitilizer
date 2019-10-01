@@ -25,6 +25,53 @@ class App extends Component {
     this.submitActionHandler = this.submitActionHandler.bind(this);
   }
 
+  prepareRequestJson = () => {
+    const tabs = this.props.response.tabs.map(tabItem => {
+      return tabItem.childTab && tabItem.childTab.whichTab === tabItem.selectedValue ? {
+        label: tabItem.label,
+        value: tabItem.selectedValue,
+        childTab: {
+          label: tabItem.childTab.label,
+          value: tabItem.childTab.selectedValue
+        },
+      } : {
+          label: tabItem.label,
+          value: tabItem.selectedValue,
+        };
+    });
+
+    const metaData = this.props.response.metaData.map(inputItem => {
+          return {
+            label:inputItem.label,
+            value:inputItem.value
+          };
+    }).filter(item =>{
+      return item.value !== '';
+    })
+
+    const filteredDependencyList = []
+
+    for (const category in this.props.response.dependencyList){
+      filteredDependencyList.push(this.props.response.dependencyList[category].filter(dependency => {
+          return dependency.value;
+        }).map(dependency => {
+          return  {
+            label:dependency.label,
+            value:true
+          }
+        }));
+    }
+
+    const requestParams = {
+      tabItems:tabs,
+      metaDataItems:metaData,
+      dependenciesItem:[].concat.apply([],filteredDependencyList)
+    }
+
+    return requestParams;
+
+  }
+
   validateInputs = (inputs) => {
     //validate project meta data
     const haveValidatedInputs = inputs.metaData.find(input => {
@@ -34,6 +81,7 @@ class App extends Component {
   }
 
   submitActionHandler = (event) => {
+    const requestParams = this.prepareRequestJson();
     const isInputValidated = this.validateInputs(this.props.response);
     isInputValidated && this.props.submitInputs(this.props.response);
   }
@@ -41,8 +89,8 @@ class App extends Component {
   render() {
     return (
       <ThemeProvider theme={theme}>
-        <TopNavigation/>
-        <MainContainer {...this.props}/>
+        <TopNavigation />
+        <MainContainer {...this.props} />
         <BottomNavigation submitAction={this.submitActionHandler} />
       </ThemeProvider>
     );

@@ -75,7 +75,6 @@ class Dependencies extends Component {
   }
 
   getSelectedTechnology = () => {
-    debugger;
     switch (this.props.tabs[1].selectedValue) {
       case 'Angular':
         return 'angular';
