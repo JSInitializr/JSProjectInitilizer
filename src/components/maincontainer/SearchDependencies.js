@@ -29,10 +29,6 @@ class SearchDependency extends Component {
         this.setState({ searchResults: [] });
       }
     });
-
-    const depedency
-
-
   }
 
   handleSelection = (cardId) => {
