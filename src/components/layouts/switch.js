@@ -10,7 +10,6 @@ export default function SwitchLabels() {
 
   const handleChange = name => event => {
     setState({ ...state, [name]: event.target.checked });
-    console.log(state);
     if( state.light){
       document.getElementById('body').className ="light"
     }else{
