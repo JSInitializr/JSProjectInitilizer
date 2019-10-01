@@ -58,7 +58,7 @@ class SearchDependency extends Component {
         return item.package.name === cardId;
       })
       const searchListArr = updatedList['search_selection_item'];
-      searchListArr.push({ label: cardId, tag: [], value: true, version: selectedDependencyItem.version });
+      searchListArr.push({label:cardId,tag:[],value:true,version:selectedDependencyItem.version, desc:selectedDependencyItem.package.description});
       updatedList['search_selection_item'] = searchListArr;
     }
 
