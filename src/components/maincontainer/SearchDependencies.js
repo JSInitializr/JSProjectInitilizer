@@ -63,8 +63,7 @@ class SearchDependency extends Component {
     }
 
     this.props.updateDependencyList(updatedList);
-    this.setState({ ...this.state, searchText: '', searchResults: [],selectedDependencies: dependencyList.search_selection_item });
-    console.log(this.state.selectedDependencies);
+    this.setState({ ...this.state, searchText: '', searchResults: [],selectedDependencies: updatedList.search_selection_item });
   }
 
   searchDependency = () => {
