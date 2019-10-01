@@ -22,20 +22,24 @@ class SearchDependency extends Component {
 
   dependencyText = (event) => {
     this.setState({ searchText: event.target.value }, () => {
-      if(this.state.searchText.length > 2){
-      apiLink = `https://api.npms.io/v2/search?q=${this.state.searchText}&size=${size}`;
-      this.searchDependency();
-      }else{
-        this.setState({ searchResults:[]});
+      if (this.state.searchText.length > 2) {
+        apiLink = `https://api.npms.io/v2/search?q=${this.state.searchText}&size=${size}`;
+        this.searchDependency();
+      } else {
+        this.setState({ searchResults: [] });
       }
     });
-   }
-  
+
+    const depedency
+
+
+  }
+
   handleSelection = (cardId) => {
     let isCardIdExistInState = false;
     const dependencyList = this.props.dependencies;
     const updatedList = { ...dependencyList }
-    for(const category in dependencyList){
+    for (const category in dependencyList) {
       const updatedArr = dependencyList[category].map(item => {
         if (item.label.toUpperCase() === cardId.toUpperCase()) {
           isCardIdExistInState = true;
@@ -47,28 +51,28 @@ class SearchDependency extends Component {
     }
 
     const searchFilteredItem = updatedList['search_selection_item'].filter(item => {
-        return item.value;
+      return item.value;
     });
     updatedList['search_selection_item'] = searchFilteredItem;
 
-    if(!isCardIdExistInState){
+    if (!isCardIdExistInState) {
       const selectedDependencyItem = this.state.searchResults.find(item => {
         return item.package.name === cardId;
       })
       const searchListArr = updatedList['search_selection_item'];
-      searchListArr.push({label:cardId,tag:[],value:true,version:selectedDependencyItem.version});
+      searchListArr.push({ label: cardId, tag: [], value: true, version: selectedDependencyItem.version });
       updatedList['search_selection_item'] = searchListArr;
     }
-    
+
     this.props.updateDependencyList(updatedList);
-    this.setState({ ...this.state, searchText:'', searchResults:[],});
+    this.setState({ ...this.state, searchText: '', searchResults: [], });
   }
 
   searchDependency = () => {
     axios.get(apiLink)
       .then((response) => {
         const filteredArr = this.filteredEarlierSelectionDependency(response.data.results);
-        this.setState({...this.state,searchResults:filteredArr}, () => {
+        this.setState({ ...this.state, searchResults: filteredArr }, () => {
           console.log(this.state.searchResults);
         });
         // handle success
@@ -98,20 +102,26 @@ class SearchDependency extends Component {
   render() {
     return (
       < >
-        <Grid container spacing={1} alignItems="flex-end">
-          <Grid item>
-            <TextField id="input-with-icon-grid" label="Search dependencies" onChange={this.dependencyText.bind(this)} value={this.state.searchText}/>
-          </Grid>
-          <Grid item>
+        <Grid container spacing={1} alignItems="flex-end" xs={12}>
+          <Grid item xs={8}>
+            <TextField id="input-with-icon-grid" label="Search dependencies" onChange={this.dependencyText.bind(this)} value={this.state.searchText} />
             <Button variant="contained" color="secondary" onClick={this.searchDependency}>
               <SearchIcon />
             </Button>
           </Grid>
+          <Grid xs={4}>Selected Dependencies:</Grid>
+          <Grid>
+
+          </Grid>
         </Grid>
-        <Grid container spacing={2}>
-          {this.state.searchResults && this.state.searchResults.map(t => <Grid key={t.searchScore} item xs={4} sm={0}>
-            <DependencyCard isSelected={t.value} handleSelection={this.handleSelection} label={t.package.name} desc={t.package.description} />
-          </Grid>)}
+        <Grid container xs={12} spacing={1}>
+        <Grid container xs={8} >
+          {this.state.searchResults && this.state.searchResults.map(t =>
+            <Grid key={t.searchScore} item xs={6} >
+              <DependencyCard isSelected={t.value} handleSelection={this.handleSelection} label={t.package.name} desc={t.package.description} />
+            </Grid>)}
+            </Grid>
+          <Grid xs={4}>dependencies selected list</Grid>
         </Grid>
       </>
     );
