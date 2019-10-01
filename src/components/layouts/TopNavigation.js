@@ -14,12 +14,12 @@ import Help from './helpMenu';
 const useStyles = makeStyles(theme => ({
   grow: {
     flexGrow: 1,
-    color:'#222',
+    color: '#222',
   },
   menuButton: {
     marginRight: theme.spacing(0.5),
   },
-  ahref:{
+  ahref: {
     textAlign: 'center',
     textDecoration: 'none',
     color: 'white',
@@ -39,10 +39,10 @@ const useStyles = makeStyles(theme => ({
       width: 200,
     },
   },
-  appBarStyle:{
+  appBarStyle: {
     backgroundColor: 'initial',
-    color:'#222',
-    boxShadow:'none',
+    color: '#222',
+    boxShadow: 'none',
   },
   sectionDesktop: {
     display: 'none',
@@ -54,30 +54,30 @@ const useStyles = makeStyles(theme => ({
 export default function TopNavigation() {
   const classes = useStyles();
 
- 
+
 
   return (
     <div className={classes.grow}>
-     <AppBar position="static" className={classes.appBarStyle}>
+      <AppBar position="static" className={classes.appBarStyle}>
         <Box p={1}>
-            <Grid container  md={12} lg={12}>
-                <Grid item xs={3} md={3} style={{alignSelf: 'flex-end'}} >
-                <div>
-                    <Logo/>
-                </div>
-                </Grid>
-                <Grid item  xs={9} md={9} >
-                <Box display="flex" justifyContent="flex-end" style={{marginTop: '1%'}} >
-                <Switch/>
-                    <Button color="primary" aria-controls="customized-menu"
-        aria-haspopup="true"
-        variant="contained" className={classes.menuButton}><a className={classes.ahref} href="https://github.com/JSInitializr/JSProjectInitilizer" target="blank" >Github</a></Button>
-                    <Help/>
-                </Box>
-                </Grid>    
+          <Grid container md={12} lg={12}>
+            <Grid item xs={3} md={3} style={{ alignSelf: 'flex-end' }} >
+              <div>
+                <Logo />
+              </div>
             </Grid>
+            <Grid item xs={9} md={9} >
+              <Box display="flex" justifyContent="flex-end" style={{ marginTop: '1%' }} >
+                <Switch />
+                <Button color="primary" aria-controls="customized-menu"
+                  aria-haspopup="true"
+                  variant="contained" className={classes.menuButton}><a className={classes.ahref} href="https://github.com/JSInitializr/JSProjectInitilizer" target="blank" >Github</a></Button>
+                <Help />
+              </Box>
+            </Grid>
+          </Grid>
         </Box>
-     </AppBar>
+      </AppBar>
     </div>
   );
 }
