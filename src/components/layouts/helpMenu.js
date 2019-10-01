@@ -73,7 +73,7 @@ export default function CustomizedMenus() {
           <ListItemIcon>
             <SendIcon />
           </ListItemIcon>
-          <ListItemText primary="Contribute" />
+          <ListItemText primary="Contribute" o/>
         </StyledMenuItem>
         <StyledMenuItem>
           <ListItemIcon>
