@@ -27,7 +27,7 @@ export default function BasicTab(props) {
 
   const tabs = () => {
     const t = props.tabs.map((tab) => {
-      return <Tab style={{textTransform:'capitalize',fontWeight: 'bold',color: '#222'}} label={tab} {...a11yProps(tab,0)} />
+      return <Tab style={{ textTransform:'capitalize',fontWeight: 'bold',color: '#222'}} label={tab} {...a11yProps(tab,0)} />
     })
     return t;
   }
