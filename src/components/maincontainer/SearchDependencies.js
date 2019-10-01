@@ -14,7 +14,8 @@ class SearchDependency extends Component {
     super(props);
     this.state = {
       searchText: '',
-      searchResults: []
+      searchResults: [],
+      selectedDependencies:[]
     }
     this.searchDependency = this.searchDependency.bind(this);
   }
@@ -32,6 +33,7 @@ class SearchDependency extends Component {
   }
 
   handleSelection = (cardId) => {
+    debugger;
     let isCardIdExistInState = false;
     const dependencyList = this.props.dependencies;
     const updatedList = { ...dependencyList }
@@ -61,7 +63,8 @@ class SearchDependency extends Component {
     }
 
     this.props.updateDependencyList(updatedList);
-    this.setState({ ...this.state, searchText: '', searchResults: [], });
+    this.setState({ ...this.state, searchText: '', searchResults: [],selectedDependencies: dependencyList.search_selection_item });
+    console.log(this.state.selectedDependencies);
   }
 
   searchDependency = () => {
@@ -117,7 +120,9 @@ class SearchDependency extends Component {
               <DependencyCard isSelected={t.value} handleSelection={this.handleSelection} label={t.package.name} desc={t.package.description} />
             </Grid>)}
             </Grid>
-          <Grid xs={4}>dependencies selected list</Grid>
+          <Grid xs={4}>{this.state.selectedDependencies.map(t=>
+           <DependencyCard isSelected={t.value} handleSelection={this.handleSelection} label={t.label}  />
+           )}</Grid>
         </Grid>
       </>
     );
