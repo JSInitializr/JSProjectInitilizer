@@ -6,16 +6,14 @@ BootStrap Your Application.
 
 ## Quick Overview
 
-
-The Desc
-
+When we are starting with some new framework or library there are lot of stuffs we need to configure like dependencies webpack etc.The aim of this JS Initializer project is to give simple user Interface where you can select techology and download project and ger started immediately.
 
 ### Get Started Immediately
 
 You **don’t** need to install or configure tools like Webpack or Babel.<br>
 They are preconfigured so that you can focus on the code.
 
-Just create a project, and you’re good to go.
+Just select the technology, choose dependencies and download a project, and you’re good to go.
 
 ## Creating an App
 
