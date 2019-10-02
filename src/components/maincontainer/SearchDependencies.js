@@ -21,6 +21,28 @@ class SearchDependency extends Component {
   }
 
 
+  selectedDepdendency = () => {
+
+    const filteredDependencyList = []
+
+    for (const category in this.props.dependencies){
+      filteredDependencyList.push(this.props.dependencies[category].filter(dependency => {
+          return dependency.value;
+        }).map(dependency => {
+          return  {
+            label:dependency.label,
+            value:true,
+            desc:dependency.desc,
+            version:dependency.version,
+          }
+        }));
+    }
+
+
+    return [].concat.apply([],filteredDependencyList).reverse();
+  }
+
+
   dependencyText = (event) => {
     this.setState({ searchText: event.target.value }, () => {
       if (this.state.searchText.length > 2) {
@@ -33,7 +55,7 @@ class SearchDependency extends Component {
   }
 
   handleSelection = (cardId) => {
-    debugger;
+   
     let isCardIdExistInState = false;
     const dependencyList = this.props.dependencies;
     const updatedList = { ...dependencyList }
@@ -119,7 +141,7 @@ class SearchDependency extends Component {
               <DependencyCard isSelected={t.value} handleSelection={this.handleSelection} label={t.package.name} desc={t.package.description} />
             </Grid>)}
             </Grid>
-          <Grid xs={4}>{this.state.selectedDependencies.map(t=>
+          <Grid xs={4}>{this.selectedDepdendency().map(t=>
            <DependencyCard isSelected={t.value} handleSelection={this.handleSelection} label={t.label}  />
            )}</Grid>
         </Grid>

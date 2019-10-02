@@ -28,6 +28,7 @@ class ProjectMetaData extends Component {
     detailMoreOptionControl = (topic) => {
         return <DetailMore label={topic} />
     }
+
     render() {
 
         if (!this.props.metaData) {
