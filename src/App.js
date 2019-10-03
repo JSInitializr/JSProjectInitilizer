@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-// import Container from './components/container/container';
 import TopNavigation from './components/layouts/TopNavigation';
 import BottomNavigation from './components/layouts/BottomNavigation';
 import MainContainer from './components/layouts/MainContainer';

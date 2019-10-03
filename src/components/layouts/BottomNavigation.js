@@ -39,9 +39,9 @@ export default function BottomNavigation(props) {
                     </Typography>
                     </Box>
                     </Grid>
-                    <Grid item  xs={9} md={9}  style={{background:'white'}}>
-                    <Box display="flex" justifyContent="center" style={{borderTop: '1px solid #ccc'}}>
-                            <Button onClick={props.submitAction} variant="contained" color="default" style={{margin: '2%'}}>
+                    <Grid item  xs={9} md={9}  className="btm-foot">
+                    <Box display="flex" justifyContent="center" className="btm-box">
+                            <Button onClick={props.submitAction} variant="contained" color="default"  className="btm-btn" >
                                 Generate the project
                         <CloudDownloadIcon />
                             </Button>

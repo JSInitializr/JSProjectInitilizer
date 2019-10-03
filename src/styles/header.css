@@ -1,5 +1,4 @@
 .headerTitle{
-    color:#222;
     padding-left: 75px;
     margin: 0px;
     display: block;
@@ -8,15 +7,29 @@
     letter-spacing: -1px;
 }
 
+.light .headerTitle{
+    color:#222;
+}
+.dark .headerTitle{
+    color: white;
+}
+
 .headerTitle span{
     color:#6db33f;
 }
+
 .headerSubTitle{
-    color:#222;
+    
     padding-left: 75px;
     margin: 0px;
     font-weight: 400;
 }
 
+.light .headerSubTitle{
+    color:#222;
+}
 
+.dark .headerSubTitle{
+    color: white;
+}
 
