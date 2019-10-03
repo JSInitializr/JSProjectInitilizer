@@ -138,19 +138,22 @@ class SearchDependency extends Component {
   render() {
     return (
       <>
-        <Grid container spacing={8} xs={12}>
+        <Grid container spacing={1} xs={12}>
           <Grid item xs={8}>
-            <BasicTextField
-              style={{ width: "100%", marginTop: "10px" }}
-              handleChange={this.handleChange}
-              label="Search dependencies"
-              placeholder="redux, express.. etc.(min 3 char required)"
-              onChange={this.dependencyText.bind(this)}
-              value={this.state.searchText}
-            />
+            <BasicTextField style={{ width: '100%', marginTop:'10px', paddingRight:'10px'}} handleChange={this.dependencyText.bind(this)} label="Search dependencies" placeholder="redux, express.. etc.(min 3 char required)"  value={this.state.searchText} />
           </Grid>
           <Grid item xs={4}>
-            <Typography variant="subtitle2">Selected Dependency</Typography>
+            <Typography variant="subtitle2" >
+              Selected Dependency
+            </Typography>
+            {this.selectedDepdendency().map(t => {
+            return <>
+              <div style={{ height: '10px' }}></div>
+              <DependencyCard isSelected={t.value} handleSelection={this.handleSelection} label={t.label} desc={t.desc} />
+              
+            </>
+          }
+          )}
           </Grid>
           <Grid item xs={8} direction={"column"}>
             {this.state.searchResults &&
@@ -169,21 +172,6 @@ class SearchDependency extends Component {
               })}
           </Grid>
 
-          <Grid xs={4} direction={"column"}>
-            {this.selectedDepdendency().map(t => {
-              return (
-                <>
-                  <DependencyCard
-                    isSelected={t.value}
-                    handleSelection={this.handleSelection}
-                    label={t.label}
-                    desc={t.desc}
-                  />
-                  <div style={{ height: "10px" }}></div>
-                </>
-              );
-            })}
-          </Grid>
         </Grid>
       </>
     );
