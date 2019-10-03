@@ -27,7 +27,8 @@ class Body extends Component {
         <Grid container  md={12} lg={12} style={{'overflow-x':'hidden',
     'padding-bottom': '8%'}}>
         <PrimarySelectionTabs tabs={this.props.response.tabs} updateTabs={this.props.updateTabs} />
-        <Grid item xs={3} > 
+        <Grid container spacing={0}>
+        <Grid item xs={3} style={{marginTop:'2%'}}> 
           <div>
             <h4 className='gridLable'>{'Project Meta Data'}</h4>
           </div>
@@ -35,7 +36,7 @@ class Body extends Component {
         <Grid item  xs={9} md={9} style={{textAlignLast: 'start',paddingLeft:'8px'}}>
             <ProjectMetaData metaData={this.props.response.metaData} updateMetaData={this.props.updateMetaData}/>
         </Grid>
-
+        </Grid>
         <Grid item xs={3} > 
           <div>
             <h4 className='gridLable'>{'Dependencies'}</h4>

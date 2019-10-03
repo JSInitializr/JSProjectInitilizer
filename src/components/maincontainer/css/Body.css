@@ -15,18 +15,26 @@
 }
 
 .gridLable{
-    color:black;
     text-align:right;
     padding-right: 35px;
 }
 
+.light .gridLable{
+    color:black;
+}
 .dark .gridLable{
     color: white;
 }
 
 .gridTitle{
     font-weight: bold;
-    color:black;
     text-align:right;
     padding-right: 35px;
+}
+
+.light .gridTitle{
+    color:black;
+}
+.dark .gridTitle{
+    color:white;
 }
