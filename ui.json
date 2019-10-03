@@ -21,14 +21,14 @@
 			}
 		}],
 		"metaData": [{
-			"label": "Package Name",
-			"placeholder": "project identifier",
+			"label": "App name",
+			"placeholder": "Application name",
 			"value": "",
 			"required": true
 		}, {
 			"label": "Version",
-			"placeholder": "1.0.0",
-			"value": "",
+			"placeholder": "0.1.0",
+			"value": "0.1.0",
 			"required": true
 		}, {
 			"label": "Description",
