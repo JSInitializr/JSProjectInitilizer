@@ -1,55 +1,55 @@
-import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
-import AppBar from '@material-ui/core/AppBar';
-import Toolbar from '@material-ui/core/Toolbar';
-import Button from '@material-ui/core/Button';
-import Switch from './switch';
-import Logo from './Logo';
-import Typography from '@material-ui/core/Typography';
+import React from "react";
+import { makeStyles } from "@material-ui/core/styles";
+import AppBar from "@material-ui/core/AppBar";
+import Toolbar from "@material-ui/core/Toolbar";
+import Button from "@material-ui/core/Button";
+import Switch from "./switch";
+import Logo from "./Logo";
+import Typography from "@material-ui/core/Typography";
 import Grid from "@material-ui/core/Grid";
-import Box from '@material-ui/core/Box';
-import CloudDownloadIcon from '@material-ui/icons/CloudDownload';
-import HelpMenu from '../controls/Help';
+import Box from "@material-ui/core/Box";
+import CloudDownloadIcon from "@material-ui/icons/CloudDownload";
+import HelpMenu from "../controls/Help";
 
 const useStyles = makeStyles(theme => ({
   grow: {
     flexGrow: 1,
-    color: '#222',
+    color: "#222"
   },
   menuButton: {
-    marginRight: theme.spacing(0.5),
+    marginRight: theme.spacing(0.5)
   },
   ahref: {
-    textAlign: 'center',
-    textDecoration: 'none',
-    color: 'white',
+    textAlign: "center",
+    textDecoration: "none",
+    color: "white"
   },
 
   title: {
-    display: 'none',
-    [theme.breakpoints.up('sm')]: {
-      display: 'block',
-    },
+    display: "none",
+    [theme.breakpoints.up("sm")]: {
+      display: "block"
+    }
   },
   inputInput: {
     padding: theme.spacing(1, 1, 1, 7),
-    transition: theme.transitions.create('width'),
-    width: '100%',
-    [theme.breakpoints.up('md')]: {
-      width: 200,
-    },
+    transition: theme.transitions.create("width"),
+    width: "100%",
+    [theme.breakpoints.up("md")]: {
+      width: 200
+    }
   },
   appBarStyle: {
-    backgroundColor: 'initial',
-    color: '#222',
-    boxShadow: 'none',
+    backgroundColor: "initial",
+    color: "#222",
+    boxShadow: "none"
   },
   sectionDesktop: {
-    display: 'none',
-    [theme.breakpoints.up('md')]: {
-      display: 'flex',
-    },
-  },
+    display: "none",
+    [theme.breakpoints.up("md")]: {
+      display: "flex"
+    }
+  }
 }));
 export default function TopNavigation() {
   const classes = useStyles();
@@ -58,19 +58,23 @@ export default function TopNavigation() {
     <div className={classes.grow}>
       <AppBar position="static" className={classes.appBarStyle}>
         <Box p={1}>
-            <Grid container  md={12} lg={12}>
-                <Grid item xs={3} md={3} style={{alignSelf: 'flex-end'}} >
-                <div>
-                  <Logo/>
-                </div>
-                </Grid>
-                <Grid item  xs={9} md={9} >
-                <Box display="flex" justifyContent="flex-end" style={{marginTop: '1%'}} >
-                <Switch/>
-                <HelpMenu/>  
-                </Box>
-                </Grid>    
+          <Grid container md={12} lg={12}>
+            <Grid item xs={3} md={3} style={{ alignSelf: "flex-end" }}>
+              <div>
+                <Logo />
+              </div>
             </Grid>
+            <Grid item xs={9} md={9}>
+              <Box
+                display="flex"
+                justifyContent="flex-end"
+                style={{ marginTop: "1%" }}
+              >
+                <Switch />
+                <HelpMenu />
+              </Box>
+            </Grid>
+          </Grid>
         </Box>
       </AppBar>
     </div>
