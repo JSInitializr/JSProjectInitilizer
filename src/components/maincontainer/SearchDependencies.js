@@ -4,6 +4,8 @@ import Grid from '@material-ui/core/Grid';
 import SearchIcon from '@material-ui/icons/Search';
 import Button from '@material-ui/core/Button';
 import DependencyCard from './Card';
+import Typography from '@material-ui/core/Typography';
+
 const axios = require('axios');
 let size = 10, apiLink = `https://api.npms.io/v2/search?q=""&size=${size}`;
 
@@ -15,7 +17,7 @@ class SearchDependency extends Component {
     this.state = {
       searchText: '',
       searchResults: [],
-      selectedDependencies:[]
+      selectedDependencies: []
     }
     this.searchDependency = this.searchDependency.bind(this);
   }
@@ -25,21 +27,19 @@ class SearchDependency extends Component {
 
     const filteredDependencyList = []
 
-    for (const category in this.props.dependencies){
+    for (const category in this.props.dependencies) {
       filteredDependencyList.push(this.props.dependencies[category].filter(dependency => {
-          return dependency.value;
-        }).map(dependency => {
-          return  {
-            label:dependency.label,
-            value:true,
-            desc:dependency.desc,
-            version:dependency.version,
-          }
-        }));
+        return dependency.value;
+      }).map(dependency => {
+        return {
+          label: dependency.label,
+          value: true,
+          desc: dependency.desc,
+          version: dependency.version,
+        }
+      }));
     }
-
-
-    return [].concat.apply([],filteredDependencyList).reverse();
+    return [].concat.apply([], filteredDependencyList).reverse();
   }
 
 
@@ -55,7 +55,7 @@ class SearchDependency extends Component {
   }
 
   handleSelection = (cardId) => {
-   
+
     let isCardIdExistInState = false;
     const dependencyList = this.props.dependencies;
     const updatedList = { ...dependencyList }
@@ -80,12 +80,12 @@ class SearchDependency extends Component {
         return item.package.name === cardId;
       })
       const searchListArr = updatedList['search_selection_item'];
-      searchListArr.push({label:cardId,tag:[],value:true,version:selectedDependencyItem.version, desc:selectedDependencyItem.package.description});
+      searchListArr.push({ label: cardId, tag: [], value: true, version: selectedDependencyItem.version, desc: selectedDependencyItem.package.description });
       updatedList['search_selection_item'] = searchListArr;
     }
 
     this.props.updateDependencyList(updatedList);
-    this.setState({ ...this.state, searchText: '', searchResults: [],selectedDependencies: updatedList.search_selection_item });
+    this.setState({ ...this.state, searchText: '', searchResults: [], selectedDependencies: updatedList.search_selection_item });
   }
 
   searchDependency = () => {
@@ -121,33 +121,40 @@ class SearchDependency extends Component {
 
   render() {
     return (
-      < >
-        <Grid container spacing={1} alignItems="flex-end" xs={12}>
+      <>
+        <Grid container spacing={8} xs={12}>
           <Grid item xs={8}>
-            <TextField id="input-with-icon-grid" label="Search dependencies" onChange={this.dependencyText.bind(this)} value={this.state.searchText} />
-            <Button variant="contained" color="secondary" onClick={this.searchDependency}>
-              <SearchIcon />
-            </Button>
+            <TextField style={{ width: '100%' }} id="input-with-icon-grid" label="Search dependencies" onChange={this.dependencyText.bind(this)} value={this.state.searchText} />
           </Grid>
-          <Grid xs={4}>Selected Dependencies:</Grid>
-          <Grid>
+          <Grid item xs={4}>
+            <Typography variant="subtitle2" >
+              Selected Dependency
+            </Typography>
+          </Grid>
+          <Grid item xs={8} direction={'column'}>
+            {this.state.searchResults && this.state.searchResults.map(t => {
+              return <>
+                <DependencyCard isSelected={t.value} handleSelection={this.handleSelection} label={t.package.name} desc={t.package.description} />
+                <div style={{ height: '10px' }}></div>
+              </>
+            })
+            }
+          </Grid>
 
-          </Grid>
+          <Grid xs={4} direction={'column'} >{this.selectedDepdendency().map(t => {
+            return <>
+              <DependencyCard isSelected={t.value} handleSelection={this.handleSelection} label={t.label} desc={t.desc} />
+              <div style={{ height: '10px' }}></div>
+            </>
+          }
+          )}</Grid>
+
         </Grid>
-        <Grid container xs={12} spacing={1}>
-        <Grid container xs={8} >
-          {this.state.searchResults && this.state.searchResults.map(t =>
-            <Grid key={t.searchScore} item xs={6} >
-              <DependencyCard isSelected={t.value} handleSelection={this.handleSelection} label={t.package.name} desc={t.package.description} />
-            </Grid>)}
-            </Grid>
-          <Grid xs={4}>{this.selectedDepdendency().map(t=>
-           <DependencyCard isSelected={t.value} handleSelection={this.handleSelection} label={t.label}  />
-           )}</Grid>
-        </Grid>
+
       </>
     );
   }
+
 }
 export default SearchDependency;
 
