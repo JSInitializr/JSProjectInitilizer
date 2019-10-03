@@ -1,5 +1,4 @@
 import { put, takeLatest, all } from "redux-saga/effects";
-import * as constants from "../assets/constants";
 const axios = require("axios");
 
 function* fetchUIControlsData() {

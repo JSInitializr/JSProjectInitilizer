@@ -5,7 +5,6 @@ import MainContainer from "./components/layouts/MainContainer";
 import "./App.css";
 import { createMuiTheme } from "@material-ui/core/styles";
 import { ThemeProvider } from "@material-ui/styles";
-import { isUserWhitespacable } from "@babel/types";
 import { connect } from "react-redux";
 import { fetchUIRenderData, submitInputData } from "./redux/actions";
 import * as constants from "./assets/constants";
@@ -81,7 +80,7 @@ class App extends Component {
   validateInputs = inputs => {
     //validate project meta data
     const haveValidatedInputs = inputs.metaData.find(input => {
-      return input.required == true && input.value === "";
+      return input.required === true && input.value === "";
     });
     return !haveValidatedInputs;
   };

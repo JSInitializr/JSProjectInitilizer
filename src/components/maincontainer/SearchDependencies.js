@@ -1,8 +1,5 @@
 import React, { Component } from "react";
-import TextField from "@material-ui/core/TextField";
 import Grid from "@material-ui/core/Grid";
-import SearchIcon from "@material-ui/icons/Search";
-import Button from "@material-ui/core/Button";
 import DependencyCard from "./Card";
 import Typography from "@material-ui/core/Typography";
 import BasicTextField from "../controls/BasicTextField";

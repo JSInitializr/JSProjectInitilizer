@@ -3,11 +3,6 @@ import Grid from "@material-ui/core/Grid";
 import ProjectMetaData from "./ProjectMetaData";
 import PrimarySelectionTabs from "./PrimarySelectionTabs";
 import Dependencies from "./Dependencies";
-import { connect } from "react-redux";
-import { fetchUIRenderData } from "../../redux/actions";
-import * as constants from "../../assets/constants";
-// import Header from '../header/header';
-import Logo from "../layouts/Logo";
 
 class Body extends Component {
   componentDidMount() {
