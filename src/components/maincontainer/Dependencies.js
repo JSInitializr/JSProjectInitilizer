@@ -10,7 +10,8 @@ import SearchDependencies from './SearchDependencies';
 class Dependencies extends Component {
 
   state = {
-    tabs: ["Search", "Select"],
+    tabs: [{ label: '', icon: 'search' },
+    { label: '', icon: 'list' }],
     showDependencies: false
   }
 
@@ -110,7 +111,7 @@ class Dependencies extends Component {
     }
 
     return (<>
-      <BasicTab tabTitle={"a"} handleChange={(event, newValue) => this.handleTabChange(event, newValue)} tabs={this.state.tabs} />
+      <BasicTab style={{ marginBottom: '10px' }} tabTitle={"a"} handleChange={(event, newValue) => this.handleTabChange(event, newValue)} tabs={this.state.tabs} />
       {this.state.showDependencies ? this.setupDependencyList() : <SearchDependencies dependencies={this.props.dependencyList} updateDependencyList={this.props.updateDependencyList} />}
     </>);
   }

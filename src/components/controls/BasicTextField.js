@@ -25,6 +25,7 @@ export default function BasicTextField(props) {
   const classes = useStyles();
   return (
       <TextField
+        style={props.style}
         id={props.id}
         label={props.label}
         className={classes.textField}
@@ -35,7 +36,6 @@ export default function BasicTextField(props) {
         InputLabelProps={{
             shrink: true,
             color:'white',
-            
           }}
       />
   );
