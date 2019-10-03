@@ -2,7 +2,8 @@ import React from 'react';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import './css/tab.css';
-
+import SearchIcon from '@material-ui/icons/Search';
+import ListIcon from '@material-ui/icons/List';
 
 function a11yProps(id,index) {
   return {
@@ -24,10 +25,24 @@ export default function BasicTab(props) {
     }
   }
 
+  const tabIcon = (icon) => {
+    switch (icon){
+      case 'search':
+        return <SearchIcon/>
+      case 'list':
+        return <ListIcon/> 
+      default:
+        return null;
+    }
+  }
+
 
   const tabs = () => {
     const t = props.tabs.map((tab) => {
-      return <Tab className="lang-tab" label={tab} {...a11yProps(tab,0)} />
+      if(tab.icon){
+        return <Tab icon={tabIcon(tab.icon)} className="lang-tab" label={tab.label} {...a11yProps(tab,0)} /> 
+      }
+      return <Tab  className="lang-tab" label={tab} {...a11yProps(tab,0)} />
     })
     return t;
   }

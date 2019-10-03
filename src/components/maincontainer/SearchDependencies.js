@@ -5,10 +5,11 @@ import SearchIcon from '@material-ui/icons/Search';
 import Button from '@material-ui/core/Button';
 import DependencyCard from './Card';
 import Typography from '@material-ui/core/Typography';
+import BasicTextField from '../controls/BasicTextField';
+
 
 const axios = require('axios');
 let size = 10, apiLink = `https://api.npms.io/v2/search?q=""&size=${size}`;
-
 
 class SearchDependency extends Component {
 
@@ -124,7 +125,7 @@ class SearchDependency extends Component {
       <>
         <Grid container spacing={8} xs={12}>
           <Grid item xs={8}>
-            <TextField style={{ width: '100%' }} id="input-with-icon-grid" label="Search dependencies" onChange={this.dependencyText.bind(this)} value={this.state.searchText} />
+            <BasicTextField style={{ width: '100%', marginTop:'10px'}} handleChange={this.handleChange} label="Search dependencies" placeholder="redux, express.. etc.(min 3 char required)" onChange={this.dependencyText.bind(this)} value={this.state.searchText} />
           </Grid>
           <Grid item xs={4}>
             <Typography variant="subtitle2" >
