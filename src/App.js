@@ -60,9 +60,7 @@ class App extends Component {
           })
           .map(dependency => {
             return {
-              label: dependency.label,
-              value: true,
-              version: dependency.version
+              [dependency.label]: dependency.version,
             };
           })
       );
@@ -88,7 +86,7 @@ class App extends Component {
   submitActionHandler = event => {
     const requestParams = this.prepareRequestJson();
     const isInputValidated = this.validateInputs(this.props.response);
-    isInputValidated && this.props.submitInputs(this.props.response);
+    isInputValidated && this.props.submitInputs(requestParams);
   };
 
   render() {

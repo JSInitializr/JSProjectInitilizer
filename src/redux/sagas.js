@@ -9,8 +9,20 @@ function* fetchUIControlsData() {
 }
 
 function* submitInputs() {
+
+  const postData = {
+    tabs:[{
+      label:'Language',
+      value:'Typescript'
+    },{
+      label:'Technology',
+      value:'react'
+    }]
+  }
+
   axios
-    .get("https://dry-sea-46703.herokuapp.com/users", {
+    .post("https://dry-sea-46703.herokuapp.com/project", {
+      postData,
       responseType: "blob",
       headers: { "Access-Control-Allow-Origin": "*" }
     })
