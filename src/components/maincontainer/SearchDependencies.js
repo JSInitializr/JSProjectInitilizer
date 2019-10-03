@@ -141,21 +141,6 @@ class SearchDependency extends Component {
         <Grid container spacing={1} xs={12}>
           <Grid item xs={8}>
             <BasicTextField style={{ width: '100%', marginTop:'10px', paddingRight:'10px'}} handleChange={this.dependencyText.bind(this)} label="Search dependencies" placeholder="redux, express.. etc.(min 3 char required)"  value={this.state.searchText} />
-          </Grid>
-          <Grid item xs={4}>
-            <Typography variant="subtitle2" >
-              Selected Dependency
-            </Typography>
-            {this.selectedDepdendency().map(t => {
-            return <>
-              <div style={{ height: '10px' }}></div>
-              <DependencyCard isSelected={t.value} handleSelection={this.handleSelection} label={t.label} desc={t.desc} />
-              
-            </>
-          }
-          )}
-          </Grid>
-          <Grid item xs={8} direction={"column"}>
             {this.state.searchResults &&
               this.state.searchResults.map(t => {
                 return (
@@ -171,7 +156,20 @@ class SearchDependency extends Component {
                 );
               })}
           </Grid>
-
+          <Grid item xs={4}>
+            <Typography variant="subtitle2" >
+              Selected Dependency
+            </Typography>
+            {this.selectedDepdendency().map(t => {
+            return <>
+              <div style={{ height: '10px' }}></div>
+              <DependencyCard isSelected={t.value} handleSelection={this.handleSelection} label={t.label} desc={t.desc} />
+              
+            </>
+          }
+          )}
+          </Grid>
+          
         </Grid>
       </>
     );
