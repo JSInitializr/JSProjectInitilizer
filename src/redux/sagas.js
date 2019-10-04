@@ -11,37 +11,61 @@ function* fetchUIControlsData() {
 function* submitInputs() {
 
   const postData = {
-    tabs:[{
-      label:'Language',
-      value:'Typescript'
-    },{
-      label:'Technology',
-      value:'react'
+    tabs: [{
+      label: 'Language',
+      value: 'Typescript'
+    }, {
+      label: 'Technology',
+      value: 'react'
     }]
   }
 
-  axios
-    .post("https://dry-sea-46703.herokuapp.com/project", {
-      postData,
-      responseType: "blob",
-      headers: { "Access-Control-Allow-Origin": "*" }
+  fetch('http://localhost:3000/project', {
+    method: 'post',
+    responseType: "blob",
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      ...postData
     })
-    .then(response => {
-      const url = window.URL.createObjectURL(new Blob([response.data]));
-      const link = document.createElement("a");
-      link.href = url;
-      link.setAttribute("download", "Project.zip"); //or any other extension
-      document.body.appendChild(link);
-      link.click();
-    })
-    .catch(function(error) {
-      // handle error
-      console.log(error);
-    })
-    .finally(function() {
+  }).then((response) => {
+    return response.blob();
+  }).then(blob => {
+    const url = window.URL.createObjectURL(blob);
+    const link = document.createElement("a");
+    link.href = url;
+    link.setAttribute("download", "Project.zip"); //or any other extension
+    document.body.appendChild(link);
+    link.click();
+  }).catch(function (error) {
+    // handle error
+    console.log(error);
+  })
+    .finally(function () {
       // always executed
       console.log("end");
     });
+
+  // axios
+  //   .post("http://localhost:3000/project", {
+  //     responseType: "blob",
+  //     headers: { "Access-Control-Allow-Origin": "*" }
+  //   })
+  //   .then(response => {
+  //     const url = window.URL.createObjectURL(new Blob([response.data]));
+  //     const link = document.createElement("a");
+  //     link.href = url;
+  //     link.setAttribute("download", "Project.zip"); //or any other extension
+  //     document.body.appendChild(link);
+  //     link.click();
+  //   })
+  //   .catch(function(error) {
+  //     // handle error
+  //     console.log(error);
+  //   })
+  //   .finally(function() {
+  //     // always executed
+  //     console.log("end");
+  //   });
   //yield put({ type: constants.RECEIVED_SUBMIT_FORM_RESPONSE, response: json.response,});
 }
 
