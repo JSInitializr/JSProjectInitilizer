@@ -8,24 +8,16 @@ function* fetchUIControlsData() {
   yield put({ type: "RECEIVED_UI_CONTROLS", response: json.response });
 }
 
-function* submitInputs() {
-
-  const postData = {
-    tabs: [{
-      label: 'Language',
-      value: 'Typescript'
-    }, {
-      label: 'Technology',
-      value: 'react'
-    }]
-  }
-
+function* submitInputs(action) {
+  debugger;
+  console.log(action.payload);
+ 
   fetch('http://localhost:3000/project', {
     method: 'post',
     responseType: "blob",
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({
-      ...postData
+      ...action.form
     })
   }).then((response) => {
     return response.blob();

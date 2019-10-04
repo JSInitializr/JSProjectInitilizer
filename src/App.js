@@ -26,24 +26,20 @@ class App extends Component {
       return tabItem.childTab &&
         tabItem.childTab.whichTab === tabItem.selectedValue
         ? {
-            label: tabItem.label,
-            value: tabItem.selectedValue,
-            childTab: {
-              label: tabItem.childTab.label,
-              value: tabItem.childTab.selectedValue
+            [tabItem.label]: tabItem.selectedValue,
+            Database: {
+              [tabItem.childTab.label]: tabItem.childTab.selectedValue,
             }
           }
         : {
-            label: tabItem.label,
-            value: tabItem.selectedValue
+            [tabItem.label]: tabItem.selectedValue,
           };
     });
 
     const metaData = this.props.response.metaData
       .map(inputItem => {
         return {
-          label: inputItem.label,
-          value: inputItem.value
+          [inputItem.label]: inputItem.value,
         };
       })
       .filter(item => {
@@ -71,6 +67,8 @@ class App extends Component {
       metaDataItems: metaData,
       dependenciesItem: [].concat.apply([], filteredDependencyList)
     };
+
+    debugger;
 
     return requestParams;
   };
