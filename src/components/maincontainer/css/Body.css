@@ -1,9 +1,9 @@
 .header{
-    background-color:grey 
+    background-color:rgb(235, 235, 235)
 }
 
 .leftColumn{
-    background-color: rgb(38, 42, 45)
+    background-color: rgb(235, 235, 235)
 }
 
 .rightColumn{
@@ -38,3 +38,4 @@
 .dark .gridTitle{
     color:white;
 }
+

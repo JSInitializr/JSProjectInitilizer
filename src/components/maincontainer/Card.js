@@ -5,47 +5,39 @@ import CardHeader from "@material-ui/core/CardHeader";
 import CardContent from "@material-ui/core/CardContent";
 import Typography from "@material-ui/core/Typography";
 import Fab from "@material-ui/core/Fab";
-import AddIcon from "@material-ui/icons/Add";
-import RemoveCircleIcon from "@material-ui/icons/RemoveCircle";
+import AddIcon from '@material-ui/icons/Add';
+import RemoveIcon from '@material-ui/icons/Remove';
+import "./css/card.css"
 
-const useStyles = makeStyles(theme => ({
-  card: {
-    maxWidth: 300
-  }
-}));
 
 export default function DependencyCard(props) {
-  const classes = useStyles();
-
+  
   const onAddRemoveClickEvent = event => {
     props.handleSelection &&
       props.handleSelection(event.currentTarget.id, props.category);
   };
 
   return (
-    <Card className={classes.card}>
+    <Card className="card">
       <CardHeader
         action={
           !props.isSelected ? (
             <Fab
-              size="small"
+              className="cardFab"
               id={props.label}
-              color="primary"
               aria-label="add"
-              className={classes.fab}
               onClick={onAddRemoveClickEvent}
             >
-              <AddIcon />
+              <AddIcon className="cardButton"/>
             </Fab>
           ) : (
             <Fab
-              size="small"
+              className="cardFab"
               id={props.label}
               aria-label="remove"
-              className={classes.fab}
               onClick={onAddRemoveClickEvent}
             >
-              <RemoveCircleIcon />
+              <RemoveIcon className="cardButton"/>
             </Fab>
           )
         }

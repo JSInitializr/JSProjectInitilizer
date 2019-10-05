@@ -38,8 +38,8 @@ export default function BottomNavigation(props) {
                 </Typography>
               </Box>
             </Grid>
-            <Grid item xs={9} md={9} className="btm-foot">
-              <Box display="flex" justifyContent="center" className="btm-box">
+            <Grid item xs={1} md={9} className="btm-foot">
+              <Box display="flex" justifyContent="left" className="btm-box">
                 <Button
                   onClick={props.submitAction}
                   variant="contained"
