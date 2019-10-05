@@ -38,7 +38,7 @@ export default function Logo() {
       </div>
       <div>
         <h2 className="headerTitle">
-        <span style={{marginRight:'4px'}}> {`{ JS }`} </span>project generator
+         {`{ JS }`} project <span>generator</span>
         </h2>
       </div>
       <div>
