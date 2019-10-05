@@ -4,8 +4,9 @@
   "license": "MIT",
   "dependencies": {
     "@material-ui/core": "^4.4.2",
-    "axios": "^0.19.0",
     "@material-ui/icons": "^4.4.3",
+    "axios": "^0.19.0",
+    "lodash": "^4.17.15",
     "material-ui-popup-state": "^1.4.1",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",

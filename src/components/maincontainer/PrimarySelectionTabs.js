@@ -10,14 +10,15 @@ class PrimarySelectionTabs extends Component {
     this.state = { shouldExpanded: false };
   }
 
-  handleTabChange = (event, newValue) => {
+  handleTabChange = (event, category) => {
+
     const expandableTab = this.props.tabs.find(tabItem => {
       return (
         tabItem.childTab && tabItem.childTab.whichTab === event.currentTarget.id
       );
     });
 
-    const childTab =
+    const expandedTab =
       !expandableTab &&
       this.props.tabs.find(tabItem => {
         return (
@@ -30,34 +31,48 @@ class PrimarySelectionTabs extends Component {
 
     const tabs = this.props.tabs;
     const updatedTabs = tabs.map(tabItem => {
+
       if (tabItem === expandableTab) {
-        return {
-          ...tabItem,
-          childTab: { ...tabItem.childTab, expanded: true },
-          selectedValue: event.currentTarget.id
-        };
-      } else if (tabItem === childTab) {
-        return {
-          ...tabItem,
-          childTab: {
-            ...tabItem.childTab,
+        if (tabItem.label == category) {
+          return {
+            ...tabItem,
+            childTab: { ...tabItem.childTab, expanded: true },
             selectedValue: event.currentTarget.id
-          }
-        };
-      } else {
-        return tabItem.childTab
-          ? {
-              ...tabItem,
-              childTab: { ...tabItem.childTab, expanded: false },
+          };
+        }
+        return tabItem;
+
+      } else if (tabItem === expandedTab) {
+        if (tabItem.childTab.label === category) {
+          return {
+            ...tabItem,
+            childTab: {
+              ...tabItem.childTab,
               selectedValue: event.currentTarget.id
             }
+          };
+        }
+        return tabItem;
+      } else {
+        if(tabItem.label === category){
+          return tabItem.childTab
+          ? {
+            ...tabItem,
+            childTab: { ...tabItem.childTab, expanded: false },
+            selectedValue: event.currentTarget.id
+          }
           : { ...tabItem, selectedValue: event.currentTarget.id };
+        }
+        return tabItem;
       }
     });
+
+    debugger;
     this.props.updateTabs(updatedTabs);
   };
 
   setupGridRow = item => {
+
     return (
       <>
         <Grid item xs={3} md={3} style={{ alignSelf: "flex-end" }}>
@@ -74,6 +89,7 @@ class PrimarySelectionTabs extends Component {
           <h4 className="gridTitle">
             <BasicTab
               tabTitle={item}
+              category={item.label}
               handleChange={(event, newValue) =>
                 this.handleTabChange(event, newValue)
               }
