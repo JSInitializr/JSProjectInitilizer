@@ -61,7 +61,7 @@
 					"label": "redux",
 					"desc": "Redux is a predictable state container for JavaScript apps",
 					"tag": ["angular","react", "react-native", "nodejs", "vs-code-extension"],
-					"default":["react","angular","angular"],
+					"default":["react","angular"],
 					"value": false,
 					"version":"1.0.0"
 				},
