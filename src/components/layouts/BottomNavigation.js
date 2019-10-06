@@ -33,7 +33,7 @@ export default function BottomNavigation(props) {
           <Grid container md={12} lg={12}>
             <Grid item xs={3} md={3} style={{ alignSelf: "flex-end" }}>
               <Box justifyContent="flex-start">
-                <Typography variant="body2" gutterBottom>
+                <Typography style={{margin:'0 8px 18px 33px'}} variant="body2" gutterBottom>
                   © 2019 JS Project Initializer. Bootstrap Quick development.
                 </Typography>
               </Box>
