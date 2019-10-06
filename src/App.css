@@ -72,3 +72,9 @@ border-bottom: 2px solid #f50057;
 .dark .MuiFormLabel-root{
     color:#9492928a;
 }
+.dark .MuiTypography-body1{
+    color: white;
+}
+.dark .MuiButton-label{
+    color: white;
+}
