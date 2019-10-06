@@ -46,7 +46,7 @@ body.dark {
 }
 
 .dark .btm-btn {
-    background: #1b1f23;
+    background: #6a6e73;
     border-color: #262a2d;
     color: #fff;
     margin: 2%;
@@ -79,5 +79,8 @@ border-bottom: 2px solid #f50057;
     color: white;
 }
 .dark .MuiListItemIcon-root {
+    color: white;
+}
+.dark .MuiTypography-gutterBottom{
     color: white;
 }
