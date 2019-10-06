@@ -78,3 +78,6 @@ border-bottom: 2px solid #f50057;
 .dark .MuiButton-label{
     color: white;
 }
+.dark .MuiListItemIcon-root {
+    color: white;
+}
