@@ -22,7 +22,6 @@ class App extends Component {
   }
 
   prepareRequestJson = () => {
-    debugger;
     const tabs = this.props.response.tabs.map(tabItem => {
       return tabItem.childTab &&
         tabItem.childTab.whichTab === tabItem.selectedValue
@@ -68,9 +67,6 @@ class App extends Component {
       metaDataItems: metaData,
       dependenciesItem: [].concat.apply([], filteredDependencyList)
     };
-
-    debugger;
-
     return requestParams;
   };
 

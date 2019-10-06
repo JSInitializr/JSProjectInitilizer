@@ -66,8 +66,6 @@ class PrimarySelectionTabs extends Component {
         return tabItem;
       }
     });
-
-    debugger;
     this.props.updateTabs(updatedTabs);
   };
 

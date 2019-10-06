@@ -9,7 +9,6 @@ function* fetchUIControlsData() {
 }
 
 function* submitInputs(action) {
-  debugger;
   console.log(action.payload);
  
   fetch('http://localhost:3000/project', {
