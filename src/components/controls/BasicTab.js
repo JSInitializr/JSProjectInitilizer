@@ -4,6 +4,7 @@ import Tab from "@material-ui/core/Tab";
 import "./css/tab.css";
 import SearchIcon from "@material-ui/icons/Search";
 import ListIcon from "@material-ui/icons/List";
+import { width } from "@material-ui/system";
 
 function a11yProps(id, index) {
   return {
@@ -13,7 +14,7 @@ function a11yProps(id, index) {
 }
 
 export default function BasicTab(props) {
-  const [value, setValue] = React.useState(0);
+  const [value, setValue] = React.useState(0) ;
 
   function handleChange(event, newValue) {
     setValue(newValue);
@@ -43,7 +44,7 @@ export default function BasicTab(props) {
             className="lang-tab"
             label={tab.label}
             {...a11yProps(tab, 0)}
-          />
+          ></Tab>
         );
       }
       return <Tab className="lang-tab" label={tab} {...a11yProps(tab, 0)} />;

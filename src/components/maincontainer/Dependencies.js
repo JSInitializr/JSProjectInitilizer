@@ -58,10 +58,10 @@ class Dependencies extends Component {
     return (
       <>
         <Grid container spacing={1}>
-          {this.dependencyList("react")[topic].map(t => (
+          {this.dependencyList(this.getSelectedTechnology())[topic].map(t => (
             <Grid key={t.label} item xs={4} sm={0}>
               <DependencyCard
-                isSelected={t.value}
+                isSelected={t.value || t.default.includes(this.getSelectedTechnology())}
                 handleSelection={this.handleSelection}
                 label={t.label}
                 desc={t.desc}
@@ -100,6 +100,8 @@ class Dependencies extends Component {
   };
 
   setupDependencyList = () => {
+    debugger;
+    console.log(this.getSelectedTechnology());
     const arr = [];
     for (const topic in this.dependencyList(this.getSelectedTechnology())) {
       if (topic !== "search_selection_item") {

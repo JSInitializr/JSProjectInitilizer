@@ -21,6 +21,7 @@ body{
 .lang-tab.MuiTab-root{
     text-transform:capitalize;
     font-weight:bold;
+    border-bottom: 2px ridge rgba(255, 255, 255, 0.4);;
 }
 
 

@@ -15,8 +15,14 @@ export default function DependencyCard(props) {
       props.handleSelection(event.currentTarget.id, props.category);
   };
 
+  // const toggleRaised = () => {
+  //   console.log("toggele raised")
+  //   setRaised(!raised)
+  // };
+
+
   return (
-    <Card className="card">
+    <Card  className="card">
       <CardHeader
         action={
           !props.isSelected ? (
