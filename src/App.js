@@ -22,51 +22,46 @@ class App extends Component {
   }
 
   prepareRequestJson = () => {
-    const tabs = this.props.response.tabs.map(tabItem => {
-      return tabItem.childTab &&
-        tabItem.childTab.whichTab === tabItem.selectedValue
-        ? {
-            [tabItem.label]: tabItem.selectedValue,
-            Database: {
-              [tabItem.childTab.label]: tabItem.childTab.selectedValue
-            }
-          }
-        : {
-            [tabItem.label]: tabItem.selectedValue
-          };
-    });
 
-    const metaData = this.props.response.metaData
-      .map(inputItem => {
-        return {
-          [inputItem.label]: inputItem.value
-        };
-      })
-      .filter(item => {
-        return item.value !== "";
-      });
+    const selectedTabItems = this.props.response.tabs.reduce((tabObject, tabItem)=> {
+      if(tabItem.childTab && tabItem.childTab.whichTab === tabItem.selectedValue){
+        tabObject[tabItem.label] = tabItem.selectedValue;
+        tabObject[tabItem.childTab.label] = tabItem.childTab.selectedValue;
+      }else{
+        tabObject[tabItem.label] = tabItem.selectedValue;
+      }
+      return tabObject;
+    },{});
 
-    const filteredDependencyList = [];
-
+    const metaDataObj = this.props.response.metaData
+      .filter(item=>item.value !='')
+      .reduce((metaDataObj,inputItem)=>{
+        metaDataObj[inputItem.label] = inputItem.value;
+        return metaDataObj;
+      },{})
+      
+    let selectedDependencyObj = {}  
     for (const category in this.props.response.dependencyList) {
-      filteredDependencyList.push(
+      selectedDependencyObj = 
         this.props.response.dependencyList[category]
           .filter(dependency => {
             return dependency.value;
           })
-          .map(dependency => {
-            return {
-              [dependency.label]: dependency.version
-            };
-          })
-      );
+          .reduce((obj,dependency) => {
+            obj[dependency.label] = dependency.version;
+            return obj;
+          },selectedDependencyObj);
+          console.log(selectedDependencyObj);
     }
 
+    
+
     const requestParams = {
-      tabItems: tabs,
-      metaDataItems: metaData,
-      dependenciesItem: [].concat.apply([], filteredDependencyList)
+      ...selectedTabItems,
+      metaDataItems: metaDataObj,
+      dependency:selectedDependencyObj
     };
+    debugger;
     return requestParams;
   };
 
