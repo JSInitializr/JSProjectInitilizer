@@ -88,6 +88,38 @@
 					"value": false,
 					"default":[],
 					"version":"1.0.0"
+				},
+				{
+					"label": "Prop-types",
+					"desc": "Runtime type checking for React props and similar objects.",
+					"tag": ["react", "react-native"],
+					"value": false,
+					"default":[],
+					"version":"1.0.0"
+				},
+				{
+					"label": "moment",
+					"desc": "A lightweight JavaScript date library for parsing, validating, manipulating, and formatting dates.",
+					"tag": ["angular","react", "react-native", "nodejs"],
+					"value": false,
+					"default":[],
+					"version":"1.0.0"
+				},
+				{
+					"label": "commander",
+					"desc": "The complete solution for node.js command-line interfaces, inspired by Ruby's commander.",
+					"tag": ["nodejs"],
+					"value": false,
+					"default":[],
+					"version":"1.0.0"
+				},
+				{
+					"label": "axios",
+					"desc": "Promise based HTTP client for the browser and node.js",
+					"tag": ["angular","react", "react-native", "nodejs"],
+					"value": false,
+					"default":[],
+					"version":"1.0.0"
 				}
 			],
 			"Web": [{
@@ -96,22 +128,6 @@
 					"tag": ["react", "react-native", "nodejs", "vs-code-extension"],
 					"value": false,
 					"default":["nodejs"],
-					"version":"1.0.0"
-				},
-				{
-					"label": "body-parser",
-					"desc": "Parse incoming request bodies in a middleware before your handlers, available under the req.body property",
-					"tag": ["angular","react", "react-native", "nodejs", "vs-code-extension"],
-					"value": false,
-					"default":[],
-					"version":"1.0.0"
-				},
-				{
-					"label": "lodash",
-					"desc": " It is used to simplify your work of managing and editing objects and arrays by providing lots of utility methods",
-					"tag": ["angular","react", "react-native", "nodejs", "vs-code-extension"],
-					"value": false,
-					"default":[],
 					"version":"1.0.0"
 				}
 			],
@@ -122,34 +138,32 @@
 					"value": false,
 					"default":[],
 					"version":"1.0.0"
-				},
-				{
-					"label": "body-parser",
-					"desc": "Parse incoming request bodies in a middleware before your handlers, available under the req.body property",
-					"tag": ["react", "react-native", "nodejs"],
-					"value": false,
-					"default":[],
-					"version":"1.0.0"
-				},
-				{
-					"label": "lodash",
-					"desc": " It is used to simplify your work of managing and editing objects and arrays by providing lots of utility methods",
-					"tag": ["react", "react-native", "nodejs"],
-					"value": false,
-					"default":[],
-					"version":"1.0.0"
 				}
 			],
 			"FileOperation": [{
-				"label": "lodash",
-				"desc": " It is used to simplify your work of managing and editing objects and arrays by providing lots of utility methods",
-				"tag": ["angular","react", "react-native", "nodejs", "vs-code-extension"],
+				"label": "file-system",
+				"desc": "file-system — Simplified file system",
+				"tag": ["nodejs"],
 				"value": false,
 				"default":[],
 				"version":"1.0.0"
 			}],
 			"Testing": [{
-				"label": "lodash",
+				"label": "Jest",
+				"desc": " It is used to simplify your work of managing and editing objects and arrays by providing lots of utility methods",
+				"tag": ["angular","react", "react-native", "nodejs", "vs-code-extension"],
+				"value": false,
+				"default":[],
+				"version":"1.0.0"
+			},{
+				"label": "Mocha",
+				"desc": " It is used to simplify your work of managing and editing objects and arrays by providing lots of utility methods",
+				"tag": ["angular","react", "react-native", "nodejs", "vs-code-extension"],
+				"value": false,
+				"default":[],
+				"version":"1.0.0"
+			},{
+				"label": "Jasmine",
 				"desc": " It is used to simplify your work of managing and editing objects and arrays by providing lots of utility methods",
 				"tag": ["angular","react", "react-native", "nodejs", "vs-code-extension"],
 				"value": false,
