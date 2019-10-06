@@ -11,7 +11,6 @@ class PrimarySelectionTabs extends Component {
   }
 
   handleTabChange = (event, category) => {
-
     const expandableTab = this.props.tabs.find(tabItem => {
       return (
         tabItem.childTab && tabItem.childTab.whichTab === event.currentTarget.id
@@ -31,7 +30,6 @@ class PrimarySelectionTabs extends Component {
 
     const tabs = this.props.tabs;
     const updatedTabs = tabs.map(tabItem => {
-
       if (tabItem === expandableTab) {
         if (tabItem.label == category) {
           return {
@@ -41,7 +39,6 @@ class PrimarySelectionTabs extends Component {
           };
         }
         return tabItem;
-
       } else if (tabItem === expandedTab) {
         if (tabItem.childTab.label === category) {
           return {
@@ -54,14 +51,14 @@ class PrimarySelectionTabs extends Component {
         }
         return tabItem;
       } else {
-        if(tabItem.label === category){
+        if (tabItem.label === category) {
           return tabItem.childTab
-          ? {
-            ...tabItem,
-            childTab: { ...tabItem.childTab, expanded: false },
-            selectedValue: event.currentTarget.id
-          }
-          : { ...tabItem, selectedValue: event.currentTarget.id };
+            ? {
+                ...tabItem,
+                childTab: { ...tabItem.childTab, expanded: false },
+                selectedValue: event.currentTarget.id
+              }
+            : { ...tabItem, selectedValue: event.currentTarget.id };
         }
         return tabItem;
       }
@@ -70,7 +67,6 @@ class PrimarySelectionTabs extends Component {
   };
 
   setupGridRow = item => {
-
     return (
       <>
         <Grid item xs={3} md={3} style={{ alignSelf: "flex-end" }}>

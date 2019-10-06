@@ -5,13 +5,11 @@ import CardHeader from "@material-ui/core/CardHeader";
 import CardContent from "@material-ui/core/CardContent";
 import Typography from "@material-ui/core/Typography";
 import Fab from "@material-ui/core/Fab";
-import AddIcon from '@material-ui/icons/Add';
-import RemoveIcon from '@material-ui/icons/Remove';
-import "./css/card.css"
-
+import AddIcon from "@material-ui/icons/Add";
+import RemoveIcon from "@material-ui/icons/Remove";
+import "./css/card.css";
 
 export default function DependencyCard(props) {
-  
   const onAddRemoveClickEvent = event => {
     props.handleSelection &&
       props.handleSelection(event.currentTarget.id, props.category);
@@ -28,7 +26,7 @@ export default function DependencyCard(props) {
               aria-label="add"
               onClick={onAddRemoveClickEvent}
             >
-              <AddIcon className="cardButton"/>
+              <AddIcon className="cardButton" />
             </Fab>
           ) : (
             <Fab
@@ -37,7 +35,7 @@ export default function DependencyCard(props) {
               aria-label="remove"
               onClick={onAddRemoveClickEvent}
             >
-              <RemoveIcon className="cardButton"/>
+              <RemoveIcon className="cardButton" />
             </Fab>
           )
         }

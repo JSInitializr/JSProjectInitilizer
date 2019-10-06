@@ -10,28 +10,31 @@ function* fetchUIControlsData() {
 
 function* submitInputs(action) {
   console.log(action.payload);
- 
-  fetch('http://localhost:3000/project', {
-    method: 'post',
+
+  fetch("http://localhost:3000/project", {
+    method: "post",
     responseType: "blob",
-    headers: { 'Content-Type': 'application/json' },
+    headers: { "Content-Type": "application/json" },
     body: JSON.stringify({
       ...action.form
     })
-  }).then((response) => {
-    return response.blob();
-  }).then(blob => {
-    const url = window.URL.createObjectURL(blob);
-    const link = document.createElement("a");
-    link.href = url;
-    link.setAttribute("download", "Project.zip"); //or any other extension
-    document.body.appendChild(link);
-    link.click();
-  }).catch(function (error) {
-    // handle error
-    console.log(error);
   })
-    .finally(function () {
+    .then(response => {
+      return response.blob();
+    })
+    .then(blob => {
+      const url = window.URL.createObjectURL(blob);
+      const link = document.createElement("a");
+      link.href = url;
+      link.setAttribute("download", "Project.zip"); //or any other extension
+      document.body.appendChild(link);
+      link.click();
+    })
+    .catch(function(error) {
+      // handle error
+      console.log(error);
+    })
+    .finally(function() {
       // always executed
       console.log("end");
     });

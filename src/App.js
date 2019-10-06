@@ -28,18 +28,18 @@ class App extends Component {
         ? {
             [tabItem.label]: tabItem.selectedValue,
             Database: {
-              [tabItem.childTab.label]: tabItem.childTab.selectedValue,
+              [tabItem.childTab.label]: tabItem.childTab.selectedValue
             }
           }
         : {
-            [tabItem.label]: tabItem.selectedValue,
+            [tabItem.label]: tabItem.selectedValue
           };
     });
 
     const metaData = this.props.response.metaData
       .map(inputItem => {
         return {
-          [inputItem.label]: inputItem.value,
+          [inputItem.label]: inputItem.value
         };
       })
       .filter(item => {
@@ -56,7 +56,7 @@ class App extends Component {
           })
           .map(dependency => {
             return {
-              [dependency.label]: dependency.version,
+              [dependency.label]: dependency.version
             };
           })
       );

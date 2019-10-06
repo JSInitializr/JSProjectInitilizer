@@ -85,7 +85,7 @@ class SearchDependency extends Component {
         value: true,
         version: selectedDependencyItem.version,
         desc: selectedDependencyItem.package.description,
-        default:[],
+        default: []
       });
       updatedList["search_selection_item"] = searchListArr;
     }
@@ -111,11 +111,11 @@ class SearchDependency extends Component {
         });
         // handle success
       })
-      .catch(function (error) {
+      .catch(function(error) {
         // handle error
         console.log(error);
       })
-      .finally(function () {
+      .finally(function() {
         // always executed
         console.log("end");
       });
@@ -127,7 +127,7 @@ class SearchDependency extends Component {
         return !this.props.dependencies[key].find(storeDependency => {
           return (
             storeDependency.label.toUpperCase() ===
-            dependency.package.name.toUpperCase() && storeDependency.value
+              dependency.package.name.toUpperCase() && storeDependency.value
           );
         });
       }
@@ -141,7 +141,13 @@ class SearchDependency extends Component {
       <>
         <Grid container spacing={1} xs={12}>
           <Grid item xs={8}>
-            <BasicTextField style={{ width: '100%', marginTop: '10px', paddingRight: '10px' }} handleChange={this.dependencyText.bind(this)} label="Search dependencies" placeholder="redux, express.. etc.(min 3 char required)" value={this.state.searchText} />
+            <BasicTextField
+              style={{ width: "100%", marginTop: "10px", paddingRight: "10px" }}
+              handleChange={this.dependencyText.bind(this)}
+              label="Search dependencies"
+              placeholder="redux, express.. etc.(min 3 char required)"
+              value={this.state.searchText}
+            />
             {this.state.searchResults &&
               this.state.searchResults.map(t => {
                 return (
@@ -158,23 +164,31 @@ class SearchDependency extends Component {
               })}
           </Grid>
           <Grid item xs={4}>
-            <Typography variant="subtitle2" >
-              Selected Dependency
-            </Typography>
-            {this.selectedDepdendency().length === 0 ?
-              <Typography style={{marginTop:'10px' , color:'gray'}} variant="caption" >
+            <Typography variant="subtitle2">Selected Dependency</Typography>
+            {this.selectedDepdendency().length === 0 ? (
+              <Typography
+                style={{ marginTop: "10px", color: "gray" }}
+                variant="caption"
+              >
                 No dependency selected.
-              </Typography> : this.selectedDepdendency().map(t => {
-                  return <>
-                    <div style={{ height: '10px' }}></div>
-                    <DependencyCard isSelected={t.value} handleSelection={this.handleSelection} label={t.label} desc={t.desc} />
-
+              </Typography>
+            ) : (
+              this.selectedDepdendency().map(t => {
+                return (
+                  <>
+                    <div style={{ height: "10px" }}></div>
+                    <DependencyCard
+                      isSelected={t.value}
+                      handleSelection={this.handleSelection}
+                      label={t.label}
+                      desc={t.desc}
+                    />
                   </>
-                }
-                )}
+                );
+              })
+            )}
             {}
           </Grid>
-
         </Grid>
       </>
     );

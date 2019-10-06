@@ -18,9 +18,8 @@ export default function BasicTab(props) {
   function handleChange(event, newValue) {
     setValue(newValue);
     if (props.handleChange) {
-      props.handleChange(event, props.category?props.category:newValue);
-    }else{
-
+      props.handleChange(event, props.category ? props.category : newValue);
+    } else {
     }
   }
 

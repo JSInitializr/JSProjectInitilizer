@@ -37,7 +37,12 @@ class Body extends Component {
                 <h4 className="gridLable">{"Project Meta Data"}</h4>
               </div>
             </Grid>
-            <Grid item xs={9} md={9} style={{ textAlignLast: "start", paddingLeft: "8px" }}>
+            <Grid
+              item
+              xs={9}
+              md={9}
+              style={{ textAlignLast: "start", paddingLeft: "8px" }}
+            >
               <ProjectMetaData
                 metaData={this.props.response.metaData}
                 updateMetaData={this.props.updateMetaData}
