@@ -64,9 +64,19 @@ body.dark {
 .dark .MuiFormLabel-root.Mui-focused{
     color: #dad4d4;
 }
+
 .dark .MuiInput-underline:after{
-border-bottom: 2px solid #f50057;
+border-bottom: 1px solid #f50057;
 }
+
+.dark .MuiInput-underline:before{
+    border-bottom: 1px solid gray;
+    }
+
+.dark .MuiTypography-root{
+    color: white;
+}
+
 .dark input{
     color: white;
 }

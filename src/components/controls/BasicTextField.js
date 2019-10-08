@@ -23,20 +23,42 @@ const useStyles = makeStyles(theme => ({
 
 export default function BasicTextField(props) {
   const classes = useStyles();
-  return (
-    <TextField
-      style={props.style}
-      id={props.id}
-      label={props.label}
-      className={classes.textField}
-      value={props.value}
-      onChange={props.handleChange}
-      margin="normal"
-      placeholder={props.placeholder}
-      InputLabelProps={{
-        shrink: true,
-        color: "white"
-      }}
-    />
-  );
+  const error = props.error;
+  if(error){
+    return (
+      <TextField
+        style={props.style}
+        error
+        id={props.id}
+        label={props.label}
+        className={classes.textField}
+        value={props.value}
+        onChange={props.handleChange}
+        margin="normal"
+        placeholder={props.placeholder}
+        InputLabelProps={{
+          shrink: true,
+          color: "white"
+        }}
+      />
+    );
+  }else{
+    return (
+      <TextField
+        style={props.style}
+        id={props.id}
+        label={props.label}
+        className={classes.textField}
+        value={props.value}
+        onChange={props.handleChange}
+        margin="normal"
+        placeholder={props.placeholder}
+        InputLabelProps={{
+          shrink: true,
+          color: "white"
+        }}
+      />
+    );
+  }
+  
 }

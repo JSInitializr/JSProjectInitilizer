@@ -26,6 +26,14 @@
     color: white;
 }
 
+.dark .MuiSvgIcon-root{
+    color: gray;
+}
+
+.dark .MuiCard-root{
+    background: #252A2D;
+}
+
 .gridTitle{
     font-weight: bold;
     text-align:right;

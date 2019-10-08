@@ -40,6 +40,11 @@ class Dependencies extends Component {
   handleSelection = (cardId, category) => {
     const dependencyList = this.props.dependencyList;
     const updatedArr = dependencyList[category].map(item => {
+
+      if(item.default.includes(this.getSelectedTechnology())){
+        return item;
+      }
+
       if (item.label === cardId) {
         return { ...item, value: !item.value };
       }
