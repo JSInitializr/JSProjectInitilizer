@@ -22,7 +22,16 @@ Just select the technology, choose dependencies and download a project, and youâ
 To create a new app, you may choose one of the following methods:
 
 ### 1. Select the Technology 
+#### Light Theme
+![alt text](https://github.com/JSInitializr/JSProjectInitilizer/blob/master/public/githubImages/jspro.png)
+#### Dark Theme
+![alt text](https://github.com/JSInitializr/JSProjectInitilizer/blob/master/public/githubImages/jsprob.png)
+
 ### 2. Select dependencies
+![alt text](https://github.com/JSInitializr/JSProjectInitilizer/blob/master/public/githubImages/searchSelectDep.png)
+
+![alt text](https://github.com/JSInitializr/JSProjectInitilizer/blob/master/public/githubImages/searchSelectDepchoose.png)
+
 ### 3. Download the zip.
 ### 4. npm or yarn Install
 
