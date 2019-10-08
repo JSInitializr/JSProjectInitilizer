@@ -19,13 +19,21 @@ class ProjectMetaData extends Component {
       data => data.required === required
     );
     return filteredMetaData.map(data => {
+      let showValidation = false;
+      if(this.props.showValidation && data.required == true && data.value === ''){
+        showValidation = true;
+      }
+
+      const label = data.required ? (data.label + '*'): data.label;
+
       return (
         <>
           <BasicTextField
+            error={showValidation}
             id={data.label}
             key={data.label}
             handleChange={this.handleChange}
-            label={data.label}
+            label={label}
             placeholder={data.placeholder}
             value={data.value}
           />

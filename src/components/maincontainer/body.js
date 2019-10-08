@@ -46,6 +46,7 @@ class Body extends Component {
               <ProjectMetaData
                 metaData={this.props.response.metaData}
                 updateMetaData={this.props.updateMetaData}
+                showValidation={this.props.showValidation}
               />
             </Grid>
           </Grid>
