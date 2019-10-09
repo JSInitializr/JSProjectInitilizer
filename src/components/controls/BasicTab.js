@@ -4,7 +4,6 @@ import Tab from "@material-ui/core/Tab";
 import "./css/tab.css";
 import SearchIcon from "@material-ui/icons/Search";
 import ListIcon from "@material-ui/icons/List";
-import { width } from "@material-ui/system";
 
 function a11yProps(id, index) {
   return {

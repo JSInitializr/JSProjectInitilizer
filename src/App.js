@@ -35,7 +35,7 @@ class App extends Component {
     },{});
 
     const metaDataObj = this.props.response.metaData
-      .filter(item=>item.value !='')
+      .filter(item=>item.value !=='')
       .reduce((metaDataObj,inputItem)=>{
         metaDataObj[inputItem.label] = inputItem.value;
         return metaDataObj;

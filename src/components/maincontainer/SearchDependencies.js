@@ -122,7 +122,7 @@ class SearchDependency extends Component {
   };
 
   filteredEarlierSelectionDependency = responseDependencyList => {
-    const c = responseDependencyList.filter(dependency => {
+    const userDependancyList = responseDependencyList.filter(dependency => {
       for (const key of Object.keys(this.props.dependencies)) {
         return !this.props.dependencies[key].find(storeDependency => {
           return (
@@ -132,8 +132,7 @@ class SearchDependency extends Component {
         });
       }
     });
-
-    return c;
+    return userDependancyList;
   };
 
   render() {
