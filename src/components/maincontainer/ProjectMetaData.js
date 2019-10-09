@@ -20,7 +20,7 @@ class ProjectMetaData extends Component {
     );
     return filteredMetaData.map(data => {
       let showValidation = false;
-      if(this.props.showValidation && data.required == true && data.value === ''){
+      if(this.props.showValidation && data.required === true && data.value === ''){
         showValidation = true;
       }
 

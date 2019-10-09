@@ -31,7 +31,7 @@ class PrimarySelectionTabs extends Component {
     const tabs = this.props.tabs;
     const updatedTabs = tabs.map(tabItem => {
       if (tabItem === expandableTab) {
-        if (tabItem.label == category) {
+        if (tabItem.label === category) {
           return {
             ...tabItem,
             childTab: { ...tabItem.childTab, expanded: true },
