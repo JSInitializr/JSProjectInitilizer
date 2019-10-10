@@ -40,6 +40,7 @@ export default function BasicTextField(props) {
           shrink: true,
           color: "white"
         }}
+        variant="outlined"
       />
     );
   } else {
@@ -57,6 +58,7 @@ export default function BasicTextField(props) {
           shrink: true,
           color: "white"
         }}
+        
       />
     );
   }

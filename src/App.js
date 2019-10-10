@@ -19,6 +19,7 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.submitActionHandler = this.submitActionHandler.bind(this);
+    this.state = { showValidation: false };
   }
 
   prepareRequestJson = () => {
@@ -39,8 +40,8 @@ class App extends Component {
     );
 
     const metaDataObj = this.props.response.metaData
-      .filter(item => item.value !== "")
-      .reduce((metaDataObj, inputItem) => {
+      .filter(item=>item.value !=='')
+      .reduce((metaDataObj,inputItem)=>{
         metaDataObj[inputItem.label] = inputItem.value;
         return metaDataObj;
       }, {});
@@ -78,6 +79,10 @@ class App extends Component {
   submitActionHandler = event => {
     const requestParams = this.prepareRequestJson();
     const isInputValidated = this.validateInputs(this.props.response);
+    this.setState({showValidation:!isInputValidated});
+    if(!isInputValidated){
+      alert("Please fill required fields.");
+    }
     isInputValidated && this.props.submitInputs(requestParams);
   };
 
@@ -85,7 +90,7 @@ class App extends Component {
     return (
       <ThemeProvider theme={theme}>
         <TopNavigation />
-        <MainContainer {...this.props} />
+        <MainContainer {...this.props} showValidation={this.state.showValidation}/>
         <BottomNavigation submitAction={this.submitActionHandler} />
       </ThemeProvider>
     );
