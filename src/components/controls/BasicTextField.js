@@ -24,7 +24,7 @@ const useStyles = makeStyles(theme => ({
 export default function BasicTextField(props) {
   const classes = useStyles();
   const error = props.error;
-  if(error){
+  if (error) {
     return (
       <TextField
         style={props.style}
@@ -42,7 +42,7 @@ export default function BasicTextField(props) {
         }}
       />
     );
-  }else{
+  } else {
     return (
       <TextField
         style={props.style}
@@ -60,5 +60,4 @@ export default function BasicTextField(props) {
       />
     );
   }
-  
 }
