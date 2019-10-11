@@ -23,44 +23,46 @@ class App extends Component {
   }
 
   prepareRequestJson = () => {
-
-    const selectedTabItems = this.props.response.tabs.reduce((tabObject, tabItem)=> {
-      if(tabItem.childTab && tabItem.childTab.whichTab === tabItem.selectedValue){
-        tabObject[tabItem.label] = tabItem.selectedValue;
-        tabObject[tabItem.childTab.label] = tabItem.childTab.selectedValue;
-      }else{
-        tabObject[tabItem.label] = tabItem.selectedValue;
-      }
-      return tabObject;
-    },{});
+    const selectedTabItems = this.props.response.tabs.reduce(
+      (tabObject, tabItem) => {
+        if (
+          tabItem.childTab &&
+          tabItem.childTab.whichTab === tabItem.selectedValue
+        ) {
+          tabObject[tabItem.label] = tabItem.selectedValue;
+          tabObject[tabItem.childTab.label] = tabItem.childTab.selectedValue;
+        } else {
+          tabObject[tabItem.label] = tabItem.selectedValue;
+        }
+        return tabObject;
+      },
+      {}
+    );
 
     const metaDataObj = this.props.response.metaData
       .filter(item=>item.value !=='')
       .reduce((metaDataObj,inputItem)=>{
         metaDataObj[inputItem.label] = inputItem.value;
         return metaDataObj;
-      },{})
-      
-    let selectedDependencyObj = {}  
-    for (const category in this.props.response.dependencyList) {
-      selectedDependencyObj = 
-        this.props.response.dependencyList[category]
-          .filter(dependency => {
-            return dependency.value;
-          })
-          .reduce((obj,dependency) => {
-            obj[dependency.label] = dependency.version;
-            return obj;
-          },selectedDependencyObj);
-          console.log(selectedDependencyObj);
-    }
+      }, {});
 
-    
+    let selectedDependencyObj = {};
+    for (const category in this.props.response.dependencyList) {
+      selectedDependencyObj = this.props.response.dependencyList[category]
+        .filter(dependency => {
+          return dependency.value;
+        })
+        .reduce((obj, dependency) => {
+          obj[dependency.label] = dependency.version;
+          return obj;
+        }, selectedDependencyObj);
+      console.log(selectedDependencyObj);
+    }
 
     const requestParams = {
       ...selectedTabItems,
       metaDataItems: metaDataObj,
-      dependency:selectedDependencyObj
+      dependency: selectedDependencyObj
     };
     debugger;
     return requestParams;
