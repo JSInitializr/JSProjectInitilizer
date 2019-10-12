@@ -19,9 +19,8 @@ export default function DependencyCard(props) {
   //   setRaised(!raised)
   // };
 
-
   return (
-    <Card  className="card">
+    <Card className="card">
       <CardHeader
         action={
           !props.isSelected ? (

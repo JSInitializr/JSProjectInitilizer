@@ -40,8 +40,7 @@ class Dependencies extends Component {
   handleSelection = (cardId, category) => {
     const dependencyList = this.props.dependencyList;
     const updatedArr = dependencyList[category].map(item => {
-
-      if(item.default.includes(this.getSelectedTechnology())){
+      if (item.default.includes(this.getSelectedTechnology())) {
         return item;
       }
 
@@ -66,7 +65,9 @@ class Dependencies extends Component {
           {this.dependencyList(this.getSelectedTechnology())[topic].map(t => (
             <Grid key={t.label} item xs={4} sm={0}>
               <DependencyCard
-                isSelected={t.value || t.default.includes(this.getSelectedTechnology())}
+                isSelected={
+                  t.value || t.default.includes(this.getSelectedTechnology())
+                }
                 handleSelection={this.handleSelection}
                 label={t.label}
                 desc={t.desc}
