@@ -27,7 +27,7 @@ body{
 
 /* Light theme */
 body.light {
-    background-image: url(../src/assets/layout/leftlayout.gif);
+    background-image: url(../src/assets/layout/leftlayout.png);
 }
 .light .btm-foot{
     background: white;
