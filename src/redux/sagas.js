@@ -11,7 +11,7 @@ function* fetchUIControlsData() {
 function* submitInputs(action) {
   console.log(action.payload);
 
-  fetch("http://localhost:3000/project", {
+  fetch("https://dry-sea-46703.herokuapp.com/project", {
     method: "post",
     responseType: "blob",
     headers: { "Content-Type": "application/json" },
