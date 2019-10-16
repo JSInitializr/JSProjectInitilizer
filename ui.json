@@ -8,7 +8,7 @@
 			"childTab": null
 		}, {
 			"label": "Technology",
-			"options": ["Angular", "React", "React Native", "Node js server", "VS Code Extension"],
+			"options": ["Angular", "React", "React Native", "Node Js Server", "VS Code Extension"],
 			"required": true,
 			"selectedValue": "Angular",
 			"childTab": {
