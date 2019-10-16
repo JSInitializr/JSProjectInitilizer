@@ -31,7 +31,7 @@ export default function SwitchLabels() {
         transform: "translateX(25px)",
         color: theme.palette.common.white,
         "& + $track": {
-          backgroundColor: "#52d869",
+          backgroundColor: "#f50057",
           opacity: 1,
           border: "none"
         }
