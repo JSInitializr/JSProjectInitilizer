@@ -13,7 +13,7 @@
 			"selectedValue": "Angular",
 			"childTab": {
 				"expanded":false,
-				"whichTab": "Node js server",
+				"whichTab": "Node Js Server",
 				"label": "Database",
 				"options": ["None","MongoDB", "MySql", "PostgreSQL"],
 				"required": true,
