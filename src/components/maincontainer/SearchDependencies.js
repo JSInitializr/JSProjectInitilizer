@@ -56,14 +56,18 @@ class SearchDependency extends Component {
     let isCardIdExistInState = false;
     const dependencyList = this.props.dependencies;
     const updatedList = { ...dependencyList };
+
+
+    const mapCallBack = (item) => {
+      if (item.label.toUpperCase() === cardId.toUpperCase()) {
+        isCardIdExistInState = true;
+        return { ...item, value: !item.value };
+      }
+      return item;
+    }
+
     for (const category in dependencyList) {
-      const updatedArr = dependencyList[category].map(item => {
-        if (item.label.toUpperCase() === cardId.toUpperCase()) {
-          isCardIdExistInState = true;
-          return { ...item, value: !item.value };
-        }
-        return item;
-      });
+      const updatedArr = dependencyList[category].map(mapCallBack);
       updatedList[category] = updatedArr;
     }
 
@@ -138,7 +142,7 @@ class SearchDependency extends Component {
   render() {
     return (
       <>
-        <Grid container spacing={1} xs={12}>
+        <Grid container spacing={1}>
           <Grid item xs={8}>
             <BasicTextField
               style={{ width: "100%", marginTop: "10px", paddingRight: "10px" }}

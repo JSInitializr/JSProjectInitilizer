@@ -23,9 +23,7 @@ class Body extends Component {
       <>
         <Grid
           container
-          md={12}
-          lg={12}
-          style={{ "overflow-x": "hidden", "padding-bottom": "8%" }}
+          style={{ overflow: "hidden", paddingBottom: "8%" }}
         >
           <PrimarySelectionTabs
             tabs={this.props.response.tabs}

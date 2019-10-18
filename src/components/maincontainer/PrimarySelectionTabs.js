@@ -116,14 +116,13 @@ class PrimarySelectionTabs extends Component {
   };
 
   getTab = tabItem => {
+    
     const tab = (
-      <>
-        <Grid container spacing={0}>
+        <Grid key={tabItem.label} container spacing={0}>
           {!tabItem.childTab
             ? this.setupGridRow(tabItem)
             : this.getParentChildTab(tabItem)}
         </Grid>
-      </>
     );
     return tab;
   };

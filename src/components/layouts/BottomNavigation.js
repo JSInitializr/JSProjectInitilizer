@@ -7,6 +7,7 @@ import CloudDownloadIcon from "@material-ui/icons/CloudDownload";
 import Typography from "@material-ui/core/Typography";
 import Grid from "@material-ui/core/Grid";
 import Box from "@material-ui/core/Box";
+import { BallClipRotate } from 'react-pure-loaders';
 
 const useStyles = makeStyles(theme => ({
   button: {
@@ -25,12 +26,34 @@ const useStyles = makeStyles(theme => ({
 export default function BottomNavigation(props) {
   const classes = useStyles();
 
+  const buttonOrSpinner = props.downloadingProject ? (<div>
+    <Typography
+      style={{ margin: "0 0px 0px 0px" }}
+      variant="body2"
+      gutterBottom
+    >
+      Hang tight, preparing project...
+    </Typography>
+    <BallClipRotate style={{ margin: '10px' }}
+      color={'#f50057'}
+      loading={true}
+    />
+  </div>) : (<Button
+    onClick={props.submitAction}
+    variant="contained"
+    color="default"
+    className="btm-btn"
+  >
+    Generate the project
+                  <CloudDownloadIcon />
+  </Button>);
+
   return (
     <>
       <CssBaseline />
       <AppBar position="fixed" color="primary" className={classes.appBar}>
         <Box p={1} style={{ paddingBottom: "0px" }}>
-          <Grid container md={12} lg={12}>
+          <Grid container>
             <Grid item xs={3} md={3} style={{ alignSelf: "flex-end" }}>
               <Box justifyContent="flex-start">
                 <Typography
@@ -43,16 +66,9 @@ export default function BottomNavigation(props) {
               </Box>
             </Grid>
             <Grid item xs={1} md={9} className="btm-foot">
+
               <Box display="flex" justifyContent="left" className="btm-box">
-                <Button
-                  onClick={props.submitAction}
-                  variant="contained"
-                  color="default"
-                  className="btm-btn"
-                >
-                  Generate the project
-                  <CloudDownloadIcon />
-                </Button>
+                {buttonOrSpinner}
               </Box>
             </Grid>
           </Grid>

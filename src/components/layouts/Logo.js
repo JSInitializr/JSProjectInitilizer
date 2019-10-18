@@ -25,7 +25,7 @@ const useStyles = makeStyles(theme => ({
 export default function Logo() {
   const classes = useStyles();
   return (
-    <p style={{ margin: "0px" }}>
+    <div style={{ margin: "0px" }}>
       <div style={{ float: "left", width: "50px", height: "54px" }}>
         <IconButton
           edge="start"
@@ -44,6 +44,6 @@ export default function Logo() {
       <div>
         <h4 className="headerSubTitle">Bootstrap your application</h4>
       </div>
-    </p>
+    </div>
   );
 }

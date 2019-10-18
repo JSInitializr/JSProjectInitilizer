@@ -35,10 +35,12 @@ export default function BasicTab(props) {
   };
 
   const tabs = () => {
+    
     const t = props.tabs.map(tab => {
       if (tab.icon) {
         return (
           <Tab
+            key={tab.label}
             icon={tabIcon(tab.icon)}
             className="lang-tab"
             label={tab.label}
@@ -46,12 +48,11 @@ export default function BasicTab(props) {
           ></Tab>
         );
       }
-      return <Tab className="lang-tab" label={tab} {...a11yProps(tab, 0)} />;
+      return <Tab key={tab} className="lang-tab" label={tab} {...a11yProps(tab, 0)} />;
     });
     return t;
   };
   return (
-    <div>
       <Tabs
         value={value}
         onChange={handleChange}
@@ -60,6 +61,5 @@ export default function BasicTab(props) {
       >
         {tabs()}
       </Tabs>
-    </div>
   );
 }

@@ -54,7 +54,7 @@ export default function TopNavigation() {
     <div className={classes.grow}>
       <AppBar position="static" className={classes.appBarStyle}>
         <Box p={1}>
-          <Grid container md={12} lg={12}>
+          <Grid container >
             <Grid item xs={3} md={3} style={{ alignSelf: "flex-end" }}>
               <div>
                 <Logo />

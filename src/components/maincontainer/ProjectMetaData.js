@@ -27,7 +27,6 @@ class ProjectMetaData extends Component {
       const label = data.required ? (data.label + '*'): data.label;
 
       return (
-        <>
           <BasicTextField
             error={showValidation}
             id={data.label}
@@ -37,7 +36,6 @@ class ProjectMetaData extends Component {
             placeholder={data.placeholder}
             value={data.value}
           />
-        </>
       );
     });
   };

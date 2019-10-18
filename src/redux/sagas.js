@@ -1,5 +1,4 @@
 import { put, takeLatest, all } from "redux-saga/effects";
-const axios = require("axios");
 
 function* fetchUIControlsData() {
   const json = yield fetch(
@@ -10,8 +9,10 @@ function* fetchUIControlsData() {
 
 function* submitInputs(action) {
   console.log(action.payload);
+  
+  yield put({ type: "DOWNLOAING_PROJECT", downloadingState: true });
 
-  fetch("https://dry-sea-46703.herokuapp.com/project", {
+  yield fetch("https://dry-sea-46703.herokuapp.com/project", {
     method: "post",
     responseType: "blob",
     headers: { "Content-Type": "application/json" },
@@ -26,41 +27,19 @@ function* submitInputs(action) {
       const url = window.URL.createObjectURL(blob);
       const link = document.createElement("a");
       link.href = url;
-      link.setAttribute("download", "Project.zip"); //or any other extension
+      link.setAttribute("download", action.form.metaDataItems["App name"] + ".zip"); //or any other extension
       document.body.appendChild(link);
       link.click();
     })
-    .catch(function(error) {
+    .catch(function (error) {
       // handle error
       console.log(error);
     })
-    .finally(function() {
+    .finally(function () {
       // always executed
-      console.log("end");
     });
 
-  // axios
-  //   .post("http://localhost:3000/project", {
-  //     responseType: "blob",
-  //     headers: { "Access-Control-Allow-Origin": "*" }
-  //   })
-  //   .then(response => {
-  //     const url = window.URL.createObjectURL(new Blob([response.data]));
-  //     const link = document.createElement("a");
-  //     link.href = url;
-  //     link.setAttribute("download", "Project.zip"); //or any other extension
-  //     document.body.appendChild(link);
-  //     link.click();
-  //   })
-  //   .catch(function(error) {
-  //     // handle error
-  //     console.log(error);
-  //   })
-  //   .finally(function() {
-  //     // always executed
-  //     console.log("end");
-  //   });
-  //yield put({ type: constants.RECEIVED_SUBMIT_FORM_RESPONSE, response: json.response,});
+    yield put({ type: "DOWNLOAING_PROJECT", downloadingState: false });
 }
 
 function* actionWatcherForFetchUIControls() {

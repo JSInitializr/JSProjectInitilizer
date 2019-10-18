@@ -20,6 +20,8 @@ const reducer = (state = {}, action) => {
       };
     case constants.RECEIVED_SUBMIT_FORM_RESPONSE:
       return { ...state, response: action.response, loading: false };
+    case constants.DOWNLOAING_PROJECT:
+      return {...state, downloadingState:action.downloadingState};  
     default:
       return state;
   }

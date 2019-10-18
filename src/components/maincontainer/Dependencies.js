@@ -9,7 +9,7 @@ import SearchDependencies from "./SearchDependencies";
 
 class Dependencies extends Component {
   state = {
-    tabs: [{ label: "", icon: "search" }, { label: "", icon: "list" }],
+    tabs: [{ label: "search", icon: "search" }, { label: "list", icon: "list" }],
     showDependencies: false
   };
 
@@ -55,7 +55,7 @@ class Dependencies extends Component {
   };
 
   detailMoreOptionControl = topic => {
-    return <DetailMore label={topic} />;
+    return <DetailMore key={topic} label={topic} />;
   };
 
   getDetailPanel = topic => {
@@ -63,8 +63,9 @@ class Dependencies extends Component {
       <>
         <Grid container spacing={1}>
           {this.dependencyList(this.getSelectedTechnology())[topic].map(t => (
-            <Grid key={t.label} item xs={4} sm={0}>
+            <Grid key={t.label} item xs={4}>
               <DependencyCard
+                key={t.label}
                 isSelected={
                   t.value || t.default.includes(this.getSelectedTechnology())
                 }
@@ -106,19 +107,16 @@ class Dependencies extends Component {
   };
 
   setupDependencyList = () => {
-    debugger;
-    console.log(this.getSelectedTechnology());
     const arr = [];
     for (const topic in this.dependencyList(this.getSelectedTechnology())) {
       if (topic !== "search_selection_item") {
         arr.push(
-          <>
-            <BasicExpansionPanel
+           <BasicExpansionPanel
+              key={topic}
               defaultExpanded={true}
               summaryPanel={this.detailMoreOptionControl(topic)}
               detailPanel={this.getDetailPanel(topic)}
-            />
-          </>
+            /> 
         );
       }
     }

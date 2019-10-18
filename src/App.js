@@ -8,6 +8,7 @@ import { ThemeProvider } from "@material-ui/styles";
 import { connect } from "react-redux";
 import { fetchUIRenderData, submitInputData } from "./redux/actions";
 import * as constants from "./assets/constants";
+import Loader from './components/controls/Loader';
 
 const theme = createMuiTheme({
   palette: {
@@ -40,8 +41,8 @@ class App extends Component {
     );
 
     const metaDataObj = this.props.response.metaData
-      .filter(item=>item.value !=='')
-      .reduce((metaDataObj,inputItem)=>{
+      .filter(item => item.value !== '')
+      .reduce((metaDataObj, inputItem) => {
         metaDataObj[inputItem.label] = inputItem.value;
         return metaDataObj;
       }, {});
@@ -79,26 +80,32 @@ class App extends Component {
   submitActionHandler = event => {
     const requestParams = this.prepareRequestJson();
     const isInputValidated = this.validateInputs(this.props.response);
-    this.setState({showValidation:!isInputValidated});
-    if(!isInputValidated){
+    this.setState({ showValidation: !isInputValidated });
+    if (!isInputValidated) {
       alert("Please fill required fields.");
     }
     isInputValidated && this.props.submitInputs(requestParams);
+  };
+
+   handleClose = () => {
+    // setOpen(false);
   };
 
   render() {
     return (
       <ThemeProvider theme={theme}>
         <TopNavigation />
-        <MainContainer {...this.props} showValidation={this.state.showValidation}/>
+        <MainContainer {...this.props} showValidation={this.state.showValidation} />
         <BottomNavigation submitAction={this.submitActionHandler} />
+        <Loader show={this.props.downloadingState}/>
       </ThemeProvider>
     );
   }
 }
 
 const mapStateToProps = state => ({
-  response: state.response
+  response: state.response,
+  downloadingState: state.downloadingState
 });
 
 const mapDispatchToProps = dispatch => ({
