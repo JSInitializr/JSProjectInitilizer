@@ -4,7 +4,6 @@ import DependencyCard from "./Card";
 import Typography from "@material-ui/core/Typography";
 import BasicTextField from "../controls/BasicTextField";
 
-const axios = require("axios");
 let size = 10,
   apiLink = `https://api.npms.io/v2/search?q=""&size=${size}`;
 
@@ -104,22 +103,19 @@ class SearchDependency extends Component {
   };
 
   searchDependency = () => {
-    axios
-      .get(apiLink)
-      .then(response => {
-        const filteredArr = this.filteredEarlierSelectionDependency(
-          response.data.results
-        );
-        this.setState({ ...this.state, searchResults: filteredArr }, () => {
-          console.log(this.state.searchResults);
-        });
-        // handle success
-      })
-      .catch(function(error) {
-        // handle error
-        console.log(error);
-      })
-      .finally(function() {
+
+    fetch(apiLink).then(response => {
+      debugger;
+      return response.json();
+    }).then(json => {
+      const filteredArr = this.filteredEarlierSelectionDependency(json.results);
+      this.setState({ ...this.state, searchResults: filteredArr }, () => {
+        console.log(this.state.searchResults);
+      });
+    }).catch(function (error) {
+      // handle error
+      console.log(error);
+    }).finally(function () {
         // always executed
         console.log("end");
       });
@@ -131,7 +127,7 @@ class SearchDependency extends Component {
         return !this.props.dependencies[key].find(storeDependency => {
           return (
             storeDependency.label.toUpperCase() ===
-              dependency.package.name.toUpperCase() && storeDependency.value
+            dependency.package.name.toUpperCase() && storeDependency.value
           );
         });
       }
@@ -176,20 +172,20 @@ class SearchDependency extends Component {
                 No dependency selected.
               </Typography>
             ) : (
-              this.selectedDepdendency().map(t => {
-                return (
-                  <>
-                    <div style={{ height: "10px" }}></div>
-                    <DependencyCard
-                      isSelected={t.value}
-                      handleSelection={this.handleSelection}
-                      label={t.label}
-                      desc={t.desc}
-                    />
-                  </>
-                );
-              })
-            )}
+                this.selectedDepdendency().map(t => {
+                  return (
+                    <>
+                      <div style={{ height: "10px" }}></div>
+                      <DependencyCard
+                        isSelected={t.value}
+                        handleSelection={this.handleSelection}
+                        label={t.label}
+                        desc={t.desc}
+                      />
+                    </>
+                  );
+                })
+              )}
             {}
           </Grid>
         </Grid>

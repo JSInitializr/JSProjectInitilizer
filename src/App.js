@@ -93,7 +93,7 @@ class App extends Component {
 
   render() {
     return (
-      <ThemeProvider theme={theme}>
+      <ThemeProvider >
         <TopNavigation />
         <MainContainer {...this.props} showValidation={this.state.showValidation} />
         <BottomNavigation submitAction={this.submitActionHandler} />

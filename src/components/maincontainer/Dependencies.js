@@ -141,6 +141,7 @@ class Dependencies extends Component {
             this.handleTabChange(event, newValue)
           }
           tabs={this.state.tabs}
+          selectedIndex={this.state.showDependencies?1:0}
         />
         {this.state.showDependencies ? (
           this.setupDependencyList()

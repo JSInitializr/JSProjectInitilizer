@@ -13,7 +13,12 @@ function a11yProps(id, index) {
 }
 
 export default function BasicTab(props) {
+  
   const [value, setValue] = React.useState(0);
+
+  if(props.selectedIndex!==value){
+    setValue(props.selectedIndex);
+  }
 
   function handleChange(event, newValue) {
     setValue(newValue);

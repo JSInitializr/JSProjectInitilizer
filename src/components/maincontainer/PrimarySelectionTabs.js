@@ -10,10 +10,14 @@ class PrimarySelectionTabs extends Component {
     this.state = { shouldExpanded: false };
   }
 
-  handleTabChange = (event, category) => {
+  changeDataEvent = (value, category, recursiveUpdatedItems) => {
+    if(value==='Typescript'){
+      alert('This feature will be availiable in next release version.');
+      return;
+    }
     const expandableTab = this.props.tabs.find(tabItem => {
       return (
-        tabItem.childTab && tabItem.childTab.whichTab === event.currentTarget.id
+        tabItem.childTab && tabItem.childTab.whichTab === value
       );
     });
 
@@ -23,19 +27,19 @@ class PrimarySelectionTabs extends Component {
         return (
           tabItem.childTab &&
           tabItem.childTab.options.find(childTabItem => {
-            return childTabItem === event.currentTarget.id;
+            return childTabItem === value;
           })
         );
       });
 
-    const tabs = this.props.tabs;
+    const tabs = recursiveUpdatedItems ? recursiveUpdatedItems :this.props.tabs;
     const updatedTabs = tabs.map(tabItem => {
       if (tabItem === expandableTab) {
         if (tabItem.label === category) {
           return {
             ...tabItem,
             childTab: { ...tabItem.childTab, expanded: true },
-            selectedValue: event.currentTarget.id
+            selectedValue: value
           };
         }
         return tabItem;
@@ -45,7 +49,7 @@ class PrimarySelectionTabs extends Component {
             ...tabItem,
             childTab: {
               ...tabItem.childTab,
-              selectedValue: event.currentTarget.id
+              selectedValue: value
             }
           };
         }
@@ -56,14 +60,27 @@ class PrimarySelectionTabs extends Component {
             ? {
                 ...tabItem,
                 childTab: { ...tabItem.childTab, expanded: false },
-                selectedValue: event.currentTarget.id
+                selectedValue: value
               }
-            : { ...tabItem, selectedValue: event.currentTarget.id };
+            : { ...tabItem, selectedValue: value };
         }
         return tabItem;
       }
     });
-    this.props.updateTabs(updatedTabs);
+
+    if(value === 'Angular'){
+      this.changeDataEvent('Javascript','Language',updatedTabs);
+    }else if(value === 'Node Js Server'){
+      this.changeDataEvent('Javascript','Language', updatedTabs);
+    }else if(value === 'VS Code Extension'){
+      this.changeDataEvent('Javascript','Language', updatedTabs);
+    }else{
+      this.props.updateTabs(updatedTabs);
+    }
+  }
+
+  handleTabChange = (event, category) => {
+    this.changeDataEvent(event.currentTarget.id,category,null);
   };
 
   setupGridRow = item => {
@@ -88,12 +105,24 @@ class PrimarySelectionTabs extends Component {
                 this.handleTabChange(event, newValue)
               }
               tabs={item.options}
+              selectedIndex={this.indexOfSelectedTabValue(item.options,item.selectedValue)}
             />
           </h4>
         </Grid>
       </>
     );
   };
+
+  indexOfSelectedTabValue = (tabs,value) => {
+    let selectedIndex = 0;
+    for(let i = 0; i< tabs.length;i++){
+      if(value === tabs[i]){
+        break;
+      }
+      selectedIndex++;
+    }
+    return selectedIndex;
+  }
 
   getParentChildTab = item => {
     const t = (
