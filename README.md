@@ -6,7 +6,13 @@ BootStrap Your Application.
 
 ## Quick Overview
 
-When we are starting with some new framework or library there are lot of stuffs we need to configure like dependencies webpack etc.The aim of this JS Initializer project is to give simple user Interface where you can select techology and download project and ger started immediately.
+Whether you’re developing a simple web application or constructing a modern application, JavaScript framework or library will help you achieve your goals. This article will focus on a custom web application development tool JS Initializr which helps you to create a project with a variety of related libraries and frameworks to achieve this goal.
+
+Many a time configuring frameworks is a way too tedious job and even after downloading the frameworks we come across many dependencies that might not be required for our development, these dependencies increase the overall bundle size leading to increase in initial load time. The aim of this JS Initializr project is to provide a simple user interface where you can select technology, dependencies, and generate your project to start with.
+
+There are several options for initializing a web application. While I could walk you through the steps of creating a project directory structure and defining a build specification, that’s wasted time better spent actually writing application code. Therefore, we’re going to lean on the JS Initializr to bootstrap our application.
+
+The JS Initializr is a browser-based web application that can produce a skeleton of JavaScript project structure that you can flesh out with whatever functionality you want.
 
 ### Get Started Immediately
 
@@ -58,7 +64,7 @@ You will see the build errors and lint warnings in the console.
 ## Contributing
 
 We'd love to have your helping hand on `JS Initailzr`! See [CONTRIBUTING.md](CONTRIBUTING.md) for more information on what we're looking for and how to get started.
-
+It is still in development and hosted on Heroku https://start-jsproject.herokuapp.com/
 
 ## License
 
